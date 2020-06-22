@@ -1,0 +1,77 @@
+.about {
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  display: flex;
+}
+
+.Hero {
+  background-color: #1F2833;
+  flex-direction: column;
+  height: 100vh;
+  display: flex;
+  width: 100%;
+}
+
+.Hero p {
+  font-family: 'Roboto', sans-serif;
+  align-self: baseline;
+  margin: auto 0 5% 7%;
+  font-size: 1.125rem;
+  color: #C5C6C7;
+  width: 35%;
+}
+
+.CreativeProcess, .skillsSection {
+  justify-content: space-between;
+  flex-direction: row;
+  margin-top: 11%;
+  flex-wrap: wrap;
+  display: flex;
+  width: 86%;
+}
+
+.CreativeProcess {
+  align-items: center;
+}
+
+.skillsSection {
+  align-items: stretch;
+}
+
+.skills {
+  align-items: flex-start;
+  flex-direction: column;
+  color: #C5C6C7;
+  display: flex;
+  width: 45%;
+}
+
+.skills h4 {
+  margin: 0 0 5% 0;
+}
+
+.skills ul {
+  flex-direction: column;
+  list-style-type: none;
+  margin: auto 0 0 0;
+  padding: 5% 0 0 0;
+  display: flex;
+  width: 100%;
+}
+
+.skills li {
+  align-items: stretch;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin-top: 3%;
+  display: flex;
+}
+
+.ctaCopy {
+  text-align: center;
+  margin: 10% 0 0 0;
+  color: #C5C6C7;
+  width: 50%;
+}

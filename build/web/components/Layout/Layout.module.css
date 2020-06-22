@@ -1,0 +1,36 @@
+.Cookie {
+  background-color: rgba(53, 53, 53, 0.8)!important;
+  font-family: 'Raleway', sans-serif;
+  width: 30% !important;
+  left: 35% !important;
+  text-align: center;
+  font-weight: 300;
+}
+
+.CookieButton{
+  font-family: 'Abril Fatface', cursive;
+  background-color: white!important;
+  box-sizing: border-box;
+  letter-spacing: 0.1rem;
+  border-style: solid;
+  text-align: center;
+  padding: 0.5vw 3vw;
+  font-size: 0.9rem;
+  border-width: 1px;
+}
+
+@media only screen and (max-width : 1024px) and ( orientation: portrait ) {
+  .Cookie {
+    width: 100% !important;
+    left: 0% !important;
+    font-size: 1.2rem;
+  }
+
+  .Cookie div {
+    margin-bottom: 0 !important;
+  }
+
+  .CookieButton{
+    margin: 1.5vw auto !important;
+  }
+}

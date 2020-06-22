@@ -1,0 +1,87 @@
+.Slider {
+  justify-content: center;
+  margin: 10vw 0 0 -7vw;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  display: flex;
+  width: 100vw;
+  height: 50vw;
+}
+
+.sliderContainer {
+  position: relative;
+  overflow-x: hidden;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.sliderContainer button {
+  transition: opacity .2s ease-out;
+  background-color: transparent;
+  position: absolute;
+  cursor: pointer;
+  border: none;
+  height: 100%;
+  padding: 0;
+  opacity: 0;
+  width: 20%;
+  z-index: 2;
+  top: 0;
+}
+
+.sliderContainer button:hover {
+  opacity: 1;
+}
+
+.prev {
+  background-image: linear-gradient( to right, rgba(0,0,0,0.5), rgba(0,0,0,0));
+  left: 0;
+}
+
+.next {
+  background-image: linear-gradient( to left, rgba(0,0,0,0.5), rgba(0,0,0,0));
+  right: 0;
+}
+
+.sliderInner {
+  align-items: center;
+  flex-direction: row;
+  display: flex;
+  height: 100%;
+  width: auto;
+}
+
+.sliderInner div {
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  margin-left: 2.5%;
+  min-width: 95%;
+  display: block;
+  height: 100%;
+}
+
+.dotNav {
+  justify-content: space-between;
+  list-style-type: none;
+  flex-direction: row;
+  margin: 2vw 0 0 0;
+  display: flex;
+  padding: 0;
+  width: 5%;
+}
+
+.dotNav li {
+  background-color: white;
+  transform: scale( 0.5 );
+  border-radius: 50%;
+  cursor: pointer;
+  height: 0.8vw;
+  width: 0.8vw;
+}
+
+.dotNav li:first-child {
+  transform: scale( 1 );
+}

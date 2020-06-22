@@ -1,0 +1,60 @@
+.button {
+  font-family: 'Heebo', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.33rem;
+  transition-delay: 0.25s;
+  position: relative;
+  text-align: center;
+  align-self: center;
+  font-size: 1.1rem;
+  transition: 0.5s;
+  font-weight: 900;
+  color: #66FCF1;
+  padding: 20px;
+  width: 200px;
+}
+
+.button::after, .button::before {
+  border-color: #0dd7d3;
+  border-style: solid;
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  content: '';
+}
+
+.button::before {
+  border-width: 2px 0 0 2px;
+  transition: 0.25s;
+  left: 0;
+  top: 0;
+}
+
+.button::after {
+  border-width: 0 2px 2px 0;
+  transition: 0.25s;
+  bottom: 0;
+  right: 0;
+}
+
+.button:hover {
+  background-color: #0dd7d3;
+  color: black;
+}
+
+.button:hover:before {
+  height: 99%;
+  width: 99.5%;
+}
+
+.button:hover:after {
+  height: 99%;
+  width: 99.5%;
+}
+/* @media only screen and (max-width : 1024px) and ( orientation: portrait ) {
+  .button, .buttonSmall{ width: 100%; padding: 1.5vw 3vw; font-size: 1.2rem; }
+}
+
+@media only screen and (max-width: 500px) and ( orientation: portrait ) {
+  .button, .buttonSmall{ width: 100%; padding: 1.5vw 3vw; font-size: 1.2rem; }
+} */
