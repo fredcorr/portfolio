@@ -2,6 +2,7 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  padding: 0 10%;
   display: flex;
   height: 100vh;
   width: 100%;
@@ -13,17 +14,5 @@
 }
 
 .holdingMessage p {
-  margin-top: 1.5%;
-}
-
-@media only screen and (max-width : 500px) {
-
-  .holdingMessage {
-    padding: 0 10%;
-  }
-
-  .holdingMessage p {
-    margin: 2% 0 4% 0;
-  }
-
+  margin: 30px 0 50px 0;
 }
