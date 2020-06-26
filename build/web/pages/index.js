@@ -2,7 +2,10 @@ import { faLinkedinIn, faInstagram, faVimeoV } from '@fortawesome/free-brands-sv
 import { faPhone, faEnvelope } from '@fortawesome/fontawesome-free-solid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import HomePannel from '../components/HomePannel/HomePannel';
+import { motion } from 'framer-motion';
+import Head from 'next/head';
 // import BPLThumb from '../../assets/images/bplThumb.png';
+import Client from '../client';
 import gsap from 'gsap';
 // import SplitText from '../util/SplitText.js';
 import styles from './home.module.css';
@@ -10,9 +13,11 @@ import dynamic from 'next/dynamic';
 //
 // const SplitText = dynamic( () => import('../util/SplitText.js'), { ssr: false } )
 
+
 export default class Home extends React.Component {
 
   constructor(props) {
+    
     super(props);
     this.state = {
       projects: [
@@ -70,6 +75,8 @@ export default class Home extends React.Component {
   componentDidMount() {
     // this.thumbAnim( 0, gsap.from, '-=' )
 
+    console.log( this.props );
+
     this.counterAnim();
     // setTimeout(() => this.thumbAnim( 0, gsap.to, '+=', 'right center' ), 4000)
   }
@@ -81,7 +88,10 @@ export default class Home extends React.Component {
 
   render() {
     return (
-      <div className={ styles.Home } >
+      <motion.div className={ styles.Home } exit={{ opacity: 0 }}>
+        <Head>
+          <title>{ this.props.page_title }</title>
+        </Head>
         <div className={ styles.thumbContainer } id={ 'thumbContainer' }>
             {
               this.state.projects.map( ( project, i ) => {
@@ -109,7 +119,7 @@ export default class Home extends React.Component {
 
         <div className={ styles.contact }>
           <a href='tel:#'><FontAwesomeIcon icon={ faPhone } size={'2x'}/></a>
-          <a href='mailto:#'><FontAwesomeIcon icon={ faEnvelope } size={'2x'}/></a>
+          <a href={'mailto:' + this.props.email}><FontAwesomeIcon icon={ faEnvelope } size={'2x'}/></a>
         </div>
 
         <ul className={ styles.dotNav } id={ 'dotNav' }>
@@ -124,7 +134,18 @@ export default class Home extends React.Component {
           <a href='mailto:#'><FontAwesomeIcon icon={ faInstagram } size={'lg'}/></a>
           <a href='mailto:#'><FontAwesomeIcon icon={ faVimeoV } size={'lg'}/></a>
         </div>
-      </div>
+      </motion.div>
     )
   }
+}
+
+Home.getInitialProps = async function (context) {
+  const query = `*[_type == "home"]{ 
+    vimeo_profile,
+    email,
+    work_listing -> ,
+    page_title
+  }`;
+
+  return await Client.fetch(query).then( res => res[0] )
 }

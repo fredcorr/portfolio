@@ -2,7 +2,9 @@ import CreativeStep from '../../components/CreativeStep/CreativeStep';
 import Button from '../../components/UI/Button/Button';
 import Skill from '../../components/Skill/Skill';
 import React, { Component } from 'react';
+import { motion } from 'framer-motion';
 import styles from './about.module.css';
+import Client from '../../client';
 
 class About extends Component {
 
@@ -32,11 +34,14 @@ class About extends Component {
     }
   }
 
-
+  componentDidMount() {
+    console.log( this.props );
+    
+  }
 
   render(){
     return (
-      <div className={ styles.about }>
+      <motion.div className={ styles.about } exit={{ opacity: 0 }}>
         <section className={ styles.Hero }>
           <p>Born and raised in Milan (Italy), I have a real rat passion for everything that is an expression of creativity – I am always looking for ways to express my digital thinking. I’m always hungry to explore new fields of the industry and learn new skills, and I’ve got a profound interest in understanding the human interaction with the digital world. Outgoing, confident, client-facing and sociable, but at the same time a passionate hard worker that is completely dedicated to achieving both my professional and personal goals.</p>
         </section>
@@ -78,9 +83,15 @@ class About extends Component {
         <p className={ styles.ctaCopy }>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
         eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         <Button link='https://bplmarketing.udemy.com/?next=%2Forganization%2Fhome%2F' margin={ '5% 0' } >Download CV</Button>
-      </div>
+      </motion.div>
     );
   }
+}
+
+About.getInitialProps = async function (context) {
+  const query = `*[_type == "about"]`;
+
+  return await Client.fetch(query).then( res => res[0] )
 }
 
 export default About;

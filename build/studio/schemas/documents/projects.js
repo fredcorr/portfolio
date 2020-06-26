@@ -24,6 +24,11 @@ export default {
       type: "string",
     },
     {
+      title: 'Seo',
+      name: 'seo_details',
+      type: 'seo_details'
+    },
+    {
       title: "Date",
       name: "date",
       type: "number",

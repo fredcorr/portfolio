@@ -18,6 +18,12 @@ export default {
       description: 'Page title for SEO',
       type: 'string'
     },
+
+    {
+      title: 'Seo',
+      name: 'seo_details',
+      type: 'seo_details'
+    },
     {
       title: 'Brief intro',
       name: 'brief_intro',
@@ -31,6 +37,15 @@ export default {
       type: 'array',
       of: [
         { type: 'creative_step' }
+      ]
+    },
+    {
+      title: 'Skill Sets',
+      name: 'skill_sets',
+      description: 'Define Single skill set',
+      type: 'array',
+      of: [
+        { type: 'skill_set' }
       ]
     },
     {
