@@ -1,8 +1,8 @@
 .imageTextBox {
   justify-content: center;
   flex-wrap: nowrap;
-  margin-top: 8vw;
   color: #C5C6C7;
+  margin: 8vw 0;
   display: flex;
   width: 100%;
 }
@@ -68,14 +68,20 @@
   margin: 0;
 }
 
-.textBox div {
-  justify-content: flex-start;
+.textBox div:first-of-type {
   background-color: #45A29E;
-  flex-direction: column;
   margin: 1.5vw 0;
   display: flex;
   height: 2px;
   width: 30%;
+}
+
+.textBox div:last-of-type p{
+  margin-top: 5%;
+}
+
+.textBox div:last-of-type p:first-of-type{
+  margin-top: 0%;
 }
 
 /* /// TABLET SIZES /// */

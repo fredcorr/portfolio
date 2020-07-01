@@ -24,6 +24,18 @@ export default {
       type: "string",
     },
     {
+      title: 'Slug',
+      name: 'slug',
+      type: 'slug',
+      options: {
+        source: 'title',
+        slugify: input => input
+                             .toLowerCase()
+                             .replace(/\s+/g, '-')
+                             .slice(0, 200)
+      }
+    },
+    {
       title: 'Seo',
       name: 'seo_details',
       type: 'seo_details'
@@ -37,6 +49,9 @@ export default {
       title: "Image",
       name: "cover",
       type: "image",
+      options: {
+        metadata: ['lqip']
+      }
     },
     {
       title: "Content",
@@ -45,7 +60,13 @@ export default {
 
       of: [
       {type: 'image_text'},
-      {type: 'single_column'}
+      {type: 'text_module'},
+      {type: 'slider'},
+      { type: 'image', 
+        options: {
+          metadata: ['lqip']
+        } 
+      } 
      ]
 
     }

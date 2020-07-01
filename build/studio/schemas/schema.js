@@ -8,11 +8,13 @@ import about from './documents/about';
 import home from './documents/home';
 
 // Then import object types
-import single_column from './objects/single_column';
 import creative_step from './objects/creative_step';
+import portable_text from './objects/portable_text';
 import singleSkill from './objects/singleSkill';
+import text_module from './objects/textModule';
 import image_text from './objects/image_text';
 import skillSet from './objects/skillSet';
+import slider from './objects/slider';
 import seo from './objects/seo.js';
 import cta from './objects/cta';
 
@@ -25,11 +27,13 @@ export default createSchema({
   types: schemaTypes.concat([
     /* Your types here! */
     creative_step,
-    single_column,
+    portable_text,
+    text_module,
     singleSkill,
     image_text,
     projects,
     skillSet,
+    slider,
     about,
     seo,
     cta,

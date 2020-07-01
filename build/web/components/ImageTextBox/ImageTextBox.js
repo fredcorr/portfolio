@@ -12,7 +12,7 @@ const imageTextBox = (props) => {
       <div className={ styles.textBox }>
         <h4 dangerouslySetInnerHTML={{ __html: props.title }}></h4>
         <div></div>
-        <p dangerouslySetInnerHTML={{ __html: props.paragraph }}></p>
+        { props.children }
       </div>
     </div>
   )

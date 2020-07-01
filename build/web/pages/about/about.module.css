@@ -52,21 +52,24 @@
   margin: 0 0 5% 0;
 }
 
-.skills ul {
+.skilListing {
   flex-direction: column;
-  list-style-type: none;
   margin: auto 0 0 0;
   padding: 5% 0 0 0;
   display: flex;
   width: 100%;
 }
 
-.skills li {
+.skilListing > div {
   align-items: stretch;
   flex-direction: row;
   flex-wrap: nowrap;
-  margin-top: 3%;
+  margin-top: 5%;
   display: flex;
+}
+
+.skilListing > div:first-of-type {
+  margin-top: 0;
 }
 
 .ctaCopy {

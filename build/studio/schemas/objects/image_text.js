@@ -9,9 +9,11 @@ export default {
       type: 'string'
     },
     {
-      title: 'Paragraph',
+      title: 'Body',
       name: 'body',
-      type: 'string'
+      description: 'Add body to the module',
+      type: 'array',
+      of: [ { type: 'block'} ]
     },
     {
       title: 'Image',
@@ -22,6 +24,6 @@ export default {
       title: 'Is it reverse',
       name: 'isReverse',
       type: 'boolean'
-    },
+    }
   ]
 }

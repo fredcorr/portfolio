@@ -2,32 +2,17 @@ import { faLinkedinIn, faInstagram, faVimeoV } from '@fortawesome/free-brands-sv
 import { faPhone, faEnvelope } from '@fortawesome/fontawesome-free-solid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import HomePannel from '../components/HomePannel/HomePannel';
+import { client, urlFor } from '../client';
 import { motion } from 'framer-motion';
-import Head from 'next/head';
-// import BPLThumb from '../../assets/images/bplThumb.png';
-import Client from '../client';
-import gsap from 'gsap';
-// import SplitText from '../util/SplitText.js';
 import styles from './home.module.css';
-import dynamic from 'next/dynamic';
-//
-// const SplitText = dynamic( () => import('../util/SplitText.js'), { ssr: false } )
+import Head from 'next/head';
+import gsap from 'gsap';
 
 
 export default class Home extends React.Component {
 
   constructor(props) {
-    
     super(props);
-    this.state = {
-      projects: [
-        { date: '2019', title: 'BPL<br/>Marketing', img: '../assets/images/bplThumb.png', link: 'bpl' },
-        { date: '2019', title: 'Atherton<br/>Cox', img: '../assets/images/bplThumb.png', link: 'aoc' },
-        { date: '2018', title: 'All’<br/>Ortolano', img: '../assets/images/bplThumb.png', link: 'alo' },
-        { date: '2017', title: 'Doner<br/>London', img: '../assets/images/bplThumb.png', link: 'dnl' }
-      ]
-    }
-
     this.currentThumb = 0;
     this.counterTimeline = null;
     this.thumbs = [];
@@ -88,20 +73,20 @@ export default class Home extends React.Component {
 
   render() {
     return (
-      <motion.div className={ styles.Home } exit={{ opacity: 0 }}>
+      <motion.div className={ styles.Home } exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} >
         <Head>
           <title>{ this.props.page_title }</title>
         </Head>
         <div className={ styles.thumbContainer } id={ 'thumbContainer' }>
             {
-              this.state.projects.map( ( project, i ) => {
+              this.props.work_listing.map( ( project, i ) => {
                 return (
                   <HomePannel
                     ref={ thumb => this.thumbs[i] = thumb }
                     title={ project.title }
                     date={ project.date }
-                    img={ project.img }
-                    link={ project.link }
+                    img={ urlFor(project.cover) }
+                    link={ project.slug.current }
                     key={ i }
                     i={ i }
                   />
@@ -123,7 +108,7 @@ export default class Home extends React.Component {
         </div>
 
         <ul className={ styles.dotNav } id={ 'dotNav' }>
-          { this.state.projects.map( ( project, b ) => {
+          { this.props.work_listing.map( ( project, b ) => {
               let size = b === 0 ? 1 : 0.5;
               return <li key={b} onClick={ (e) => this.thumbSelected(e) } style={{ transform: `scale(${ size })` }} ref={ ( dot ) => this.dotNav[b] = dot }></li>
           })}
@@ -143,9 +128,14 @@ Home.getInitialProps = async function (context) {
   const query = `*[_type == "home"]{ 
     vimeo_profile,
     email,
-    work_listing -> ,
+    work_listing[]->{
+      title,
+      cover,
+      date,
+      slug
+    } ,
     page_title
   }`;
 
-  return await Client.fetch(query).then( res => res[0] )
+  return await client.fetch(query).then( res => res[0] )
 }

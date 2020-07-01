@@ -1,0 +1,43 @@
+.textColumn {
+  justify-content: space-between;
+  align-self: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 8vw;
+  display: flex;
+  width: 100%;
+}
+
+.textColumn div {
+  color: #C5C6C7;
+  width: 45%;
+}
+
+.textColumn h4 {
+  margin: 0 50% 2vw 0;
+  color: #C5C6C7;
+  width: 50%;
+}
+
+.textColumn div p {
+  margin: 5% 0 0 0;
+}
+
+.textColumn div p:first-child {
+  margin: 0;
+}
+
+/* /// TABLET SIZES /// */
+
+@media only screen and (max-width : 1024px) and ( orientation: portrait ) {
+}
+
+@media only screen and (max-width : 500px) and ( orientation: portrait ) {
+}
+
+
+@media only screen and (max-width : 400px) and ( orientation: portrait ) {
+}
+
+@media only screen and (max-width : 820px) and ( orientation: landscape ) {
+}
