@@ -1,10 +1,12 @@
-import ProgressiveImages from '../../components/ProgressiveImage/ProgressiveImage';
+import ProgressiveImages from '../../components/ProgressiveImage/ProgressiveImage'
 import ImageTextBox from '../../components/ImageTextBox/ImageTextBox';
 import NextProject from '../../components/NextProject/NextProject';
 import TextBlock from '../../components/textColumn/textColumn';
 import BlockContent from '@sanity/block-content-to-react';
 import Button from '../../components/UI/Button/Button';
+import { slideX, slideY } from '../../util/animation';
 import Slider from '../../components/slider/slider';
+import HeroImg from '../../components/HeroImg';
 import { client, urlFor } from '../../client';
 import styles from './case-study.module.css';
 import { motion } from 'framer-motion';
@@ -21,8 +23,8 @@ const serializers = {
   }
 }
 
-const caseStudy = props => {  
-  console.log( props );
+const caseStudy = props => {
+
   
   return (
     <motion.div className={ styles.CaseStudy } exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} >
@@ -30,17 +32,16 @@ const caseStudy = props => {
         <title>{ props.title }</title>
       </Head>
       <section className={ styles.Hero }>
-        <div className={ styles.heroClip }>
-          <img src={ urlFor(props.cover ) } alt={ props.title }/>
-        </div>
-        <div className={ styles.projectTitle }>
-          <h2>{ props.title }</h2>
+        <HeroImg hero_img={ urlFor(props.content.hero_img ) } initial={"hidden"} animate={"show" } exit={"hidden"} variants={slideY(100)} title={ props.title } />
+        <Button link={ props.link_project } initial={"hidden"} animate={"show" } exit={"hidden"} variants={slideX(-100)}>Visit site</Button>
+        <motion.div initial={"hidden"} animate={"show" } exit={"hidden"} variants={slideX(100)} className={ styles.projectTitle }>
           <p>{ props.date }</p>
-        </div>
+          <h1>{ props.title }</h1>
+        </motion.div>
       </section>
       <section className={ styles.mainContent }>
         {
-          props.content.map( ( module, i ) => {
+          props.content.modules ? props.content.modules.map( ( module, i ) => {
             switch (module._type) {
               case 'text_module':
                  return <TextBlock textContent={ module } key={ module._key } />
@@ -70,7 +71,7 @@ const caseStudy = props => {
                 return null
                 break;
             }
-          })
+          }) : null
         }
       </section>
       <NextProject img={ '../assets/images/BPL_Leadership_1.jpg' } />
@@ -81,22 +82,25 @@ const caseStudy = props => {
 caseStudy.getInitialProps = async function (context) {
   const query = `*[_type == "projects" && slug.current == "${ context.query['case-study'] }"]{
     seo_details,
-    content[]{
-      slider_images[]{
-        "asset": asset->{ url, metadata }
-      },
-      image_cover{
-        "asset": asset->{ url, metadata }
-      },
-      isReverse,
-      useTitle,
-      columns,
-      "asset": asset->{ url, metadata },
-      image,
-      title,
-      _type,
-      _key,
-      body,
+    content{
+      hero_img,
+      modules[]{
+        slider_images[]{
+          "asset": asset->{ url, metadata }
+        },
+        image_cover{
+          "asset": asset->{ url, metadata }
+        },
+        isReverse,
+        useTitle,
+        columns,
+        "asset": asset->{ url, metadata },
+        image,
+        title,
+        _type,
+        _key,
+        body,
+      }
     },
     cover,
     title,

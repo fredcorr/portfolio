@@ -10,9 +10,14 @@
   "dependencies": {
     "@sanity/block-content-to-react": "^2.0.7",
     "@sanity/image-url": "^0.140.19",
+    "gsap": "^3.3.4",
     "next": "^9.4.4",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "react-gsap": "^2.2.1",
+    "react-intersection-observer": "^8.26.2",
+    "react-scrollmagic": "^2.2.0",
+    "react-use": "^15.3.2"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free-solid": "^5.0.13",
@@ -21,7 +26,19 @@
     "@fortawesome/react-fontawesome": "^0.1.10",
     "@sanity/client": "^1.149.16",
     "framer-motion": "^1.11.1",
-    "gsap": "^3.3.1",
     "react-swipeable": "^5.5.1"
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "ie >= 8",
+    "edge >= 15",
+    "ie_mob >= 10",
+    "ff >= 45",
+    "chrome >= 45",
+    "safari >= 7",
+    "opera >= 23",
+    "ios >= 7",
+    "android >= 4",
+    "bb >= 10"
+  ]
 }

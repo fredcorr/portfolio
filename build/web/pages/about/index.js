@@ -1,42 +1,27 @@
 import CreativeStep from '../../components/CreativeStep/CreativeStep';
+import { motion, useViewportScroll } from 'framer-motion';
 import Button from '../../components/UI/Button/Button';
-import Skill from '../../components/Skill/Skill';
-import { client, baseUrl } from '../../client';
-import React, { Component } from 'react';
+// import Skill from '../../components/Skill/Skill';
 import styles from './about.module.css';
-import { motion } from 'framer-motion';
+import { client } from '../../client';
+import Head from 'next/head';
+import React from 'react';
 
-const About = props => {
+const About = props => {  
+
   return (
     <motion.div className={ styles.about } exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} >
-      <section className={ styles.Hero }>
-        <p>{ props.brief_intro }</p>
-      </section>
+      <Head>
+        <title>{ 'About me, my-self and I' }</title>
+      </Head>
+      <motion.section className={ styles.Hero } animate={{ opacity: 0 }} exit={{ opacity: 1 }}>
+        <motion.p animate={{ opacity: 1, transition: { delay: 0.5 } }} initial={{ opacity: 0 }}>{ props.brief_intro }</motion.p>
+      </motion.section>
       <section className={ styles.CreativeProcess }>
         {
           props.creative_process.map(( step, i ) => {
             return <CreativeStep index={ i } title={ step.title } copy={ step.body } key={ i }/>
           })
-        }
-      </section>
-      <section className={ styles.skillsSection }>
-        {
-          props.skill_sets.map( skillSet => 
-            <div className={ styles.skills } key={ skillSet._key }>
-              <h4>{ skillSet.skills_type }</h4>
-              <p>{  skillSet.skills_description}</p>
-              <div className={ styles.skilListing }>
-                {
-                  skillSet.skills_listing.map( skill => (
-                    <div key={ skill._key }>
-                      <Skill skillName={ skill.skill_name } amount={ skill.grade + '%' } />
-                    </div>
-                  ))
-                }
-              </div>
-            </div>
-
-            )
         }
       </section>
       <p className={ styles.ctaCopy }>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

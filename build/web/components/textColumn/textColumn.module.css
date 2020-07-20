@@ -14,7 +14,12 @@
 }
 
 .textColumn h4 {
+  font-family: 'Heebo', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
   margin: 0 50% 2vw 0;
+  font-size: 1.8rem;
+  font-weight: 300;
   color: #C5C6C7;
   width: 50%;
 }

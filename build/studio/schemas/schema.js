@@ -8,6 +8,7 @@ import about from './documents/about';
 import home from './documents/home';
 
 // Then import object types
+import content_builder from './objects/content_builder';
 import creative_step from './objects/creative_step';
 import portable_text from './objects/portable_text';
 import singleSkill from './objects/singleSkill';
@@ -26,6 +27,7 @@ export default createSchema({
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
     /* Your types here! */
+    content_builder,
     creative_step,
     portable_text,
     text_module,

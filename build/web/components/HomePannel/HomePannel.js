@@ -1,30 +1,53 @@
+import { fade, scaleUp, slideX } from '../../util/animation';
+import { useInView } from 'react-intersection-observer'
 import styles from './HomePannel.module.css';
-import React from 'react';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
+import React from "react";
 
-const homePannel = React.forwardRef((props, ref) => {
+const homePannel = (props) => {
+
+  const [ref, inView ] = useInView({ threshold: 0.7, triggerOnce: true })
+
   return (
-      <Link href="/case-studies/[case-study]" as={"/case-studies/" + props.link } >
-        <a id={ 'thumb_' + props.i } key={  props.i } style={{ opacity: props.i === 0 ? 1 : 0 }} className={ styles.thumb } ref={ ref }>
-          <div className={ styles.codeLanguages }>
-            <img src="../assets/images/html.svg" alt='HTML Language'/>
-            <img src="../assets/images/css.svg" alt='Css Language' />
-            <img src="../assets/images/react.svg" alt='React Framework'/>
-          </div>
-          <div className={ styles.title }>
-            <p>{ props.date }</p>
-            <h1 dangerouslySetInnerHTML={{ __html: props.title }}></h1>
-          </div>
-          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 220 220">
-             <clipPath id="clip">
-              <rect width="220" height="220"/>
-             </clipPath>
-             <rect width="220" height="220"/>
-             <image xlinkHref="../assets/images/bplThumb.png" clipPath="url(#clip)"/>
-          </svg>
-        </a>
-      </Link>
+    <Link href="/case-studies/[case-study]" as={"/case-studies/" + props.link } scroll={false}>
+      <a className={ styles.thumb } key={ props._key } ref={ ref }>
+        <div className={ styles.cover } >
+          <motion.p
+            animate={inView ? "show" : "hidden"}
+            initial="hidden"
+            variants={fade}
+            alt="">
+              { props.details }
+          </motion.p>
+          <motion.img 
+            animate={inView ? "show" : "hidden"}
+            src={ props.coverImg } 
+            initial="hidden"
+            variants={scaleUp}
+            exit="hidden"
+            alt=""
+            />
+          <motion.p  
+            animate={inView ? "show" : "hidden"}
+            initial="hidden"
+            variants={slideX( 100 )}
+            exit="hidden"
+            custom={ 100, 0.1 }>
+              { props.date }
+          </motion.p>
+        </div>
+        <motion.h2 
+          animate={inView ? "show" : "hidden"}
+          initial="hidden"
+          variants={slideX( 100 )}
+          custom={ 100, 0.4 }
+          exit="hidden">
+            { props.title }
+        </motion.h2>
+      </a>
+    </Link>
   )
-})
+}
 
 export default homePannel;

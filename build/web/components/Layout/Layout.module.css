@@ -1,3 +1,24 @@
+.tracker {
+  transform: translateY(-50%);
+  position: fixed;
+  z-index: 999;
+  width: 1.5%;
+  right: 3%;
+  top: 50%;
+}
+
+.tracker line , .tracker ellipse:last-of-type {
+  stroke:#45A29E;
+  stroke-width:1;
+  fill:none;
+}
+
+.tracker ellipse:first-of-type {
+  fill-rule:evenodd;
+  clip-rule:evenodd;
+  fill:#45A29E;
+}
+
 .Cookie {
   background-color: rgba(53, 53, 53, 0.8)!important;
   font-family: 'Raleway', sans-serif;
@@ -18,6 +39,8 @@
   font-size: 0.9rem;
   border-width: 1px;
 }
+
+
 
 @media only screen and (max-width : 1024px) and ( orientation: portrait ) {
   .Cookie {

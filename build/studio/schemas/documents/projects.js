@@ -46,6 +46,11 @@ export default {
       type: "number",
     },
     {
+      title: "Details",
+      name: "details",
+      type: "string",
+    },
+    {
       title: "Image",
       name: "cover",
       type: "image",
@@ -56,19 +61,7 @@ export default {
     {
       title: "Content",
       name: "content",
-      type: 'array',
-
-      of: [
-      {type: 'image_text'},
-      {type: 'text_module'},
-      {type: 'slider'},
-      { type: 'image', 
-        options: {
-          metadata: ['lqip']
-        } 
-      } 
-     ]
-
+      type: 'content'
     }
   ]
 }
