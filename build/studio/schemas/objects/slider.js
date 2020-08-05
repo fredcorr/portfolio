@@ -9,11 +9,7 @@ export default {
             description: 'Add images to the slider',
             type: 'array',
             of: [
-                { type: 'image',
-                    options: {
-                        metadata: ['lqip']
-                    }
-                }
+                { type: 'img'}
             ]
         }
     ]

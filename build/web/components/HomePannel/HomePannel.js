@@ -1,5 +1,5 @@
 import { fade, scaleUp, slideX } from '../../util/animation';
-import { useInView } from 'react-intersection-observer'
+import { useInView } from 'react-intersection-observer';
 import styles from './HomePannel.module.css';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -20,14 +20,17 @@ const homePannel = (props) => {
             alt="">
               { props.details }
           </motion.p>
-          <motion.img 
+          <motion.div
             animate={inView ? "show" : "hidden"}
-            src={ props.coverImg } 
-            initial="hidden"
+            className={ styles.imageWrapper }
             variants={scaleUp}
-            exit="hidden"
-            alt=""
-            />
+            whileHover="hover"
+            initial="hidden"
+            exit="hidden">
+              <img src={ props.coverImg } alt="" />
+              <img src={ props.coverImg } alt="" />
+              <p>View project</p>
+          </motion.div>
           <motion.p  
             animate={inView ? "show" : "hidden"}
             initial="hidden"

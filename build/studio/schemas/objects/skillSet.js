@@ -14,15 +14,6 @@ export default {
         description: 'Describe skill set',
         name: 'skills_description',
         type: 'string'
-      },
-      {
-        title: 'Skills listing',
-        name: 'skills_listing',
-        description: 'Add skills to whole skill set',
-        type: 'array',
-        of: [
-          { type: 'skill' }
-        ]
       }
     ]
   }

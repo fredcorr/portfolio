@@ -14,7 +14,7 @@ const Home = props => {
       </Head>
       
       <section className={ styles.intro }>
-          <motion.h1 initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.2 } }}>Designer<br/>Developer</motion.h1>
+          <motion.h1 initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.2 } }}>Ui Designer<br/>Developer</motion.h1>
           <motion.p  initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.5 } }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</motion.p>
       </section>
       <section className={ styles.workListing } >

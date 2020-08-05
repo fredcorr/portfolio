@@ -20,7 +20,6 @@ class MyDocument extends Document {
             `,
           }}
         />
-
           <link rel="preload" href="/fonts/Altero-Regular.otf" as="font" crossOrigin=""/>
         </Head>
         <body>

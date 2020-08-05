@@ -17,11 +17,7 @@ export default {
             {type: 'image_text'},
             {type: 'text_module'},
             {type: 'slider'},
-            { type: 'image', 
-              options: {
-                metadata: ['lqip']
-              } 
-            } 
+            { type: 'img' } 
            ]
       }
     ]

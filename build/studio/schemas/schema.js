@@ -9,14 +9,13 @@ import home from './documents/home';
 
 // Then import object types
 import content_builder from './objects/content_builder';
-import creative_step from './objects/creative_step';
 import portable_text from './objects/portable_text';
-import singleSkill from './objects/singleSkill';
 import text_module from './objects/textModule';
 import image_text from './objects/image_text';
 import skillSet from './objects/skillSet';
 import slider from './objects/slider';
 import seo from './objects/seo.js';
+import img from './objects/img';
 import cta from './objects/cta';
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -28,15 +27,14 @@ export default createSchema({
   types: schemaTypes.concat([
     /* Your types here! */
     content_builder,
-    creative_step,
     portable_text,
     text_module,
-    singleSkill,
     image_text,
     projects,
     skillSet,
     slider,
     about,
+    img,
     seo,
     cta,
     home

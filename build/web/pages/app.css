@@ -8,6 +8,7 @@ button:focus{
 }
 
 :root {
+  cursor: url( '/assets/images/cusor.svg' ), auto;
   --lightGrey: #C5C6C7;
   --darkBlue: #1F2833;
   --torquay: #66FCF1;
@@ -16,7 +17,6 @@ button:focus{
 
 * {
   box-sizing: border-box;
-  cursor: url( '/assets/images/cursor.svg' ), auto;
   padding: 0;
   margin: 0;
 }
@@ -108,8 +108,24 @@ footer p:last-of-type {
 
 @font-face {
   font-family: 'Altero';
-  src: url('/fonts/Altero-Regular.otf');
+  src: url('/fonts/Altero-Regular.woff');
   font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Heebo';
+  src: url('/fonts/Heebo-Light.woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Heebo';
+  src: url('/fonts/Heebo-Medium.woff');
+  font-weight: 500;
   font-style: normal;
   font-display: swap;
 }

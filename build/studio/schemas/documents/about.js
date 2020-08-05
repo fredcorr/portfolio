@@ -18,26 +18,22 @@ export default {
       description: 'Page title for SEO',
       type: 'string'
     },
-
     {
-      title: 'Seo',
-      name: 'seo_details',
-      type: 'seo_details'
+      title: 'Profile',
+      name: 'profile_image',
+      type: 'img'
+    },
+    {
+      title: 'Job Title',
+      name: 'job_title',
+      type: 'string'
     },
     {
       title: 'Brief intro',
       name: 'brief_intro',
       description: 'A few words about my self',
-      type: 'string'
-    },
-    {
-      title: 'Creative process',
-      name: 'creative_process',
-      description: 'Describe the steps in your creative process',
       type: 'array',
-      of: [
-        { type: 'creative_step' }
-      ]
+      of: [ { type: 'block'} ]
     },
     {
       title: 'Skill Sets',
@@ -46,6 +42,19 @@ export default {
       type: 'array',
       of: [
         { type: 'skill_set' }
+      ]
+    },
+    {
+      title: 'Feature sites',
+      name: 'feature_sites',
+      description: 'Add sites you like',
+      type: 'array',
+      of: [
+        { 
+          title: 'Site Link',
+          name: 'site_link',
+          type: 'url'
+        }
       ]
     },
     {

@@ -1,28 +1,43 @@
-import CreativeStep from '../../components/CreativeStep/CreativeStep';
-import { motion, useViewportScroll } from 'framer-motion';
+import ProgressiveImage from '../../components/ProgressiveImage/ProgressiveImage';
+import FeaturedSites from '../../components/FeaturedSites/FeaturedSites';
+import TextBlock from '../../components/textBlock/textBlock';
+import SkillSet from '../../components/SkillSet/SkillSet';
 import Button from '../../components/UI/Button/Button';
-// import Skill from '../../components/Skill/Skill';
+import ScrollFade from '../../util/scrollFade';
+import React, { userRef } from 'react';
 import styles from './about.module.css';
+import { motion } from 'framer-motion';
 import { client } from '../../client';
 import Head from 'next/head';
-import React from 'react';
+import kahaki from 'kahaki';
 
-const About = props => {  
+const About = props => {
 
   return (
     <motion.div className={ styles.about } exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} >
       <Head>
         <title>{ 'About me, my-self and I' }</title>
       </Head>
-      <motion.section className={ styles.Hero } animate={{ opacity: 0 }} exit={{ opacity: 1 }}>
-        <motion.p animate={{ opacity: 1, transition: { delay: 0.5 } }} initial={{ opacity: 0 }}>{ props.brief_intro }</motion.p>
-      </motion.section>
-      <section className={ styles.CreativeProcess }>
+      <ScrollFade>
+      { anim =>
+        <motion.section className={ styles.Hero } style={ anim.style } ref={ anim.ref }>
+            <div className={ styles.bio }>
+            <h1>Federico Corradi</h1>
+            <p>{ props.job_title }</p>
+            <TextBlock content={ props.brief_intro } isWrapped={ false } />
+          </div>
+          <ProgressiveImage image={ props.profile_image.asset } classPassed={ styles.profile_image } />
+        </motion.section>
+      }
+      </ScrollFade>
+      <section className={ styles.skillContainer }>
         {
-          props.creative_process.map(( step, i ) => {
-            return <CreativeStep index={ i } title={ step.title } copy={ step.body } key={ i }/>
-          })
+          props.skill_sets.map( ({ skills_type, skills_description, _key }) => <SkillSet title={ skills_type } copy={ skills_description } key={ _key }/> )
         }
+      </section>
+      <section className={ styles.feature_sites }>
+        <h4>Sites I like</h4>
+         <FeaturedSites sites={ props.parsedSites } links={ props.feature_sites } />
       </section>
       <p className={ styles.ctaCopy }>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
       eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -31,17 +46,25 @@ const About = props => {
   );
 }
 
-About.getInitialProps = async function (context) {
+export async function getServerSideProps() {
   const query = `*[_type == "about"]{
+    profile_image{
+      altTag,
+      asset->{ url, metadata }
+    },
     page_title,
-    seo_details,
     brief_intro,
-    creative_process,
+    job_title,
+    feature_sites,
     skill_sets,
     CV
   }`;
 
-  return await client.fetch(query).then( res => res[0] )
+  const data = await client.fetch(query).then( res => res[0] )
+  let parsedSites = null;
+  const feature_sites = data.feature_sites.map( async site => await kahaki.getPreview( site ))
+  await Promise.all( feature_sites ).then(( data ) => {  parsedSites = data } )
+  return { props: {...data, parsedSites } }
 }
 
 export default About;

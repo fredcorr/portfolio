@@ -18,7 +18,7 @@ export default {
     {
       title: 'Image',
       name: 'image_cover',
-      type: 'image'
+      type: 'img'
     },
     {
       title: 'Is it reverse',

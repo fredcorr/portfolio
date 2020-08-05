@@ -22,19 +22,20 @@
 
 .cover {
   justify-content: flex-start;
+  background-color: #0B0C10;
   flex-direction: row;
-  flex-wrap: nowrap;
   align-items: center;
+  flex-wrap: nowrap;
 }
 
-.cover p {
+.cover > p {
   line-height: 2.0625rem;
   color:var( --torquay );
   font-size: 1.25rem;
   width: 100%;
 }
 
-.cover p:first-of-type {
+.cover > p:first-of-type {
   transform: rotate(180deg);
   writing-mode: vertical-rl;
   text-orientation: mixed;
@@ -43,7 +44,7 @@
   width: 4%;
 }
 
-.cover p:last-of-type {
+.cover > p:last-of-type {
   letter-spacing: 0.400625rem;
   align-self: flex-end;
   align-items: center;
@@ -53,7 +54,7 @@
   width: 16%;
 }
 
-.cover p:last-of-type::before {
+.cover > p:last-of-type::before {
   background-color: var( --torquay );
   position: relative;
   margin-right: 40px;
@@ -63,7 +64,63 @@
   width: 80%;
 }
 
-.cover img {
-  height: auto;
+.imageWrapper {
+  overflow: hidden;
+  position: relative;
+  height: 42vw;
   width: 85%;
+}
+
+.imageWrapper img {
+  transition: all .5s ease-in-out;
+  position: absolute;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+.imageWrapper p {
+  transform: translate( -50%, -45% ) scale( 0.9 );
+  font-family: 'Heebo', sans-serif;
+  background-color: var( --acqua );
+  transition: all 0.3s ease-in-out;
+  mix-blend-mode: difference;
+  text-transform: uppercase;
+  color: var( --darkBlue );
+  letter-spacing: 0.5rem;
+  transition-delay: 0.2s;
+  align-self: center;
+  position: absolute;
+  padding: 20px 40px;
+  font-weight: 300;
+  font-size: 1.3vw;
+  opacity: 0;
+  left: 50%;
+  top: 50%;
+}
+
+.imageWrapper img:first-of-type {
+  clip-path: polygon(72% 0, 0 0, 0 100%, 37% 100%);
+}
+
+.imageWrapper img:last-of-type {
+  clip-path: polygon(71% 0, 100% 0, 100% 100%, 36% 100%);
+}
+
+
+
+.thumb:hover  .imageWrapper p {
+  transform: translate( -50%, -50% ) scale(1);
+  transition-delay: 0.2;
+  opacity: 1;
+}
+
+.thumb:hover  .imageWrapper img:first-of-type {
+  transform: translate( -5%, -5% );
+}
+
+.thumb:hover  .imageWrapper img:last-of-type {
+  transform: translate( 5%, 5% );
 }
