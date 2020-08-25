@@ -8,19 +8,10 @@
     "start": "next start"
   },
   "dependencies": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     "@sanity/block-content-to-react": "^2.0.7",
     "@sanity/image-url": "^0.140.19",
     "gsap": "^3.3.4",
     "kahaki": "0.0.6",
-=======
->>>>>>> parent of d81636d... installed sanity client
-=======
->>>>>>> parent of d81636d... installed sanity client
-=======
->>>>>>> parent of d81636d... installed sanity client
     "next": "^9.4.4",
     "react": "16.13.1",
     "react-dom": "16.13.1",
