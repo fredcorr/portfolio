@@ -1,102 +1,104 @@
-import { Swipeable } from "react-swipeable";
-import React, { Component } from 'react';
+import ProgressiveImages from '../ProgressiveImage/ProgressiveImage';
+import { useInView } from 'react-intersection-observer';
+import { scaleUp } from '../../util/animation';
 import styles from './slider.module.css';
-import { TweenMax } from 'gsap';
+import { TweenMax, Power4 } from 'gsap';
+import { motion } from 'framer-motion';
+import React from 'react';
 
-class Slider extends Component {
+const Slider = (props) => {
 
-  constructor(props) {
-    super(props);
-    this.imagesRendered = null;
-    this.arrayDots = null;
-    this.imagesRef = [];
-    this.imageCount = 0;
-    this.amountMoved = 0;
-    this.state = {
-    }
+  const [ref, inView ] = useInView({ threshold: 0.6, triggerOnce: true })
+  const sliderInner = React.createRef(null);
+  let arrayDots = [];
+  let imagesRef = [];
+  let imageCount = 0;
 
+  const calculateDistWindow = (el) => {
+    let rect = el.getBoundingClientRect(),
+    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+    scrollRight = window.pageXOffset || document.documentElement.scrollRight;
+    return { right: rect.right + scrollRight, left: rect.left + scrollLeft }
   }
 
-  componentDidMount() {
-    this.imagesRendered = Array.from(document.getElementsByClassName( styles.sliderInner )[0].children);
-    this.arrayDots = Array.from(document.getElementsByClassName( styles.dotNav )[0].children);
+  const calculateAmountRange = ( endPoint ) => {
+    let amoutInPixel = calculateDistWindow( imagesRef[ endPoint ] ).left - ( ( window.innerWidth - imagesRef[ endPoint ].clientWidth ) / 2 ) ;
+    return Math.abs( ( (amoutInPixel / window.innerWidth ) * 100) );
   }
 
-  slideAimation = ( direction, indexOf, startPoint, endPoint ) => {
-    // TweenMax.to( '.' + styles.sliderInner, 1, { x: direction + amount + '%'})
+  const slideAimation = ( direction, startPoint, endPoint, onStart ) => {
+    let amount = calculateAmountRange( endPoint )
+    let range = Math.abs( startPoint - endPoint );
+    let divider = range > 3 ? 3 : 1 ;
+    TweenMax.to( arrayDots[ imageCount ].parentNode.children, 1, { scale: 0.5 })
+    TweenMax.to( sliderInner.current, ( range / divider ), { x: direction + amount + '%', ease: Power4.InOut, onStart: () => onStart } )
+    TweenMax.to( arrayDots[ endPoint ], 1, { scale: 1 })
   }
 
   // MOVE TO NEXT SLIDE
-  toggleNext = ( event, type ) => {
-    switch ( true ) {
-      case this.imageCount === ( this.imagesRendered.length - 1 ) && type === 'next':
-          this.slideAimation( '+=', this.imageCount, 0, this.imagesRef.length - 1 );
-          this.imageCount = 0;
-        break;
-      case this.imageCount === 0  && type === 'prev':
-        this.slideAimation( '-=', this.imageCount, 0, this.imagesRef.length - 1 );
-        this.imageCount = this.imagesRendered.length - 1
-        break;
-      case this.imageCount <= ( this.imagesRendered.length - 1 ) && type === 'prev':
-          this.slideAimation( '+=', this.imageCount, this.imageCount, this.imageCount - 1 )
-          this.imageCount -= 1;
-        break;
-      case this.imageCount <= ( this.imagesRendered.length - 1 ) && type === 'next':
-          this.slideAimation( '-=', this.imageCount, this.imageCount, this.imageCount + 1 )
-          this.imageCount += 1;
-        break;
-      default:
+  const toggleImage = ( direction ) => {
+
+    if ( typeof direction !== 'object' ) {
+      switch ( true ) {
+        case imageCount === imagesRef.length - 1 && direction === '-=':
+            slideAimation( '+=', imageCount, 0, imageCount = 0 );
+          break;
+        case imageCount === 0  && direction === '+=':
+            slideAimation( '-=', imageCount, imagesRef.length - 1, imageCount = imagesRef.length - 1 );
+          break;
+        case imageCount <= imagesRef.length - 1 && direction === '+=' :
+            slideAimation( direction, imageCount, imageCount - 1, imageCount -= 1 )
+          break;
+        case imageCount <= imagesRef.length - 1 && direction === '-=' :
+            // NEXT BUTTON ACTION
+            slideAimation( direction, imageCount, imageCount + 1, imageCount += 1 )
+          break;
+        default:
+      }
+
+    } else {
+      let dot = arrayDots.indexOf( direction.target )
+      switch (true) {
+        case dot >= imageCount:
+            slideAimation( '-=', imageCount, dot, imageCount = dot )
+          break;
+        case dot <= imageCount:
+            slideAimation( '+=', imageCount, dot, imageCount = dot )
+          break;
+        default:
+      }
     }
-    TweenMax.to( this.arrayDots[ this.imageCount ].parentNode.children, 1, { scale: 0.5 })
-    TweenMax.to( this.arrayDots[ this.imageCount ], 1, { scale: 1 })
+
   }
 
-  dotsNav = ( event ) => {
-    let indexOfThumb =  (Array.from(document.getElementsByClassName( styles.dotNav )[0].children).indexOf( event.target )) ;
-    switch (true) {
-      case indexOfThumb > this.imageCount :
-          this.slideAimation( true, '-=', this.imageCount, this.imageCount, indexOfThumb )
-        break;
-      case indexOfThumb < this.imageCount :
-          this.slideAimation( true, '+=', this.imageCount, this.imageCount, indexOfThumb  )
-        break;
-      default:
-    }
-    TweenMax.to( event.target.parentNode.children, 1, { scale: 0.5 })
-    TweenMax.to( event.target, 1, { scale: 1 })
-    this.imageCount = indexOfThumb;
-  }
-
-  // SET SWIPE FOR MOBILE
-  config = {
-    onSwipedLeft: ( e ) => this.toggleNext( e, 'next' ),
-    onSwipedRight: ( e ) => this.toggleNext( e, 'prev' ),
-    preventDefaultTouchmoveEvent: true,
-    stopPropagation: true,
-    trackMouse: true
-  }
-
-  render(){
-
-    return(
-      <div className={ styles.Slider }>
-        <Swipeable {...this.config} className={styles.sliderContainer}>
-          <button className={ styles.prev } onClick={ ( e ) => this.toggleNext( e, 'prev' ) }></button>
-          <div className={styles.sliderInner}>
-            { this.props.images.map((img, i) => { return <div key={i} style={{ backgroundImage: `url(${img})`} }></div> } ) }
-          </div>
-          <button className={ styles.next } onClick={ ( e ) => this.toggleNext( e, 'next' ) } ></button>
-        </Swipeable>
-        <ul className={ styles.dotNav }>
+  return(
+    <motion.div className={ styles.Slider } ref={ ref } initial="hidden" animate={inView ? "show" : "hidden"} exit="hidden" variants={scaleUp}>
+      <button className={ styles.prev } onClick={ ( e ) => toggleImage( '+=' ) }></button>
+      <div className={styles.sliderContainer}>
+        <div className={styles.sliderInner} ref={ sliderInner }>
           {
-            this.props.images.map( b => {
-              return <li key={b} onClick={ ( e ) => this.dotsNav( e ) } ></li>;
-            })
+            props.images.map( (image, i ) => (
+              <ProgressiveImages
+                ref={image => imagesRef[i] = image}
+                classPassed={ styles.images }
+                image={ image.asset }
+                key={ i }
+              />
+            ))
           }
-        </ul>
+        </div>
       </div>
-    )
-  }
+      <button className={ styles.next } onClick={ ( e ) => toggleImage( '-=' ) } ></button>
+      <ul className={ styles.dotNav } >
+        {
+          props.images.map( ( image, b ) => {
+            return <li key={b} onClick={ ( e ) => toggleImage( e ) } ref={ dot => arrayDots[b] = dot }></li>;
+          })
+        }
+      </ul>
+    </motion.div>
+  )
+  
 }
 
 export default Slider;

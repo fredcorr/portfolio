@@ -19,24 +19,66 @@ export default {
       type: 'string'
     },
     {
-      title: 'Brief intro',
-      name: 'brief_intro',
-      description: 'A few words about my self',
+      title: 'Seo',
+      name: 'seo_details',
+      type: 'seo_details'
+    },
+    {
+      title: 'Profile',
+      name: 'profile_image',
+      type: 'img'
+    },
+    {
+      title: 'Job Title',
+      name: 'job_title',
       type: 'string'
     },
     {
-      title: 'Creative process',
-      name: 'creative_process',
-      description: 'Describe the steps in your creative process',
+      title: 'Brief intro',
+      name: 'brief_intro',
+      description: 'A few words about my self',
+      type: 'array',
+      of: [ { type: 'block'} ]
+    },
+    {
+      title: 'Skill Sets',
+      name: 'skill_sets',
+      description: 'Define Single skill set',
       type: 'array',
       of: [
-        { type: 'creative_step' }
+        { type: 'skill_set' }
       ]
+    },
+    {
+      title: 'Feature sites',
+      name: 'feature_sites',
+      description: 'Add sites you like',
+      type: 'array',
+      of: [
+        { 
+          title: 'Site Link',
+          name: 'site_link',
+          type: 'url'
+        }
+      ]
+    },
+    {
+      title: 'Get in touch copy',
+      name: 'contact_copy',
+      description: 'Closing for the about page',
+      type: 'array',
+      of: [ { type: 'block'} ]
     },
     {
       title: 'CV Download',
       name: 'CV',
       type: 'file'
-    }
+    },
+    {
+      title: 'Email',
+      name: 'email',
+      description: 'Insert email for work contact',
+      type: 'string'
+    },
   ]
 }
