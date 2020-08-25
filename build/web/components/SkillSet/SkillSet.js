@@ -4,6 +4,7 @@ import React from 'react';
 const creativeStep = (props) => (
   <div className={ styles.skillSet }>
       <h3>{ props.title }</h3>
+      <span></span>
       <p>{ props.copy }</p>
   </div>
 )

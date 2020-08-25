@@ -9,18 +9,8 @@ export default {
         type: 'string'
       },
       {
-        title: 'Robots',
-        name: 'robots',
-        type: 'string'
-      },
-      {
-        title: 'OG Type',
-        name: 'og_type',
-        type: 'string'
-      },
-      {
-        title: 'OG Title',
-        name: 'og_title',
+        title: 'Key words',
+        name: 'keywords',
         type: 'string'
       },
       {

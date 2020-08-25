@@ -42,7 +42,7 @@
 
 
 
-@media only screen and (max-width : 1024px) and ( orientation: portrait ) {
+@media only screen and (max-width : 1024px)  {
   .Cookie {
     width: 100% !important;
     left: 0% !important;
@@ -55,5 +55,12 @@
 
   .CookieButton{
     margin: 1.5vw auto !important;
+  }
+
+  .tracker {
+    /* max-width: 2%; */
+    height: 60%;
+    width: auto;
+    right: 0.3%;
   }
 }

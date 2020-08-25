@@ -27,6 +27,7 @@
   justify-content: center;
   flex-direction: column;
   justify-self: flex-end;
+  align-items: flex-end;
   margin-top: 2%;
   display: flex;
   width: 50%;
@@ -34,10 +35,12 @@
 
 .projectTitle h1 {
   font-family: 'Altero', sans-serif;
+  line-height: 3rem;
   text-align: right;
-  font-size: 3.75rem;
+  font-size: 3.5rem;
   font-weight: 300;
   color: #66FCF1;
+  min-width: 600px;
   width: 100%;
 }
 
@@ -67,4 +70,51 @@
   margin: 5% 0 0 0;
   height: auto;
   width: 100%;
+}
+
+@media only screen and (max-width: 850px) {
+
+  .Hero {
+    flex-direction: column;
+  }
+
+  .Hero a {
+    align-self: flex-start;
+  }
+
+  .Hero img {
+    margin: 10% 11.5% 0 11.5%;
+    width: 66vw;
+  }
+
+  .projectTitle {
+    margin-top: 30px;
+    width: 100%;
+  }
+
+  .projectTitle h1 {
+    min-width: 100%;
+  }
+
+}
+
+@media only screen and (max-width: 600px) {
+
+  .Hero {
+    background: linear-gradient(to bottom, var( --darkBlue ) 55%, transparent 0);
+  }
+
+  .projectTitle h1 {
+    white-space: normal;
+    font-size: 3rem;
+  }
+
+}
+
+@media only screen and (max-width: 440px) {
+
+  .Hero {
+    background: linear-gradient(to bottom, var( --darkBlue ) 45%, transparent 0);
+  }
+
 }

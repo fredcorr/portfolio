@@ -9,17 +9,16 @@ import Slider from '../../components/slider/slider';
 import ScrollFade from '../../util/scrollFade';
 import { client, urlFor } from '../../client';
 import styles from './case-study.module.css';
+import Seo from '../../components/UI/Seo';
+import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
-import Head from 'next/head';
 import React from 'react';
 
 const caseStudy = props => {
-  
+
   return (
     <motion.div className={ styles.CaseStudy } exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} >
-      <Head>
-        <title>{ props.title }</title>
-      </Head>
+      <Seo metas={ props.seo_details } title={ props.title } path={ useRouter().asPath }/>
       <section className={ styles.Hero }>
         <ScrollFade>
           { anim => <motion.img src={ urlFor(props.content.hero_img.asset ) } initial={"hidden"} animate={"show" } exit={"hidden"} variants={slideY(100)} style={ anim.style } alt={ props.title } ref={ anim.ref } />  }
@@ -68,7 +67,10 @@ const caseStudy = props => {
 
 caseStudy.getInitialProps = async function (context) {
   const currentPrj = await client.fetch( `*[_type == "projects" && slug.current == "${ context.query['case-study'] }"][0]{
-    seo_details,
+    seo_details{
+      ...,
+      "og_image": og_image.asset->url
+    },
     content{
       hero_img,
       modules[]{

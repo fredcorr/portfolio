@@ -1,18 +1,16 @@
 import HomePannel from '../components/HomePannel/HomePannel';
 import { client, urlFor } from '../client';
+import { useRouter } from 'next/router';
+import Seo from '../components/UI/Seo';
 import { motion } from 'framer-motion';
 import styles from './home.module.css';
-import Head from 'next/head';
 import React from 'react';
 
 const Home = props => {
 
   return (
     <motion.div className={ styles.Home } exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} >
-      <Head>
-        <title>{ props.page_title }</title>
-      </Head>
-      
+      <Seo metas={ props.seo_details } title={ props.page_title } path={ useRouter().asPath }/>
       <section className={ styles.intro }>
           <motion.h1 initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.2 } }}>Ui Designer<br/>Developer</motion.h1>
           <motion.p  initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.5 } }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</motion.p>
@@ -36,7 +34,11 @@ const Home = props => {
 }
 
 Home.getInitialProps = async function (context) {
-  const query = `*[_type == "home"]{ 
+  const query = `*[_type == "home"]{
+    seo_details{
+      ...,
+      "og_image": og_image.asset->url
+    },
     vimeo_profile,
     email,
     work_listing[]->{

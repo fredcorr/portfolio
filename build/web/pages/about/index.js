@@ -4,20 +4,19 @@ import TextBlock from '../../components/textBlock/textBlock';
 import SkillSet from '../../components/SkillSet/SkillSet';
 import Button from '../../components/UI/Button/Button';
 import ScrollFade from '../../util/scrollFade';
-import React, { userRef } from 'react';
+import Seo from '../../components/UI/Seo';
 import styles from './about.module.css';
+import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
+import React, { userRef } from 'react';
 import { client } from '../../client';
-import Head from 'next/head';
 import kahaki from 'kahaki';
 
 const About = props => {
 
   return (
     <motion.div className={ styles.about } exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} >
-      <Head>
-        <title>{ 'About me, my-self and I' }</title>
-      </Head>
+      <Seo metas={ props.seo_details } title={ 'About me, my-self and I' } path={ useRouter().asPath }/>
       <ScrollFade>
       { anim =>
         <motion.section className={ styles.Hero } style={ anim.style } ref={ anim.ref }>
@@ -39,9 +38,13 @@ const About = props => {
         <h4>Sites I like</h4>
          <FeaturedSites sites={ props.parsedSites } links={ props.feature_sites } />
       </section>
-      <p className={ styles.ctaCopy }>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <Button link='https://bplmarketing.udemy.com/?next=%2Forganization%2Fhome%2F' margin={ '5% 0' } >Download CV</Button>
+      <section className={ styles.getInTouch }>
+        <TextBlock content={ props.contact_copy } isWrapped={ false } />
+        <div className={ styles.aboutLinks }>
+          <Button link={ props.CV + '?dl' } >Download CV</Button>
+          <Button link={ 'mailto:' + props.email } >Get in touch</Button>
+        </div>
+      </section>
     </motion.div>
   );
 }
@@ -52,12 +55,18 @@ export async function getServerSideProps() {
       altTag,
       asset->{ url, metadata }
     },
+    seo_details{
+      ...,
+      "og_image": og_image.asset->url
+    },
     page_title,
     brief_intro,
     job_title,
     feature_sites,
     skill_sets,
-    CV
+    contact_copy,
+    "CV": CV.asset->url,
+    email
   }`;
 
   const data = await client.fetch(query).then( res => res[0] )

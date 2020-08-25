@@ -27,7 +27,7 @@
   width: 60%;
 }
 
-.bio p, .feature_sites h4 {
+.bio p, .feature_sites h4, .getInTouch p {
   font-family: 'Heebo', sans-serif;
   color: var( --lightGrey );
   font-weight: 300;
@@ -36,23 +36,23 @@
 .bio h1 {
   font-family: 'Altero', sans-serif;
   color: var( --torquay );
+  font-size: 4.5rem;
   font-weight: 300;
-  font-size: 5rem;
   line-height: 1;
 }
 
 .bio p:first-of-type, .feature_sites h4 {
   text-transform: uppercase;
   letter-spacing: 0.5rem;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   margin: 25px 0;
   width: 100%;
 }
 
 .bio p:last-of-type {
-  line-height: 2.2rem;
-  font-size: 1.2rem;
-  margin: 25px 0;
+  margin: 0 0 25px 0;
+  line-height: 2rem;
+  font-size: 1rem;
   width: 80%;
 }
 
@@ -95,6 +95,7 @@
 .skillContainer {
   flex-direction: column;
   margin: 10% auto 0 auto;
+  min-width: 700px;
   display: flex;
   width: 70%;
 }
@@ -108,5 +109,82 @@
   width: 86%;
 }
 
+.getInTouch {
+  justify-content: space-between;
+  align-items: stretch;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin: 10% 0;
+  display: flex;
+  width: 86%;
+}
 
+.getInTouch p {
+  line-height: 2.3875rem;
+  font-size: 1.5625rem;
+  min-width: 450px;
+  width: 40%;
+}
 
+.aboutLinks {
+  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  display: flex;
+  width: 30%;
+}
+
+.aboutLinks a {
+  width: 100%;
+}
+
+.aboutLinks a:nth-of-type(1) {
+  align-self: flex-start;
+}
+
+.aboutLinks a:nth-of-type(2) {
+  align-self: flex-end;
+  margin-top: 25px;
+}
+
+@media only screen and (max-width: 850px) {
+
+  .Hero {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    padding-top: 20vw;
+    flex-wrap: wrap;
+    height: auto;
+  }
+
+  .profile_image {
+    margin-bottom: 25px;
+    height: 50vw;
+    width: 100%;
+  }
+
+  .getInTouch p { 
+    line-height: 2.1rem;
+    margin-bottom: 25px;
+    font-size: 1.4rem;
+    min-width: unset; 
+    width: 90%;
+  }
+
+  .skillContainer { min-width: unset; width: 80%;}
+  .bio, .bio p:last-of-type { width: 100%; }
+  .bio h1 { font-size: 4rem; }
+  .aboutLinks { width: 100%; }
+  .getInTouch { 
+    flex-direction: column; 
+    min-width: unset;
+  }
+
+}
+
+@media only screen and (max-width : 550px) {
+
+  .skillContainer { width: 86%;}
+  .bio h1 { font-size: 3rem; }
+
+}

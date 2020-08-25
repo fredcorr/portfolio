@@ -19,6 +19,11 @@ export default {
       type: 'string'
     },
     {
+      title: 'Seo',
+      name: 'seo_details',
+      type: 'seo_details'
+    },
+    {
       title: 'Profile',
       name: 'profile_image',
       type: 'img'
@@ -58,9 +63,22 @@ export default {
       ]
     },
     {
+      title: 'Get in touch copy',
+      name: 'contact_copy',
+      description: 'Closing for the about page',
+      type: 'array',
+      of: [ { type: 'block'} ]
+    },
+    {
       title: 'CV Download',
       name: 'CV',
       type: 'file'
-    }
+    },
+    {
+      title: 'Email',
+      name: 'email',
+      description: 'Insert email for work contact',
+      type: 'string'
+    },
   ]
 }

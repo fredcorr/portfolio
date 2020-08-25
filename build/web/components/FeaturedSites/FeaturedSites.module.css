@@ -24,11 +24,33 @@
 }
 
 .FeaturedSites p:first-of-type {
-    font-size: 1.3rem;
+    margin: 25px 0 15px 0;
+    font-size: 1.1rem;
     font-weight: 500;
-    margin: 25px 0;
 }
 
 .FeaturedSites p:last-of-type {
-    font-size: 1.125rem;
+    font-size: 1rem;
+}
+
+
+@media only screen and (max-width : 850px) {
+
+    .FeaturedSites p:first-of-type { margin-top: 0; }
+    .FeaturedSites div:last-of-type { width: 65%; }
+    .FeaturedSites { 
+        justify-content: space-between;
+        margin-bottom: 20px;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+    }
+
+}
+
+@media only screen and (max-width : 550px) {
+    .FeaturedSites p:first-of-type { margin-top: 25px; }
+    .FeaturedSites div:last-of-type { width: 100%; }
+    .FeaturedSites { flex-direction: column; }
+    .siteImage { width: 100%; height: 80vw; }
 }

@@ -10,6 +10,7 @@
 
 .textColumn div {
   color: #C5C6C7;
+  flex: 0 1 40em;
   width: 45%;
 }
 
@@ -18,7 +19,7 @@
   text-transform: uppercase;
   letter-spacing: 0.5rem;
   margin: 0 50% 2vw 0;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 300;
   color: #C5C6C7;
   width: 50%;
@@ -32,17 +33,23 @@
   margin: 0;
 }
 
-/* /// TABLET SIZES /// */
 
-@media only screen and (max-width : 1024px) and ( orientation: portrait ) {
+@media only screen and (max-width : 850px) {
+
+  .textColumn h4 {
+    min-width: 360px;
+  }
+
+  .textColumn div {
+    flex: 0 0 100%;
+    width: 100%;
+  }
+
 }
 
-@media only screen and (max-width : 500px) and ( orientation: portrait ) {
-}
 
-
-@media only screen and (max-width : 400px) and ( orientation: portrait ) {
-}
-
-@media only screen and (max-width : 820px) and ( orientation: landscape ) {
+@media only screen and (max-width : 650px) {
+  .textColumn h4 {
+    min-width: 100%;
+  }
 }
