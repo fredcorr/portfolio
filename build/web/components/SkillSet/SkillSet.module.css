@@ -1,0 +1,67 @@
+.skillSet {
+  color: var( --lightGrey );
+  flex-direction: row;
+  position: relative;
+  margin-bottom: 10%;
+  flex-wrap: nowrap;
+  min-height: 10vw;
+  display: flex;
+  width: 85%;
+}
+
+.skillSet:nth-child(even){
+  margin-left: 15%;
+}
+
+.skillSet h3 {
+  font-family: "Heebo", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+  align-self: stretch;
+  position: relative;
+  font-size: 1.5rem;
+  text-align: right;
+  font-weight: 300;
+  min-width: 150px;
+  width: 20%;
+}
+
+.skillSet span {
+  background-color: var( --torquay );
+  align-self: stretch;
+  position: relative;
+  margin: 0 5%;
+  width: 1px;
+}
+
+.skillSet p {
+  font-family: "Heebo", sans-serif;
+  align-self: flex-end;
+  line-height: 1.5rem;
+  font-weight: 300;
+  font-size: 1rem;
+  width: 70%;
+}
+
+
+
+/* /// TABLET SIZES /// */
+
+@media only screen and (max-width : 850px) {
+
+  .skillSet { width: 100%; height: auto;}
+
+  .skillSet:nth-child(even){ margin-left: 0%; }
+
+}
+
+
+@media only screen and (max-width : 550px) {
+
+  .skillSet h3, .skillSet p { width: 100%; }
+  .skillSet { flex-direction: column; }
+  .skillSet h3 { text-align: left; }
+  .skillSet span { height: 1px; width: 300px; margin: 15px 0; }
+
+}
+

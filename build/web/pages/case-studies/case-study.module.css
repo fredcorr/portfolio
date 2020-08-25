@@ -1,0 +1,122 @@
+.CaseStudy {
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  display: flex;
+}
+
+.Hero {
+  background: linear-gradient(to bottom, var( --darkBlue ) 65%, transparent 0);
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  display: flex;
+  padding: 0 7%;
+  width: 100%;
+}
+
+
+.Hero > div:first-of-type {
+  margin: 5% 23% 0 23%;
+  height: auto;
+  width: 46vw;
+}
+
+.Hero > div:first-of-type > div{ background-image: none!important; }
+
+.projectTitle {
+  justify-content: center;
+  flex-direction: column;
+  justify-self: flex-end;
+  align-items: flex-end;
+  margin-top: 2%;
+  display: flex;
+  width: 50%;
+}
+
+.projectTitle h1 {
+  font-family: 'Altero', sans-serif;
+  line-height: 3rem;
+  text-align: right;
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: #66FCF1;
+  min-width: 600px;
+  width: 100%;
+}
+
+.projectTitle p {
+  color: var( --acqua );
+  font-size: 1.25rem;
+  text-align: right;
+}
+
+.projectTitle p::after {
+  background-color: var( --acqua );
+  margin: 2% 0 2% auto;
+  display: block;
+  width: 200px;
+  content: '';
+  height: 2px;
+}
+
+.mainContent {
+  flex-direction: column;
+  display: flex;
+  width: 86%;
+}
+
+.fullWidthImg {
+  position: relative;
+  margin: 5% 0 0 0;
+  height: auto;
+  width: 100%;
+}
+
+@media only screen and (max-width: 850px) {
+
+  .Hero {
+    flex-direction: column;
+  }
+
+  .Hero a {
+    align-self: flex-start;
+  }
+
+  .Hero > div:first-of-type {
+    margin: 10% 11.5% 0 11.5%;
+    width: 66vw;
+  }
+
+  .projectTitle {
+    margin-top: 30px;
+    width: 100%;
+  }
+
+  .projectTitle h1 {
+    min-width: 100%;
+  }
+
+}
+
+@media only screen and (max-width: 600px) {
+
+  .Hero {
+    background: linear-gradient(to bottom, var( --darkBlue ) 55%, transparent 0);
+  }
+
+  .projectTitle h1 {
+    white-space: normal;
+    font-size: 3rem;
+  }
+
+}
+
+@media only screen and (max-width: 440px) {
+
+  .Hero {
+    background: linear-gradient(to bottom, var( --darkBlue ) 45%, transparent 0);
+  }
+
+}

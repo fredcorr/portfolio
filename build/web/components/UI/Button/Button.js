@@ -1,9 +1,22 @@
 import styles from './Button.module.css';
+import { motion } from 'framer-motion';
 import React from 'react';
 
 
 const button = (props) => (
-  <a href={ props.link } className={ styles.button} target='_blank' rel="noopener noreferrer" download style={{ margin: props.margin }}>{ props.children }</a>
+  <motion.a
+    style={{ margin: props.margin }}
+    variants={ props.variants }
+    className={ styles.button}
+    rel="noopener noreferrer" 
+    animate={ props.animate }
+    initial={ props.initial }
+    exit={ props.exit }
+    href={ props.link }
+    target='_blank'
+    download >
+       { props.children }
+  </motion.a>
 );
 
 export default button;

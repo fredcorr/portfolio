@@ -7,7 +7,7 @@ const toolBar = (props) => (
   <header>
     <Link href='/' >
       <a className={styles.logoContainer}>
-        <Logo logo={ '' } passedStyle={ styles.desktopLogo } />
+        <Logo logo={ '/assets/images/logo.svg' } passedStyle={ styles.desktopLogo } />
       </a>
     </Link>
     <Link href='/about'>
