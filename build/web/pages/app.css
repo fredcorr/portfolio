@@ -1,5 +1,25 @@
+
+html {
+  /* font-size: calc( 9px + ( 18 - 9 ) * ((100vw - 320px) / ( 2560 - 320 ))); */
+  font-size: 16px;
+}
+
 button:focus{
   outline: none;
+}
+
+:root {
+  cursor: url( '/assets/images/cusor.svg' ), auto;
+  --lightGrey: #C5C6C7;
+  --darkBlue: #1F2833;
+  --torquay: #66FCF1;
+  --acqua: #45A29E;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 body {
@@ -9,98 +29,112 @@ body {
   margin: 0;
 }
 
-a:link, a:visited{
+a:link, a:visited {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-h1 {
+p {
   font-family: 'Heebo', sans-serif;
-  line-height: 5.1875rem;
-  font-size: 6.25rem;
-  font-weight: 900;
-}
-
-h2 {
-  font-family: 'Heebo', sans-serif;
-  line-height: 4.6875rem;
-  font-weight: 900;
-  font-size: 5rem;
-}
-
-h3 {
-  font-family: 'Heebo', sans-serif;
-  line-height: 4.6875rem;
-  font-size: 3.125rem;
-  font-weight: 900;
-}
-
-h4 {
-  font-family: 'Roboto', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.5625rem;
-  font-size: 1.75rem;
-  line-height: 2rem;
-  font-weight: 300;
-}
-
-h5 {
-  font-family: 'Roboto', sans-serif;
-  letter-spacing: 0.401875rem;
-  text-transform: uppercase;
-  line-height: 1.625rem;
-  font-size: 1.25rem;
-  font-weight: 300;
-}
-
-p{
-  font-family: 'Roboto', sans-serif;
   letter-spacing: 0.019375rem;
-  line-height: 1.75rem;
-  font-size: 1.125rem;
+  line-height: 1.7rem;
   font-weight: 300;
+  font-size: 1rem;
 }
 
-main{
-  justify-content: center;
-  flex-direction: column;
-  background-size: cover;
-  position: absolute;
-  display: flex;
+main {
+  position: relative;
+  display: block;
   width: 100%;
-  top: 0;
 }
 
 header {
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: row;
-  position: relative;
+  position: absolute;
   margin: 0 auto;
   display: flex;
   height: 5vw;
   width: 86%;
   z-index: 3;
-  top: 4vw;
+  top: 25px;
+  left: 7%
 }
 
+footer {
+  justify-content: space-between;
+  font-family: 'Heebo', sans-serif;
+  color: var( --lightGrey );
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin: 5% auto;
+  display: flex;
+  width: 86%;
+}
 
-/* /// MOBILE SIZES /// */
+footer div {
+  flex-direction: row;
+  min-width: 290px;
+  flex-wrap: wrap;
+  display: flex;
+  width: 20%;
+}
 
-@media only screen and (max-width : 1024px) and ( orientation: portrait ) {}
+footer a {
+  letter-spacing: 0.104375rem;
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: inherit;
+}
 
-@media only screen and (max-width : 1024px) and ( orientation: landscape ) {}
+footer a:first-of-type {
+  text-decoration: underline;
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+  margin-bottom: 15px;
+  width: 100%;
+}
 
-@media only screen and (max-width : 820px) and ( orientation: landscape ) {}
+.footer address {
+  font-family: 'Heebo', sans-serif;
+  margin-bottom: 15px;
+  font-style: normal;
+  font-weight: 300;
+}
 
-@media only screen and (max-width : 500px) and ( orientation: portrait ) {
-  h1 {
-    line-height: 4.1875rem;
-    font-size: 3.25rem;
-  }
+footer p:last-of-type {
+  letter-spacing: 0.2rem;
+  margin-top: 15px;
+}
+
+@font-face {
+  font-family: 'Altero';
+  src: url('/fonts/Altero-Regular.woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Heebo';
+  src: url('/fonts/Heebo-Light.woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Heebo';
+  src: url('/fonts/Heebo-Medium.woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@media only screen and (max-width: 850px) {
+  main { overflow: hidden; }
+  footer { flex-wrap: wrap; }
+  footer div { width: 100%; }
+  footer div:last-of-type { margin-top: 15px; }
 }

@@ -19,18 +19,19 @@ export default {
       type: 'string'
     },
     {
+      title: 'Seo',
+      name: 'seo_details',
+      type: 'seo_details'
+    },
+    {
       title: 'Work Listing',
       name: 'work_listing',
       description: 'Select projects to display on main page',
-
       type: "array",
-
-      of: [
-        {
+      of: [{
         type: 'reference',
         to: [ {type: 'projects'} ]
-      }
-     ]
+      }]
    },
    {
      title: 'Email',
@@ -41,8 +42,20 @@ export default {
    {
      title: 'Vimeo',
      name: 'vimeo_profile',
-     description: 'Insert Vimeo link to porfile',
+     description: 'Insert Vimeo porfile',
      type: 'string'
-   }
+   },
+   {
+    title: 'Instagram',
+    name: 'insta_profile',
+    description: 'Insert Insta porfile',
+    type: 'string'
+    },
+    {
+      title: 'Linkedin',
+      name: 'link_profile',
+      description: 'Insert Linkedin porfile',
+      type: 'string'
+    }
   ]
 }

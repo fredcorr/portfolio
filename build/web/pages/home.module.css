@@ -1,18 +1,55 @@
-.holdingMessage {
+.Home {
+  align-items: center;
+  margin: 0 auto;
+  width: 85%;
+}
+
+.Home, .intro, .workListing {
   justify-content: center;
   flex-direction: column;
-  align-items: center;
-  padding: 0 10%;
   display: flex;
-  height: 100vh;
+}
+
+.intro {
+  margin-top: 10%;
+  width: 42em;
+} 
+
+.intro h1 {
+  font-family: 'Altero', sans-serif;
+  color: var( --torquay );
+  font-weight: lighter;
+  line-height: 6.2rem;
+  font-size: 6rem;
+  margin-top: 20%;
+}
+
+.intro p {
+  line-height: 2.0625rem;
+  color:var( --torquay );
+  font-size: 1.25rem;
+  margin-top: 5%;
   width: 100%;
 }
 
-.holdingMessage h1, .holdingMessage p{
-  text-align: center;
-  color: #66FCF1;
+.workListing {
+  margin-top: 10%;
+  width: 100%;
 }
 
-.holdingMessage p {
-  margin: 30px 0 50px 0;
+
+@media only screen and (max-width: 850px) {
+  .Home { width: 90%; }
+  .intro { width: 86%; margin-top: 15%; }
+
+  .intro h1 {
+    line-height: 11vw;
+    font-size: 11vw;
+  }
+
+  .intro p {
+    line-height: 1.9rem;
+    font-size: 1.1rem;
+  }
+
 }
