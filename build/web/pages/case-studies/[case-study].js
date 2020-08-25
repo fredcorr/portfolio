@@ -16,12 +16,18 @@ import React from 'react';
 
 const caseStudy = props => {
 
+  console.log( props );
+
   return (
     <motion.div className={ styles.CaseStudy } exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} >
       <Seo metas={ props.seo_details } title={ props.title } path={ useRouter().asPath }/>
       <section className={ styles.Hero }>
         <ScrollFade>
-          { anim => <motion.img src={ urlFor(props.content.hero_img.asset ) } initial={"hidden"} animate={"show" } exit={"hidden"} variants={slideY(100)} style={ anim.style } alt={ props.title } ref={ anim.ref } />  }
+          { anim => (
+            <motion.div initial={"hidden"} animate={"show" } exit={"hidden"} variants={slideY(100)} ref={ anim.ref }  style={ anim.style }>
+              <ProgressiveImages image={ props.content.hero_img }/>
+            </motion.div>
+          ) }
         </ScrollFade>
         <Button link={ props.link_project } initial={"hidden"} animate={"show" } exit={"hidden"} variants={slideX(-100)}>Visit site</Button>
         <motion.div initial={"hidden"} animate={"show" } exit={"hidden"} variants={slideX(100)} className={ styles.projectTitle }>
@@ -72,7 +78,7 @@ caseStudy.getInitialProps = async function (context) {
       "og_image": og_image.asset->url
     },
     content{
-      hero_img,
+      "hero_img": hero_img.asset->{ url, metadata },
       modules[]{
         ...,
         slider_images[]{

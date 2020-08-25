@@ -17,11 +17,13 @@
 }
 
 
-.Hero img {
+.Hero > div:first-of-type {
   margin: 5% 23% 0 23%;
   height: auto;
   width: 46vw;
 }
+
+.Hero > div:first-of-type > div{ background-image: none!important; }
 
 .projectTitle {
   justify-content: center;
@@ -82,7 +84,7 @@
     align-self: flex-start;
   }
 
-  .Hero img {
+  .Hero > div:first-of-type {
     margin: 10% 11.5% 0 11.5%;
     width: 66vw;
   }

@@ -6,7 +6,7 @@ const ProgressiveImage = React.forwardRef((props, ref) => {
     <div className={ props.classPassed } ref={ ref } style={{
       backgroundImage: `url(${ props.image.metadata.lqip })`,
       backgroundPosition: 'center',
-      backgroundSize: 'cover',
+      backgroundSize: 'contain',
     }}>
       <img
       src={ props.image.url}
