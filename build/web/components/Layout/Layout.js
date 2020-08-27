@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Toolbar from '../Toolbar/Toolbar';
 import styles from './Layout.module.css';
 
-const layout = (props) => {
+const layout = ({ children }) => {
 
   const [isComplete, setIsComplete] = useState(false);
   const { scrollYProgress } = useViewportScroll();
@@ -32,7 +32,7 @@ const layout = (props) => {
           fill="none" />
       </svg>
       <main className={styles.main}>
-        {props.children}
+        {children}
       </main>
       <footer>
         <div>
