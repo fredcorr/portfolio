@@ -17,11 +17,6 @@ class MyApp extends App {
     const { Component, pageProps, router } = this.props;
     return (
       <Layout>
-        <Head>
-          <meta name="robots" content='index, noarchive'/>
-          <meta property="og:type" content='website'/>
-          <meta name="author" content="Federico Corradi"></meta>
-        </Head>
         <Cursor />
         <AnimatePresence exitBeforeEnter onExitComplete={ () => window.scrollTo( 0, 0) }>
           <Component { ...pageProps } key={ router.route }></Component>

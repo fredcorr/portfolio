@@ -6,20 +6,9 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-172182289-1"></script>
-            <script>
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-            
-              gtag('config', 'UA-172182289-1');
-            </script>
-            `,
-          }}
-        />
+          <meta property="og:type" content='website'/>
+          <meta name="robots" content='index, noarchive'/>
+          <meta name="author" content="Federico Corradi"></meta>
           <link rel="preload" href="/fonts/Altero-Regular.otf" as="font" crossOrigin=""/>
         </Head>
         <body>
