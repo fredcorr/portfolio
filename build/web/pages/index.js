@@ -1,11 +1,11 @@
 import HomePannel from '../components/HomePannel/HomePannel';
-import React, { useEffect, useContext } from 'react';
-import { client, urlFor } from '../sanity/client';
+import { urlFor } from '../sanity/client';
 import Alert from '../components/UI/Alert';
 import { getHome } from '../sanity/sanity';
 import Seo from '../components/UI/Seo';
 import { motion } from 'framer-motion';
 import styles from './home.module.css';
+import React from 'react';
 
 const Home = props => {
 

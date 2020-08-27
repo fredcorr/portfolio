@@ -17,18 +17,21 @@ import React from 'react';
 
 const caseStudy = props => {
 
+  console.log( props.content );
+
   return (
     <motion.div className={ styles.CaseStudy } exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} >
-      <Seo metas={ props.seo_details } title={ props.title } path={ '/' + props.slug.current }/>
+      <Seo metas={ props.seo_details } title={ props.title } path={ '/' + props.slug }/>
       <Alert preview={ props.preview }/>
       <section className={ styles.Hero }>
-        <ScrollFade>
+        
+        { props.content ? <ScrollFade>
           { anim => (
             <motion.div initial={"hidden"} animate={"show" } exit={"hidden"} variants={slideY(100)} ref={ anim.ref }  style={ anim.style }>
               <ProgressiveImages image={ props.content.hero_img }/>
             </motion.div>
           ) }
-        </ScrollFade>
+        </ScrollFade> : null }
         <Button link={ props.link_project } initial={"hidden"} animate={"show" } exit={"hidden"} variants={slideX(-100)}>Visit site</Button>
         <motion.div initial={"hidden"} animate={"show" } exit={"hidden"} variants={slideX(100)} className={ styles.projectTitle }>
           <p>{ props.date }</p>
@@ -37,7 +40,7 @@ const caseStudy = props => {
       </section>
       <section className={ styles.mainContent }>
         {
-          props.content.modules ? props.content.modules.map( ( module, i ) => {
+          props.content ? props.content.modules.map( ( module, i ) => {
             switch (module._type) {
               case 'text_module':
                  return <TextColumn textContent={ module } key={ module._key } />
