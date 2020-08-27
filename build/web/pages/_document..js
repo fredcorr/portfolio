@@ -6,6 +6,9 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <meta property="og:type" content='website'/>
+          <meta name="robots" content='index, noarchive'/>
+          <meta name="author" content="Federico Corradi"></meta>
           <link rel="preload" href="/fonts/Altero-Regular.otf" as="font" crossOrigin=""/>
         </Head>
         <body>
