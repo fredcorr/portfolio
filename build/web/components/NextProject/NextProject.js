@@ -9,13 +9,13 @@ const nextProject = ({ prev, next, img }) => (
     <div className={ styles.featureImage }>
       <img src={ img } />
     </div>
-    <Link href='/case-studies/[case-study]' as={'/case-studies/:' + prev.slug }>
+    <Link href='/case-studies/[case-study]' as={'/case-studies/' + prev.slug }>
       <a className={ styles.projectTitle }>
         <p>{ prev.date }</p>
         <h3>{ prev.title }</h3>
       </a>
     </Link>
-    <Link href='/case-studies/[case-study]' as={'/case-studies/:' + next.slug }>
+    <Link href='/case-studies/[case-study]' as={'/case-studies/' + next.slug }>
       <a className={ styles.projectTitle }>
         <p>{ next.date }</p>
         <h3>{ next.title }</h3>
