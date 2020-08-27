@@ -17,21 +17,18 @@ import React from 'react';
 
 const caseStudy = props => {
 
-  console.log( props.content );
-
   return (
     <motion.div className={ styles.CaseStudy } exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} >
       <Seo metas={ props.seo_details } title={ props.title } path={ '/' + props.slug }/>
       <Alert preview={ props.preview }/>
       <section className={ styles.Hero }>
-        
-        { props.content ? <ScrollFade>
+        <ScrollFade>
           { anim => (
             <motion.div initial={"hidden"} animate={"show" } exit={"hidden"} variants={slideY(100)} ref={ anim.ref }  style={ anim.style }>
               <ProgressiveImages image={ props.content.hero_img }/>
             </motion.div>
           ) }
-        </ScrollFade> : null }
+        </ScrollFade>
         <Button link={ props.link_project } initial={"hidden"} animate={"show" } exit={"hidden"} variants={slideX(-100)}>Visit site</Button>
         <motion.div initial={"hidden"} animate={"show" } exit={"hidden"} variants={slideX(100)} className={ styles.projectTitle }>
           <p>{ props.date }</p>
@@ -74,10 +71,23 @@ const caseStudy = props => {
   );
 }
 
-export async function getServerSideProps( { query, preview = false } ) {
-  const caseData = await getCaseStudy( query['case-study'], preview )
+export async function getStaticProps( { params, preview = false } ) {
+  const caseData = await getCaseStudy( params['case-study'], preview )
   return {
     props: { ...caseData, preview }
+  }
+}
+
+export async function getStaticPaths() {
+  const allPosts = await getAllCases( false )
+  return {
+    paths:
+      allPosts?.map((post) => ({
+        params: {
+          'case-study': post.slug,
+        },
+      })) || [],
+    fallback: false,
   }
 }
 
