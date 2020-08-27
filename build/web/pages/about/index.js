@@ -3,20 +3,22 @@ import FeaturedSites from '../../components/FeaturedSites/FeaturedSites';
 import TextBlock from '../../components/textBlock/textBlock';
 import SkillSet from '../../components/SkillSet/SkillSet';
 import Button from '../../components/UI/Button/Button';
+import { getAbout } from '../../sanity/sanity';
 import ScrollFade from '../../util/scrollFade';
+import Alert from '../../components/UI/Alert';
 import Seo from '../../components/UI/Seo';
 import styles from './about.module.css';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
-import React, { userRef } from 'react';
-import { client } from '../../client';
-import kahaki from 'kahaki';
+import kahaki from 'kahaki'; 
+import React from 'react';
 
 const About = props => {
 
   return (
     <motion.div className={ styles.about } exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} >
-      <Seo metas={ props.seo_details } title={ 'About me, my-self and I' } path={ useRouter().asPath }/>
+      <Seo metas={ props.seo_details } title={ 'About me, my-self and I' } path={ '/about' }/>
+      <Alert preview={ props.preview }/>
       <ScrollFade>
       { anim =>
         <motion.section className={ styles.Hero } style={ anim.style } ref={ anim.ref }>
@@ -49,31 +51,14 @@ const About = props => {
   );
 }
 
-export async function getServerSideProps() {
-  const query = `*[_type == "about"]{
-    profile_image{
-      altTag,
-      asset->{ url, metadata }
-    },
-    seo_details{
-      ...,
-      "og_image": og_image.asset->url
-    },
-    page_title,
-    brief_intro,
-    job_title,
-    feature_sites,
-    skill_sets,
-    contact_copy,
-    "CV": CV.asset->url,
-    email
-  }`;
+export async function getStaticProps( { preview = false } ) {
 
-  const data = await client.fetch(query).then( res => res[0] )
+  const aboutData = await getAbout(preview)
   let parsedSites = null;
-  const feature_sites = data.feature_sites.map( async site => await kahaki.getPreview( site ))
+  const feature_sites = aboutData.feature_sites.map( async site => await kahaki.getPreview( site ))
   await Promise.all( feature_sites ).then(( data ) => {  parsedSites = data } )
-  return { props: {...data, parsedSites } }
+  return { props: {...aboutData, parsedSites, preview } }
+
 }
 
 export default About;

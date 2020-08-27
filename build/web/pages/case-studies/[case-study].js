@@ -1,26 +1,26 @@
 import ProgressiveImages from '../../components/ProgressiveImage/ProgressiveImage'
 import ImageTextBox from '../../components/ImageTextBox/ImageTextBox';
 import NextProject from '../../components/NextProject/NextProject';
+import { getCaseStudy, getAllCases } from '../../sanity/sanity';
 import TextColumn from '../../components/textColumn/textColumn';
 import TextBlock from '../../components/textBlock/textBlock';
 import Button from '../../components/UI/Button/Button';
 import { slideX, slideY } from '../../util/animation';
 import Slider from '../../components/slider/slider';
 import ScrollFade from '../../util/scrollFade';
-import { client, urlFor } from '../../client';
+import Alert from '../../components/UI/Alert';
 import styles from './case-study.module.css';
+import { urlFor } from '../../sanity/client';
 import Seo from '../../components/UI/Seo';
-import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import React from 'react';
 
 const caseStudy = props => {
 
-  console.log( props );
-
   return (
     <motion.div className={ styles.CaseStudy } exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} >
-      <Seo metas={ props.seo_details } title={ props.title } path={ useRouter().asPath }/>
+      <Seo metas={ props.seo_details } title={ props.title } path={ '/' + props.slug.current }/>
+      <Alert preview={ props.preview }/>
       <section className={ styles.Hero }>
         <ScrollFade>
           { anim => (
@@ -71,47 +71,24 @@ const caseStudy = props => {
   );
 }
 
-caseStudy.getInitialProps = async function (context) {
-  const currentPrj = await client.fetch( `*[_type == "projects" && slug.current == "${ context.query['case-study'] }"][0]{
-    seo_details{
-      ...,
-      "og_image": og_image.asset->url
-    },
-    content{
-      "hero_img": hero_img.asset->{ url, metadata },
-      modules[]{
-        ...,
-        slider_images[]{
-          "asset": asset->{ url, metadata }
-        },
-        image_cover{
-          "asset": asset->{ url, metadata }
-        },
-        "asset": asset->{ url, metadata }
-      }
-    },
-    cover,
-    title,
-    date,
-  }` )
-
-  const allPrj = await client.fetch( `*[_type == "projects"] | order(_createdAt asc ) {
-    'slug': slug.current,
-    cover,
-    title,
-    date,
-  }` )
-
-
-  const index = allPrj.map(prj => { return prj.slug }).indexOf(context.query['case-study'])
-  console.log( currentPrj );
-
+export async function getStaticProps( { params, preview = false } ) {
+  const caseData = await getCaseStudy( params['case-study'], preview )
   return {
-    ...currentPrj,
-    next: allPrj[ index === allPrj.length - 1 ? 0 : index + 1 ],
-    previous: allPrj[ index === 0 ? allPrj.length - 1 : index - 1 ],
+    props: { ...caseData, preview }
   }
-  
+}
+
+export async function getStaticPaths() {
+  const allPosts = await getAllCases( false )
+  return {
+    paths:
+      allPosts?.map((post) => ({
+        params: {
+          'case-study': post.slug,
+        },
+      })) || [],
+    fallback: true,
+  }
 }
 
 export default caseStudy;
