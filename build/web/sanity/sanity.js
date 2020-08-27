@@ -30,7 +30,7 @@ export async function getCaseStudy(slug, preview) {
             "asset": asset->{ url, metadata }
           }
         },
-        slug,
+        'slug': slug.current,,
         cover,
         title,
         date,

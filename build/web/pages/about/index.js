@@ -8,7 +8,6 @@ import ScrollFade from '../../util/scrollFade';
 import Alert from '../../components/UI/Alert';
 import Seo from '../../components/UI/Seo';
 import styles from './about.module.css';
-import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import kahaki from 'kahaki'; 
 import React from 'react';

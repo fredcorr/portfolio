@@ -19,7 +19,7 @@ const caseStudy = props => {
 
   return (
     <motion.div className={ styles.CaseStudy } exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} >
-      <Seo metas={ props.seo_details } title={ props.title } path={ '/' + props.slug.current }/>
+      <Seo metas={ props.seo_details } title={ props.title } path={ '/' + props.slug }/>
       <Alert preview={ props.preview }/>
       <section className={ styles.Hero }>
         <ScrollFade>
