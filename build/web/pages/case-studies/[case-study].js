@@ -74,23 +74,10 @@ const caseStudy = props => {
   );
 }
 
-export async function getStaticProps( { params, preview = false } ) {
-  const caseData = await getCaseStudy( params['case-study'], preview )
+export async function getServerSideProps( { query, preview = false } ) {
+  const caseData = await getCaseStudy( query['case-study'], preview )
   return {
     props: { ...caseData, preview }
-  }
-}
-
-export async function getStaticPaths() {
-  const allPosts = await getAllCases( false )
-  return {
-    paths:
-      allPosts?.map((post) => ({
-        params: {
-          'case-study': post.slug,
-        },
-      })) || [],
-    fallback: true,
   }
 }
 
