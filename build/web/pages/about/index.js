@@ -16,7 +16,7 @@ const About = props => {
 
   return (
     <motion.div className={ styles.about } exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} >
-      {/* <Seo metas={ props.seo_details } title={ 'About me, my-self and I' } path={ '/about' }/> */}
+      <Seo metas={ props.seo_details } title={ 'About me, my-self and I' } path={ '/about' }/>
       <Alert preview={ props.preview }/>
       <ScrollFade>
       { anim =>
