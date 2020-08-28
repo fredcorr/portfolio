@@ -8,15 +8,10 @@ import './app.css';
 
 class MyApp extends App {
 
-  componentDidUpdate() {
-    this.context.updateElems();
-  }
-
   render() {
     const { Component, pageProps, router } = this.props;
     return (
       <Layout>
-        {/* <Cursor /> */}
         <AnimatePresence exitBeforeEnter onExitComplete={ () => window.scrollTo( 0, 0) }>
           <Component { ...pageProps } key={ router.asPath }></Component>
         </AnimatePresence>
