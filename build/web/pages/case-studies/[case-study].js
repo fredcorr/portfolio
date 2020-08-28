@@ -22,13 +22,9 @@ const caseStudy = props => {
       <Seo metas={ props.seo_details } title={ props.title } path={ '/' + props.slug }/>
       <Alert preview={ props.preview }/>
       <section className={ styles.Hero }>
-        <ScrollFade>
-          { anim => (
-            <motion.div initial={"hidden"} animate={"show" } exit={"hidden"} variants={slideY(100)} ref={ anim.ref }  style={ anim.style }>
-              <ProgressiveImages image={ props.content.hero_img }/>
-            </motion.div>
-          ) }
-        </ScrollFade>
+        <motion.div initial={"hidden"} animate={"show" } exit={"hidden"} variants={slideY(100)}>
+          <ProgressiveImages image={ props.content.hero_img }/>
+        </motion.div>
         <Button link={ props.link_project } initial={"hidden"} animate={"show" } exit={"hidden"} variants={slideX(-100)}>Visit site</Button>
         <motion.div initial={"hidden"} animate={"show" } exit={"hidden"} variants={slideX(100)} className={ styles.projectTitle }>
           <p>{ props.date }</p>
@@ -71,10 +67,10 @@ const caseStudy = props => {
   );
 }
 
-caseStudy.getInitialProps = async ( { query, preview = false } ) => {
+export async function getServerSideProps( { query, preview = false } ) {
   const caseData = await getCaseStudy( query['case-study'], preview )
   return {
-    ...caseData, preview
+    props: { ...caseData, preview }
   }
 }
 
