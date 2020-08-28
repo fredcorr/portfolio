@@ -9,14 +9,16 @@ import './app.css';
 class MyApp extends App {
 
   componentDidUpdate() {
-    console.log( 'it has updated' );
+    this.context.updateElems();
   }
 
   render() {
     const { Component, pageProps, router } = this.props;
     return (
       <Layout>
-          <Component { ...pageProps } ></Component>
+        <AnimatePresence exitBeforeEnter onExitComplete={ () => window.scrollTo( 0, 0) }>
+          <Component { ...pageProps } key={ router.route }></Component>
+        </AnimatePresence>
       </Layout>
     )
   }

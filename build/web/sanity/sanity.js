@@ -36,15 +36,8 @@ export async function getCaseStudy(slug, preview) {
         date,
       }` )
     
-      const allPrj = await getAllCases( preview )
-    
-    
-      const index = allPrj.map(prj => { return prj.slug }).indexOf(slug)
-    
       return {
-        ...currentPrj,
-        next: {...allPrj[ index === allPrj.length - 1 ? 0 : index + 1 ]},
-        previous: {...allPrj[ index === 0 ? allPrj.length - 1 : index - 1 ]},
+        ...currentPrj
       }
 }
 

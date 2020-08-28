@@ -66,7 +66,6 @@ const caseStudy = props => {
           }) : null
         }
       </section>
-      <NextProject img={ '../assets/images/BPL_Leadership_1.jpg' } next={ props.next } prev={ props.previous } />
     </motion.div>
   );
 }
