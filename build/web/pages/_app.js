@@ -16,9 +16,7 @@ class MyApp extends App {
     const { Component, pageProps, router } = this.props;
     return (
       <Layout>
-        <AnimatePresence exitBeforeEnter onExitComplete={ () => window.scrollTo( 0, 0) }>
-          <Component { ...pageProps } key={ router.route }></Component>
-        </AnimatePresence>
+          <Component { ...pageProps } ></Component>
       </Layout>
     )
   }
