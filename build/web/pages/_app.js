@@ -8,6 +8,10 @@ import './app.css';
 
 class MyApp extends App {
 
+  componentDidUpdate() {
+    console.log( 'it has updated' );
+  }
+
   render() {
     const { Component, pageProps, router } = this.props;
     return (
