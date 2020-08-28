@@ -50,13 +50,13 @@ const About = props => {
   );
 }
 
-export async function getServerSideProps( { preview = false } ) {
+About.getInitialProps = async ( {preview = false } ) => {
 
   const aboutData = await getAbout(preview)
   let parsedSites = null;
   const feature_sites = aboutData.feature_sites.map( async site => await kahaki.getPreview( site ))
   await Promise.all( feature_sites ).then(( data ) => {  parsedSites = data } )
-  return { props: {...aboutData, parsedSites, preview } }
+  return { ...aboutData, parsedSites, preview }
 
 }
 

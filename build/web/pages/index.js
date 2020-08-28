@@ -6,6 +6,7 @@ import Seo from '../components/UI/Seo';
 import { motion } from 'framer-motion';
 import styles from './home.module.css';
 import React from 'react';
+import homePannel from '../components/HomePannel/HomePannel';
 
 const Home = props => {
 
@@ -35,10 +36,10 @@ const Home = props => {
   )
 }
 
-export async function getServerSideProps( {preview = false } ) {
+Home.getInitialProps = async ( {preview = false } ) => {
   const home = await getHome(preview);
   return {
-    props: { ...home, preview }
+     ...home, preview
   }
 }
 

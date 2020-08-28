@@ -8,22 +8,17 @@ import './app.css';
 
 class MyApp extends App {
 
-  componentDidUpdate() {
-    this.context.updateElems();
-  }
-
   render() {
     const { Component, pageProps, router } = this.props;
+    console.log( router.asPath );
     return (
       <Layout>
         <AnimatePresence exitBeforeEnter onExitComplete={ () => window.scrollTo( 0, 0) }>
-          <Component { ...pageProps } key={ router.route }></Component>
+          <Component { ...pageProps } key={ router.asPath }></Component>
         </AnimatePresence>
       </Layout>
     )
   }
 }
-
-MyApp.contextType = hoverElements;
 
 export default MyApp

@@ -66,14 +66,15 @@ const caseStudy = props => {
           }) : null
         }
       </section>
+      <NextProject img={ '../assets/images/BPL_Leadership_1.jpg' } next={ props.next } prev={ props.previous } />
     </motion.div>
   );
 }
 
-export async function getServerSideProps( { query, preview = false } ) {
+caseStudy.getInitialProps = async ( { query, preview = false } ) => {
   const caseData = await getCaseStudy( query['case-study'], preview )
   return {
-    props: { ...caseData, preview }
+    ...caseData, preview
   }
 }
 
