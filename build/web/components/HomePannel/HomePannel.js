@@ -1,5 +1,4 @@
 import { fade, scaleUp, slideX } from '../../util/animation';
-import { useInView } from 'react-intersection-observer';
 import styles from './HomePannel.module.css';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
