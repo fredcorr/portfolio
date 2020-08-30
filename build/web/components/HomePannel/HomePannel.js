@@ -7,11 +7,12 @@ import React from "react";
 
 const homePannel = (props) => {
 
-  const [ref, inView ] = useInView({ threshold: 0.7, triggerOnce: true })
+  // const [ref, inView ] = useInView({ threshold: 0.7, triggerOnce: true })
+  const inView = true;
 
   return (
     <Link href="/case-studies/[case-study]" as={"/case-studies/" + props.link } scroll={false}>
-      <a className={ styles.thumb } key={ props._key } ref={ ref }>
+      <a className={ styles.thumb } key={ props._key } >
         <div className={ styles.cover } >
           <motion.p
             animate={inView ? "show" : "hidden"}
