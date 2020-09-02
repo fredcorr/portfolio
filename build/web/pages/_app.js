@@ -1,4 +1,4 @@
-// import Cursor from '../components/UI/Cursor/Cursor';
+import Cursor from '../components/UI/Cursor/Cursor';
 import hoverElements from '../util/cursor-context';
 import Layout from '../components/Layout/Layout';
 import { AnimatePresence } from 'framer-motion';
