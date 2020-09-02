@@ -13,6 +13,7 @@ class MyApp extends App {
     console.log( router.asPath );
     return (
       <Layout>
+        <Cursor />
         <AnimatePresence exitBeforeEnter onExitComplete={ () => window.scrollTo( 0, 0) }>
           <Component { ...pageProps } key={ router.asPath }></Component>
         </AnimatePresence>

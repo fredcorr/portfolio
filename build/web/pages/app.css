@@ -1,6 +1,7 @@
 
 html {
   /* font-size: calc( 9px + ( 18 - 9 ) * ((100vw - 320px) / ( 2560 - 320 ))); */
+  background-color: #0B0C10;
   font-size: 16px;
 }
 
