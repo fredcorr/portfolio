@@ -10,8 +10,10 @@ class MyApp extends App {
 
   render() {
     const { Component, pageProps, router } = this.props;
+    console.log( router.asPath );
     return (
       <Layout>
+        <Cursor />
         <AnimatePresence exitBeforeEnter onExitComplete={ () => window.scrollTo( 0, 0) }>
           <Component { ...pageProps } key={ router.asPath }></Component>
         </AnimatePresence>
@@ -19,7 +21,5 @@ class MyApp extends App {
     )
   }
 }
-
-MyApp.contextType = hoverElements;
 
 export default MyApp
