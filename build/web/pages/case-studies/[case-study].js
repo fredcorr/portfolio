@@ -44,7 +44,7 @@ const caseStudy = props => {
                   </ImageTextBox>
                 )
                 break;
-              case 'image':
+              case 'img':
                 return <ProgressiveImages
                   classPassed={ styles.fullWidthImg }
                   image={ module.asset }

@@ -2,7 +2,6 @@
   justify-content: flex-start;
   flex-wrap: nowrap;
   color: #C5C6C7;
-  margin: 8vw 0;
   display: flex;
   width: 100%;
 }
@@ -67,7 +66,6 @@
 
 
 @media only screen and (max-width : 850px ) {
-  .imageTextBox { margin: 5vw 0; }
   .reverse, .normal { flex-direction: column; }
   .imageBox, .textBox { flex: 1 1 100%; width: 100%; }
   .textBox { margin: 35px 0 0 0; padding: 0; }
