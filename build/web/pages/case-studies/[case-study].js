@@ -24,11 +24,13 @@ const caseStudy = props => {
         <motion.div initial={"hidden"} animate={"show" } exit={"hidden"} variants={slideY(100)}>
           <ProgressiveImages image={ props.content.hero_img }/>
         </motion.div>
-        <Button link={ props.project_link } initial={"hidden"} animate={"show" } exit={"hidden"} variants={slideX(-100)}>Visit site</Button>
-        <motion.div initial={"hidden"} animate={"show" } exit={"hidden"} variants={slideX(100)} className={ styles.projectTitle }>
-          <p>{ props.date }</p>
-          <h1>{ props.title }</h1>
-        </motion.div>
+        <div >
+          <Button link={ props.project_link } initial={"hidden"} animate={"show" } exit={"hidden"} variants={slideX(-100)}>Visit site</Button>
+          <motion.div initial={"hidden"} animate={"show" } exit={"hidden"} variants={slideX(100)} className={ styles.projectTitle }>
+            <p>{ props.date }</p>
+            <h1>{ props.title }</h1>
+          </motion.div>
+        </div>
       </section>
       <section className={ styles.mainContent }>
         {
