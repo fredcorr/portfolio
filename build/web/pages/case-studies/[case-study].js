@@ -24,7 +24,7 @@ const caseStudy = props => {
         <motion.div initial={"hidden"} animate={"show" } exit={"hidden"} variants={slideY(100)}>
           <ProgressiveImages image={ props.content.hero_img }/>
         </motion.div>
-        <Button link={ props.link_project } initial={"hidden"} animate={"show" } exit={"hidden"} variants={slideX(-100)}>Visit site</Button>
+        <Button link={ props.project_link } initial={"hidden"} animate={"show" } exit={"hidden"} variants={slideX(-100)}>Visit site</Button>
         <motion.div initial={"hidden"} animate={"show" } exit={"hidden"} variants={slideX(100)} className={ styles.projectTitle }>
           <p>{ props.date }</p>
           <h1>{ props.title }</h1>
@@ -61,7 +61,7 @@ const caseStudy = props => {
           }) : null
         }
       </section>
-      <NextProject img={ '../assets/images/BPL_Leadership_1.jpg' } next={ props.next } prev={ props.previous } />
+      <NextProject next={ props.next } prev={ props.previous } />
     </motion.div>
   );
 }

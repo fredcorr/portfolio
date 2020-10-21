@@ -21,6 +21,11 @@ export default {
                              .slice(0, 200)
       }
     },
+    { 
+      title: 'Site Link',
+      name: 'project_link',
+      type: 'url'
+    },
     {
       title: 'Seo',
       name: 'seo_details',

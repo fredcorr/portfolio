@@ -31,6 +31,13 @@ export default {
       }
     },
     {
+      title: 'Intro',
+      name: 'intro_copy',
+      description: 'Opening for the whole site',
+      type: 'array',
+      of: [ { type: 'block'} ]
+    },
+    {
       title: 'Seo',
       name: 'seo_details',
       type: 'seo_details'

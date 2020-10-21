@@ -5,7 +5,7 @@ const getClient = (preview) => (preview ? previewClient : client)
 export async function getAllCases( preview ) {
   return await getClient(preview).fetch( `*[_type == "projects"] | order(_createdAt asc ) {
     'slug': slug.current,
-    cover,
+    "cover": cover.asset->url,
     title,
     date,
   }`)
@@ -30,6 +30,7 @@ export async function getCaseStudy(slug, preview) {
             "asset": asset->{ url, metadata }
           }
         },
+        project_link,
         slug,
         cover,
         title,
@@ -56,6 +57,7 @@ export async function getHome( preview ) {
       "og_image": og_image.asset->url
     },
     vimeo_profile,
+    intro_copy,
     email,
     work_listing[]->{
       details,

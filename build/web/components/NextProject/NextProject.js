@@ -4,10 +4,10 @@ import Link from 'next/link';
 import React from 'react';
 
 
-const nextProject = ({ prev, next, img }) => (
+const nextProject = ({ prev, next }) => (
   <section className={ styles.NextProject}>
     <div className={ styles.featureImage }>
-      <img src={ img } />
+      <img src={ next.cover } />
     </div>
     <Link href='/case-studies/[case-study]' as={'/case-studies/' + prev.slug }>
       <a className={ styles.projectTitle }>
