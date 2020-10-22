@@ -1,14 +1,22 @@
-import React from 'react';
+import styles from './ProgressiveImage.module.css'
+import React, { useState } from 'react';
 
 const ProgressiveImage = React.forwardRef((props, ref) => {
+
+  const [ loaded, setLoaded ] = useState( false );
   
   return (
-    <div className={ props.classPassed } ref={ ref } style={{
-      backgroundImage: `url(${ props.image.metadata.lqip })`,
-      backgroundPosition: 'center',
-      backgroundSize: 'contain',
-    }}>
+    <div className={ props.classPassed } ref={ ref }>
+     { loaded ? null :
       <img
+        src={ props.image.metadata.lqip }
+        className={ styles.lowres }
+        width={ '100%' }
+        alt={ props.alt ? props.alt : null }
+      />
+      }
+      <img
+      onLoad={ () => { setLoaded(true); console.log( loaded ); } }
       src={ props.image.url}
       width={ '100%' }
       alt={ props.alt ? props.alt : null }

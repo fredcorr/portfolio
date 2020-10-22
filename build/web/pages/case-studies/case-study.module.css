@@ -30,7 +30,7 @@
   width: 86%;
 }
 
-.Hero > div:first-of-type > div{ background-image: none!important; }
+/* .Hero > div:first-of-type > div{ background-image: none!important; } */
 
 .projectTitle {
   justify-content: center;
