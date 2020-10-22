@@ -9,7 +9,6 @@ import { slideX, slideY } from '../../util/animation';
 import Slider from '../../components/slider/slider';
 import Alert from '../../components/UI/Alert';
 import styles from './case-study.module.css';
-import { urlFor } from '../../sanity/client';
 import Seo from '../../components/UI/Seo';
 import { motion } from 'framer-motion';
 import React from 'react';
@@ -41,17 +40,17 @@ const caseStudy = props => {
                 break;
               case 'image_text':
                 return (
-                  <ImageTextBox imgUrl={ urlFor( module.image_cover ) } title={ module.title } key={ module._key } reverse={ module.isReverse }>
+                  <ImageTextBox imgUrl={ module.image_cover } title={ module.title } key={ module._key } reverse={ module.isReverse }>
                     <TextBlock content={ module.body } />
                   </ImageTextBox>
                 )
                 break;
               case 'img':
-                return <ProgressiveImages
-                  classPassed={ styles.fullWidthImg }
-                  image={ module.asset }
-                  key={ module._key }
-                />
+                return <div className={ styles.fullWidthImg } key={ module._key }>
+                  <ProgressiveImages
+                    image={ module.asset }
+                  />
+                </div>
                 break;
               case 'slider':
                 return <Slider images={ module.slider_images } i={i} key={ module._key }/>

@@ -1,3 +1,4 @@
+import ProgressiveImage from '../ProgressiveImage/ProgressiveImage';
 import { scaleUp, slideX } from '../../util/animation';
 import { useInView } from 'react-intersection-observer'
 import styles from './ImageTextBox.module.css';
@@ -8,7 +9,6 @@ const imageTextBox = (props) => {
   let direction = props.reverse ? styles.reverse : styles.normal ;
   const [ref, inView ] = useInView({ threshold: 0.6, triggerOnce: true })
 
-
   return (
     <div className={ [ styles.imageTextBox, direction ].join( ' ' ) } ref={ ref }>
       <motion.div
@@ -18,7 +18,7 @@ const imageTextBox = (props) => {
         initial="hidden"
         exit="hidden"
         >
-        <img src={ props.imgUrl } alt={ props.alt }/>
+        <ProgressiveImage image={ props.imgUrl.asset } />
       </motion.div>
       <motion.div 
         animate={inView ? "show" : "hidden"}

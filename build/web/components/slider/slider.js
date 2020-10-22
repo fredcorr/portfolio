@@ -78,12 +78,12 @@ const Slider = (props) => {
         <div className={styles.sliderInner} ref={ sliderInner }>
           {
             props.images.map( (image, i ) => (
-              <ProgressiveImages
+              <div 
                 ref={image => imagesRef[i] = image}
-                classPassed={ styles.images }
-                image={ image.asset }
-                key={ i }
-              />
+                className={ styles.images }
+                key={ i }>
+                  <ProgressiveImages image={ image.asset } />
+              </div>
             ))
           }
         </div>

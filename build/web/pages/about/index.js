@@ -26,7 +26,9 @@ const About = props => {
             <p>{ props.job_title }</p>
             <TextBlock content={ props.brief_intro } isWrapped={ false } />
           </div>
-          <ProgressiveImage image={ props.profile_image.asset } classPassed={ styles.profile_image } />
+          <div className={ styles.profile_image }>
+            <ProgressiveImage image={ props.profile_image.asset } />
+          </div>
         </motion.section>
       }
       </ScrollFade>

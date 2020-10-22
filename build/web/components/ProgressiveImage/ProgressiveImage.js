@@ -1,12 +1,12 @@
 import styles from './ProgressiveImage.module.css'
 import React, { useState } from 'react';
 
-const ProgressiveImage = React.forwardRef((props, ref) => {
+const ProgressiveImage = props => {
 
   const [ loaded, setLoaded ] = useState( false );
   
   return (
-    <div className={ props.classPassed } ref={ ref }>
+    <>
      { loaded ? null :
       <img
         src={ props.image.metadata.lqip }
@@ -16,13 +16,13 @@ const ProgressiveImage = React.forwardRef((props, ref) => {
       />
       }
       <img
-      onLoad={ () => { setLoaded(true); console.log( loaded ); } }
+      onLoad={ () => { setLoaded(true); } }
       src={ props.image.url}
       width={ '100%' }
       alt={ props.alt ? props.alt : null }
       />
-    </div>
+    </>
   )
-})
+}
 
 export default ProgressiveImage;
