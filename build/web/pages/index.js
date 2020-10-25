@@ -38,7 +38,7 @@ const Home = props => {
   )
 }
 
-export async function getStaticProps( {preview = false } ) {
+export async function getServerSideProps( {preview = false } ) {
   const home = await getHome(preview);
   return {
     props: { ...home, preview }

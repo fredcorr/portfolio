@@ -52,7 +52,7 @@ const About = props => {
   );
 }
 
-export async function getStaticProps( { preview = false } ) {
+export async function getServerSideProps( { preview = false } ) {
 
   const aboutData = await getAbout(preview)
   let parsedSites = null;
