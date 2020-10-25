@@ -8,7 +8,7 @@ const options = {
 
 export const client = sanityClient({
   ...options,
-  useCdn: false
+  useCdn: true
 })
 
 export const previewClient = sanityClient({
