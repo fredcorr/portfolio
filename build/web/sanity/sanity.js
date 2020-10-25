@@ -5,7 +5,7 @@ const getClient = (preview) => (preview ? previewClient : client)
 export async function getAllCases( preview ) {
   return await getClient(preview).fetch( `*[_type == "projects"] | order(_createdAt asc ) {
     'slug': slug.current,
-    "cover": cover.asset->url,
+    "cover": cover.asset->{ url, metadata },
     title,
     date,
   }`)

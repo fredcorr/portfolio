@@ -1,5 +1,5 @@
+import ProgressiveImage from '../ProgressiveImage/ProgressiveImage';
 import styles from './NextProject.module.css';
-// import { TweenMax } from 'gsap';
 import Link from 'next/link';
 import React from 'react';
 
@@ -7,7 +7,7 @@ import React from 'react';
 const nextProject = ({ prev, next }) => (
   <section className={ styles.NextProject}>
     <div className={ styles.featureImage }>
-      <img src={ next.cover } />
+      <ProgressiveImage image={ next.cover }  />
     </div>
     <Link href='/case-studies/[case-study]' as={'/case-studies/' + prev.slug }>
       <a className={ styles.projectTitle }>
