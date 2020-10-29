@@ -1,7 +1,7 @@
 import Cursor from '../components/UI/Cursor/Cursor';
 import hoverElements from '../util/cursor-context';
 import Layout from '../components/Layout/Layout';
-import { AnimatePresence } from 'framer-motion';
+import { PageTransition } from 'next-page-transitions'
 import App from 'next/app';
 import React from 'react';
 import './app.css';
@@ -13,9 +13,9 @@ class MyApp extends App {
     return (
       <Layout>
         <Cursor />
-        <AnimatePresence exitBeforeEnter onExitComplete={ () => window.scrollTo( 0, 0) }>
-          <Component { ...pageProps } key={ router.asPath }></Component>
-        </AnimatePresence>
+          <PageTransition timeout={ 1000 } classNames={"page-transition"}>
+            <Component { ...pageProps } key={ router.asPath }></Component>
+          </PageTransition>
       </Layout>
     )
   }

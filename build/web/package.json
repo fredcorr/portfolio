@@ -16,6 +16,7 @@
     "install": "^0.13.0",
     "kahaki": "0.0.6",
     "next": "^10.0.0",
+    "next-page-transitions": "^1.0.0-beta.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-gsap": "^2.2.1",

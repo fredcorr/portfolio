@@ -9,6 +9,24 @@ button:focus{
   outline: none;
 }
 
+.page-transition-enter {
+  opacity: 0;
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms;
+}
+
+.page-transition-exit {
+  opacity: 1;
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transition: opacity 1000ms;
+}
+
 :root {
   cursor: url( '/assets/images/cusor.svg' ), auto;
   --lightGrey: #C5C6C7;
