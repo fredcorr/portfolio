@@ -1,13 +1,15 @@
 import ProgressiveImages from '../ProgressiveImage/ProgressiveImage';
+import { IntersectionContext } from '../../util/intersectionObserver';
 import IntersectionObserver from '../../util/intersectionObserver';
 import { scaleUp } from '../../util/animation';
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './slider.module.css';
 import { TweenMax, Power4 } from 'gsap';
 import { motion } from 'framer-motion';
 
 const Slider = (props) => {
 
+  const { inView } = useContext(IntersectionContext);
   const sliderInner = React.createRef(null);
   let arrayDots = [];
   let imagesRef = [];
@@ -70,12 +72,8 @@ const Slider = (props) => {
 
   }
 
-  return(
-
-    <IntersectionObserver threshold={ 0.6 }>
-      {
-        observer => 
-          <motion.div className={ styles.Slider } ref={ observer.ref } initial="hidden" animate={ observer.inView ? "show" : "hidden"} variants={scaleUp}>
+  return (
+          <motion.div className={ styles.Slider } ref={ observer.ref } initial="hidden" animate={inView ? "show" : "hidden"} exit="hidden" variants={scaleUp}>
             <button className={ styles.prev } onClick={ ( e ) => toggleImage( '+=' ) }></button>
             <div className={styles.sliderContainer}>
               <div className={styles.sliderInner} ref={ sliderInner }>
@@ -100,8 +98,6 @@ const Slider = (props) => {
               }
             </ul>
           </motion.div>
-      }
-    </IntersectionObserver>
   )
   
 }
