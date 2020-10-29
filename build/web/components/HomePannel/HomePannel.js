@@ -27,8 +27,7 @@ const homePannel = (props) => {
                 className={ styles.imageWrapper }
                 variants={scaleUp}
                 whileHover="hover"
-                initial="hidden"
-                exit="hidden">
+                initial="hidden">
                   <img src={ props.coverImg } alt="" />
                   <img src={ props.coverImg } alt="" />
                   <p>View project</p>
@@ -36,18 +35,14 @@ const homePannel = (props) => {
               <motion.p  
                 animate={observer.inView ? "show" : "hidden"}
                 initial="hidden"
-                variants={slideX( 100 )}
-                exit="hidden"
-                custom={ 100, 0.1 }>
+                variants={fade}>
                   { props.date }
               </motion.p>
             </div>
             <motion.h2 
               animate={observer.inView ? "show" : "hidden"}
               initial="hidden"
-              variants={slideX( 100 )}
-              custom={ 100, 0.4 }
-              exit="hidden">
+              variants={fade}>
                 { props.title }
             </motion.h2>
           </a>

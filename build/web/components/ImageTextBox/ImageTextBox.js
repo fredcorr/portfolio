@@ -18,7 +18,6 @@ const imageTextBox = (props) => {
           className={ styles.imageBox }
           variants={scaleUp}
           initial="hidden"
-          exit="hidden"
           >
           <ProgressiveImage image={ props.imgUrl.asset } />
         </motion.div>
@@ -27,7 +26,6 @@ const imageTextBox = (props) => {
           className={ styles.textBox }
           variants={slideX( props.reverse? -100 : 100 )}
           initial="hidden"
-          exit="hidden"
         >
           <h4>{ props.title }</h4>
           <div></div>
