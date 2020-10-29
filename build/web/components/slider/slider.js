@@ -72,7 +72,7 @@ const Slider = (props) => {
   }
 
   return (
-          <motion.div className={ styles.Slider } ref={ observer.ref } initial="hidden" animate={inView ? "show" : "hidden"} exit="hidden" variants={scaleUp}>
+          <motion.div className={ styles.Slider }  initial="hidden" animate={true ? "show" : "hidden"} exit="hidden" variants={scaleUp}>
             <button className={ styles.prev } onClick={ ( e ) => toggleImage( '+=' ) }></button>
             <div className={styles.sliderContainer}>
               <div className={styles.sliderInner} ref={ sliderInner }>

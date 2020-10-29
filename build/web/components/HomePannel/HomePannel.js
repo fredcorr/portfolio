@@ -21,7 +21,7 @@ const homePannel = (props) => {
               { props.details }
           </motion.p>
           <motion.div
-            animate={inView ? "show" : "hidden"}
+            animate={true ? "show" : "hidden"}
             className={ styles.imageWrapper }
             variants={scaleUp}
             whileHover="hover"
@@ -32,7 +32,7 @@ const homePannel = (props) => {
               <p>View project</p>
           </motion.div>
           <motion.p  
-            animate={inView ? "show" : "hidden"}
+            animate={true ? "show" : "hidden"}
             initial="hidden"
             variants={slideX( 100 )}
             exit="hidden"
@@ -41,7 +41,7 @@ const homePannel = (props) => {
           </motion.p>
         </div>
         <motion.h2 
-          animate={inView ? "show" : "hidden"}
+          animate={true ? "show" : "hidden"}
           initial="hidden"
           variants={slideX( 100 )}
           custom={ 100, 0.4 }

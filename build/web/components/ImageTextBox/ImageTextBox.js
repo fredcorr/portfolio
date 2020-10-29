@@ -10,9 +10,9 @@ const imageTextBox = (props) => {
   let direction = props.reverse ? styles.reverse : styles.normal ;
 
   return (
-      <div className={ [ styles.imageTextBox, direction ].join( ' ' ) } ref={ ref }>
+      <div className={ [ styles.imageTextBox, direction ].join( ' ' ) } >
         <motion.div
-          animate={inView ? "show" : "hidden"}
+          animate={true ? "show" : "hidden"}
           className={ styles.imageBox }
           variants={scaleUp}
           initial="hidden"
@@ -21,7 +21,7 @@ const imageTextBox = (props) => {
           <ProgressiveImage image={ props.imgUrl.asset } />
         </motion.div>
         <motion.div 
-          animate={inView ? "show" : "hidden"}
+          animate={true ? "show" : "hidden"}
           className={ styles.textBox }
           variants={slideX( props.reverse? -100 : 100 )}
           initial="hidden"
