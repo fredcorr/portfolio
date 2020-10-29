@@ -9,7 +9,6 @@ import { motion } from 'framer-motion';
 
 const Slider = (props) => {
 
-  const { inView } = useContext(IntersectionContext);
   const sliderInner = React.createRef(null);
   let arrayDots = [];
   let imagesRef = [];
