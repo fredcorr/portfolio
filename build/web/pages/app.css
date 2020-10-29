@@ -15,7 +15,7 @@ button:focus{
 
 .page-transition-enter-active {
   opacity: 1;
-  transition: opacity 1000ms;
+  transition: opacity 10000ms;
 }
 
 .page-transition-exit {
@@ -24,7 +24,7 @@ button:focus{
 
 .page-transition-exit-active {
   opacity: 0;
-  transition: opacity 1000ms;
+  transition: opacity 10000ms;
 }
 
 :root {
