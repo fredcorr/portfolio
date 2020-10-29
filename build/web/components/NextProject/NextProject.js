@@ -9,13 +9,13 @@ const nextProject = ({ prev, next }) => (
     <div className={ styles.featureImage }>
       <ProgressiveImage image={ next.cover }  />
     </div>
-    <Link href='/case-studies/[case-study]' as={'/case-studies/' + prev.slug }>
+    <Link href='/case-studies/[case-study]' as={'/case-studies/' + prev.slug } scroll={false}>
       <a className={ styles.projectTitle }>
         <p>{ prev.date }</p>
         <h3>{ prev.title }</h3>
       </a>
     </Link>
-    <Link href='/case-studies/[case-study]' as={'/case-studies/' + next.slug }>
+    <Link href='/case-studies/[case-study]' as={'/case-studies/' + next.slug } scroll={false}>
       <a className={ styles.projectTitle }>
         <p>{ next.date }</p>
         <h3>{ next.title }</h3>

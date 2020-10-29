@@ -18,10 +18,9 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-gsap": "^2.2.1",
-    "react-intersection-observer": "^8.26.2",
     "react-scrollmagic": "^2.2.0",
     "react-swipeable": "^5.5.1",
-    "react-use": "^15.3.2"
+    "react-use": "^15.3.4"
   },
   "browserslist": [
     "> 1%",

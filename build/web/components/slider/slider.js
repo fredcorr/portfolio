@@ -1,14 +1,13 @@
 import ProgressiveImages from '../ProgressiveImage/ProgressiveImage';
-import { useInView } from 'react-intersection-observer';
+import IntersectionObserver from '../../util/intersectionObserver';
 import { scaleUp } from '../../util/animation';
+import React from 'react';
 import styles from './slider.module.css';
 import { TweenMax, Power4 } from 'gsap';
 import { motion } from 'framer-motion';
-import React from 'react';
 
 const Slider = (props) => {
 
-  const [ref, inView ] = useInView({ threshold: 0.6, triggerOnce: true })
   const sliderInner = React.createRef(null);
   let arrayDots = [];
   let imagesRef = [];
@@ -72,31 +71,37 @@ const Slider = (props) => {
   }
 
   return(
-    <motion.div className={ styles.Slider } ref={ ref } initial="hidden" animate={inView ? "show" : "hidden"} exit="hidden" variants={scaleUp}>
-      <button className={ styles.prev } onClick={ ( e ) => toggleImage( '+=' ) }></button>
-      <div className={styles.sliderContainer}>
-        <div className={styles.sliderInner} ref={ sliderInner }>
-          {
-            props.images.map( (image, i ) => (
-              <div 
-                ref={image => imagesRef[i] = image}
-                className={ styles.images }
-                key={ i }>
-                  <ProgressiveImages image={ image.asset } />
+
+    <IntersectionObserver threshold={ 0.6 }>
+      {
+        observer => 
+          <motion.div className={ styles.Slider } ref={ observer.ref } initial="hidden" animate={ observer.inView ? "show" : "hidden"} exit="hidden" variants={scaleUp}>
+            <button className={ styles.prev } onClick={ ( e ) => toggleImage( '+=' ) }></button>
+            <div className={styles.sliderContainer}>
+              <div className={styles.sliderInner} ref={ sliderInner }>
+                {
+                  props.images.map( (image, i ) => (
+                    <div 
+                      ref={image => imagesRef[i] = image}
+                      className={ styles.images }
+                      key={ i }>
+                        <ProgressiveImages image={ image.asset } />
+                    </div>
+                  ))
+                }
               </div>
-            ))
-          }
-        </div>
-      </div>
-      <button className={ styles.next } onClick={ ( e ) => toggleImage( '-=' ) } ></button>
-      <ul className={ styles.dotNav } >
-        {
-          props.images.map( ( image, b ) => {
-            return <li key={b} onClick={ ( e ) => toggleImage( e ) } ref={ dot => arrayDots[b] = dot }></li>;
-          })
-        }
-      </ul>
-    </motion.div>
+            </div>
+            <button className={ styles.next } onClick={ ( e ) => toggleImage( '-=' ) } ></button>
+            <ul className={ styles.dotNav } >
+              {
+                props.images.map( ( image, b ) => {
+                  return <li key={b} onClick={ ( e ) => toggleImage( e ) } ref={ dot => arrayDots[b] = dot }></li>;
+                })
+              }
+            </ul>
+          </motion.div>
+      }
+    </IntersectionObserver>
   )
   
 }
