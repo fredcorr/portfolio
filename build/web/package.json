@@ -21,8 +21,11 @@
     "react-dom": "16.13.1",
     "react-gsap": "^2.2.1",
     "react-scrollmagic": "^2.2.0",
+    "react-spring": "^8.0.27",
     "react-swipeable": "^5.5.1",
-    "react-use": "^15.3.4"
+    "react-three-fiber": "^5.1.4",
+    "react-use": "^15.3.4",
+    "three": "^0.100.0"
   },
   "browserslist": [
     "> 1%",

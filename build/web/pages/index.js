@@ -1,6 +1,5 @@
 import HomePannel from '../components/HomePannel/HomePannel';
 import TextBlock from '../components/textBlock/textBlock';
-import { urlFor } from '../sanity/client';
 import Alert from '../components/UI/Alert';
 import { getHome } from '../sanity/sanity';
 import Seo from '../components/UI/Seo';
@@ -24,7 +23,7 @@ const Home = props => {
               {
                 props.work_listing.map( project => (
                   <HomePannel
-                    coverImg={ urlFor(project.cover) }
+                    coverImg={ project.cover }
                     link={ project.slug.current }
                     details={ project.details }
                     title={ project.title }

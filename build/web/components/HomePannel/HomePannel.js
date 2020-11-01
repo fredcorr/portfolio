@@ -1,6 +1,7 @@
-import { fade, scaleUp, slideX } from '../../util/animation';
 import IntersectionObserver from '../../util/intersectionObserver';
+import { fade, scaleUp, slideX } from '../../util/animation';
 import styles from './HomePannel.module.css';
+// import ThreeImage from '../threeJs-image';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import React from "react";
@@ -21,6 +22,7 @@ const homePannel = (props) => {
                 alt="">
                   { props.details }
               </motion.p>
+              {/* <ThreeImage url={ props.coverImg } style={ styles.imageWrapper } trigger={ observer.inView } disp={ 'http://localhost:3000/assets/images/disp.jpg' } intesity={ 0.9 } /> */}
               <motion.div
                 animate={observer.inView ? "show" : "hidden"}
                 className={ styles.imageWrapper }

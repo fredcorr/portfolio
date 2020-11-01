@@ -62,7 +62,7 @@ export async function getHome( preview ) {
     work_listing[]->{
       details,
       title,
-      cover,
+      "cover": cover.asset-> url,
       date,
       slug,
       _id
