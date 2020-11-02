@@ -25,5 +25,20 @@ export default {
       name: 'isReverse',
       type: 'boolean'
     }
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'title',
+      media: 'image_cover',
+      subtitle: 'isReverse'
+    },
+    prepare({ title, media, subtitle }) {
+      return {
+        title,
+        media,
+        subtitle
+      };
+    }
+  }
+  
 }

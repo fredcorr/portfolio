@@ -2,8 +2,8 @@ import { useSpring, animated as anim } from 'react-spring/three.cjs.js';
 import React, { useState, useCallback, useMemo } from 'react';
 import { vertexShader, fragmentShader } from './shaders';
 import { Canvas, useThree } from 'react-three-fiber';
-import { scaleUp } from '../../util/animation';
-import * as THREE from 'three/build/three';
+import { slideY } from '../../util/animation';
+import * as THREE from 'three';
 import { motion } from 'framer-motion';
 
 const loader = new THREE.TextureLoader();
@@ -23,8 +23,7 @@ const Image = (props) => {
         onTouchStart={hover}
         onTouchEnd={unhover}
         onTouchCancel={unhover}
-        variants={scaleUp}
-        whileHover="hover"
+        variants={slideY( 100 )}
         initial="hidden"
         exit="hidden"
       >
@@ -34,6 +33,7 @@ const Image = (props) => {
         >
           <ImageWebgl {...props} hovered={hovered} />
         </Canvas>
+        <p>View project</p>
       </motion.div>
     )
   }
@@ -55,7 +55,7 @@ const ImageWebgl =({ url, disp, intensity, hovered }) => {
           uniforms: {
             effectFactor: { type: 'f', value: intensity },
             dispFactor: { type: 'f', value: 0 },
-            texture: { type: 't', value: texture1 },
+            texture1: { type: 't', value: texture1 },
             texture2: { type: 't', value: texture2 },
             disp: { type: 't', value: dispTexture }
           },
@@ -68,7 +68,7 @@ const ImageWebgl =({ url, disp, intensity, hovered }) => {
   
     return (
       <mesh>
-        <planeBufferGeometry name="geometry" args={[8, 8]} />
+        <planeBufferGeometry name="geometry" args={[16, 9]} />
         <anim.shaderMaterial name="material" args={[args]} uniforms-dispFactor-value={progress} />
       </mesh>
     )

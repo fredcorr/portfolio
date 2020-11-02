@@ -51,5 +51,19 @@ export default {
       name: "content",
       type: 'content'
     }
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'title',
+      media: 'cover',
+      subtitle: 'date'
+    },
+    prepare({ title, media, subtitle }) {
+      return {
+        title,
+        subtitle,
+        media,
+      };
+    }
+  }
 }

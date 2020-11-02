@@ -1,7 +1,7 @@
 import IntersectionObserver from '../../util/intersectionObserver';
-import { fade, scaleUp, slideX } from '../../util/animation';
+import { fade, slideX } from '../../util/animation';
 import styles from './HomePannel.module.css';
-// import ThreeImage from '../threeJs-image';
+import ThreeImage from '../threeJs-image';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import React from "react";
@@ -9,7 +9,7 @@ import React from "react";
 const homePannel = (props) => {
 
   return (
-    <IntersectionObserver>
+    <IntersectionObserver threshold={ 0.6 }>
     {
       observer =>
         <Link href="/case-studies/[case-study]" as={"/case-studies/" + props.link } scroll={false}>
@@ -22,18 +22,7 @@ const homePannel = (props) => {
                 alt="">
                   { props.details }
               </motion.p>
-              {/* <ThreeImage url={ props.coverImg } style={ styles.imageWrapper } trigger={ observer.inView } disp={ 'http://localhost:3000/assets/images/disp.jpg' } intesity={ 0.9 } /> */}
-              <motion.div
-                animate={observer.inView ? "show" : "hidden"}
-                className={ styles.imageWrapper }
-                variants={scaleUp}
-                whileHover="hover"
-                initial="hidden"
-                exit="hidden">
-                  <img src={ props.coverImg } alt="" />
-                  <img src={ props.coverImg } alt="" />
-                  <p>View project</p>
-              </motion.div>
+              <ThreeImage url={ props.coverImg } style={ styles.imageWrapper } trigger={ observer.inView } disp={ 'http://fredcorr.com/assets/images/disp.jpg' } intensity={ 0.9 } />
               <motion.p  
                 animate={observer.inView ? "show" : "hidden"}
                 initial="hidden"

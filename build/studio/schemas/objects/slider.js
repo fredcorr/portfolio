@@ -12,6 +12,17 @@ export default {
                 { type: 'img'}
             ]
         }
-    ]
+    ],
+    preview: {
+        select: {  
+          media: 'slider_images.0.asset',
+        },
+        prepare({ media }) {
+          return {
+            title: 'Slider',
+            media
+          }
+        }
+      }
   }
   

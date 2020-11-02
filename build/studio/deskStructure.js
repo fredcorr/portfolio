@@ -1,5 +1,5 @@
 import S from '@sanity/desk-tool/structure-builder'
-import { MdHome, MdDeveloperBoard, MdAccountCircle } from 'react-icons/lib/md'
+import { MdHome, MdDeveloperBoard, MdAccountCircle } from 'react-icons/md'
 
 // We filter document types defined in structure to prevent
 // them from being listed twice
