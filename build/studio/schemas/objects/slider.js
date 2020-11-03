@@ -10,7 +10,10 @@ export default {
             type: 'array',
             of: [
                 { type: 'img'}
-            ]
+            ],
+            options: {
+              layout: 'grid'
+            },
         }
     ],
     preview: {

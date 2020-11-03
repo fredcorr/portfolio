@@ -1,10 +1,11 @@
 import S from '@sanity/desk-tool/structure-builder'
 import { MdHome, MdDeveloperBoard, MdAccountCircle } from 'react-icons/md'
+import { BsGearWideConnected } from 'react-icons/bs'
 
 // We filter document types defined in structure to prevent
 // them from being listed twice
 const hiddenDocTypes = listItem =>
-  !['home', 'projects', 'about'].includes(listItem.getId())
+  !['home', 'projects', 'about', 'settings'].includes(listItem.getId())
 
 export default () =>
   S.list()
@@ -33,6 +34,16 @@ export default () =>
             .id('about')
             .schemaType('about')
             .documentId('about')
+        ),
+        S.listItem()
+        .title('Settings')
+        .icon(BsGearWideConnected)
+        .schemaType('settings')
+        .child(
+          S.editor()
+            .id('settings')
+            .schemaType('settings')
+            .documentId('settings')
         ),
       ...S.documentTypeListItems().filter(hiddenDocTypes)
     ])

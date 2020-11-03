@@ -1,6 +1,6 @@
 import { client, previewClient } from './client';
 
-const getClient = (preview) => (preview ? previewClient : client)
+export const getClient = (preview) => (preview ? previewClient : client)
 
 export async function getAllCases( preview ) {
   return await getClient(preview).fetch( `*[_type == "projects"] | order(_createdAt asc ) {
@@ -13,10 +13,7 @@ export async function getAllCases( preview ) {
 
 export async function getCaseStudy(slug, preview) {
     const currentPrj = await getClient(preview).fetch( `*[_type == "projects" && slug.current == "${ slug }"][0]{
-        seo_details{
-          ...,
-          "og_image": og_image.asset->url
-        },
+        seo_details,
         content{
           "hero_img": hero_img.asset->{ url, metadata },
           modules[]{
@@ -32,7 +29,7 @@ export async function getCaseStudy(slug, preview) {
         },
         project_link,
         slug,
-        cover,
+        "cover": cover.asset->{ url, metadata },
         title,
         date,
       }` )
@@ -52,10 +49,8 @@ export async function getCaseStudy(slug, preview) {
 export async function getHome( preview ) {
 
   const query = `*[_type == "home"]{
-    seo_details{
-      ...,
-      "og_image": og_image.asset->url
-    },
+    "featured_image": featured_image.asset-> url,
+    seo_details,
     vimeo_profile,
     intro_copy,
     email,
@@ -76,15 +71,12 @@ export async function getHome( preview ) {
 
 
 export async function getAbout( preview ) {
-  const query = `*[_type == "about"]{
+  const query = `*[_type == "about" ]{
     profile_image{
       altTag,
       asset->{ url, metadata }
     },
-    seo_details{
-      ...,
-      "og_image": og_image.asset->url
-    },
+    seo_details,
     page_title,
     brief_intro,
     job_title,

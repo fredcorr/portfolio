@@ -1,13 +1,7 @@
 
 export default {
-  // This is the display name for the type
   title: "Home",
-
-  // The identifier for this document type used in the api's
   name: "home",
-
-  // Documents have the type 'document'. Your schema may describe types beyond documents
-  // but let's get back to that later.
   type: "document",
   __experimental_actions: [/* create, delete, */ 'update', 'publish'],
   // Now we proceed to list the fields of our document
@@ -38,6 +32,12 @@ export default {
       of: [ { type: 'block'} ]
     },
     {
+      title: 'Featured Image',
+      name: 'featured_image',
+      description: 'Image for social and share posts',
+      type: 'img'
+    },
+    {
       title: 'Seo',
       name: 'seo_details',
       type: 'seo_details'
@@ -51,30 +51,6 @@ export default {
         type: 'reference',
         to: [ {type: 'projects'} ]
       }]
-   },
-   {
-     title: 'Email',
-     name: 'email',
-     description: 'Insert email for work contact',
-     type: 'string'
-   },
-   {
-     title: 'Vimeo',
-     name: 'vimeo_profile',
-     description: 'Insert Vimeo porfile',
-     type: 'string'
-   },
-   {
-    title: 'Instagram',
-    name: 'insta_profile',
-    description: 'Insert Insta porfile',
-    type: 'string'
-    },
-    {
-      title: 'Linkedin',
-      name: 'link_profile',
-      description: 'Insert Linkedin porfile',
-      type: 'string'
-    }
+   }
   ]
 }

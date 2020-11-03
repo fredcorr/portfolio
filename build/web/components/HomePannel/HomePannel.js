@@ -9,7 +9,7 @@ import React from "react";
 const homePannel = (props) => {
 
   return (
-    <IntersectionObserver threshold={ 0.6 }>
+    <IntersectionObserver threshold={ 1 }>
     {
       observer =>
         <Link href="/case-studies/[case-study]" as={"/case-studies/" + props.link } scroll={false}>

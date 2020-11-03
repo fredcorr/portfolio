@@ -1,7 +1,11 @@
 export default {
-    title: 'Seo',
-    name: 'seo_details',
     type: 'object',
+    title: 'SEO',
+    name: 'seo_details',
+    options: {
+      collapsible: true,
+      collapsed: true,
+    },
     fields: [
       {
         title: 'Description',
@@ -11,12 +15,13 @@ export default {
       {
         title: 'Key words',
         name: 'keywords',
-        type: 'string'
-      },
-      {
-        title: 'OG Image',
-        name: 'og_image',
-        type: 'image'
+        type: 'array',
+        of: [
+            {type: 'string' }
+        ],
+        options: {
+          layout: 'tags'
+        }
       }
     ]
   }

@@ -3,6 +3,7 @@ import createSchema from 'part:@sanity/base/schema-creator';
 
 // Then import schema types from any plugins that might expose them
 import schemaTypes from 'all:part:@sanity/base/schema-type';
+import settings from './documents/settings';
 import projects from './documents/projects';
 import about from './documents/about';
 import home from './documents/home';
@@ -32,6 +33,7 @@ export default createSchema({
     image_text,
     projects,
     skillSet,
+    settings,
     slider,
     about,
     img,
