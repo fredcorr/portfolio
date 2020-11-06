@@ -12,7 +12,7 @@ const homePannel = (props) => {
     <IntersectionObserver threshold={ 0.5 }>
     {
       observer =>
-        <Link href="/case-studies/[case-study]" as={"/case-studies/" + props.link } scroll={false}>
+        <Link href="/case-studies/[case-study]" as={"/case-studies/" + props.link }>
           <a className={ styles.thumb } key={ props._key } ref={ observer.ref }>
             <div className={ styles.cover } >
               <motion.p
