@@ -68,8 +68,8 @@
 
 .imageWrapper {
   position: relative;
-  overflow: hidden;
   flex: 1 0.78 80em;
+  overflow: hidden;
   height: 42vw;
   width: 85%;
 }
@@ -94,6 +94,18 @@
   top: 50%;
 }
 
+.imageWrapper > img {
+  object-position: center;
+  object-fit: cover;
+  display: none;
+  height: 100%;
+  width: 100%;
+}
+
+.imageWrapper > div {
+  display: block;
+}
+
 
 
 .thumb:hover  .imageWrapper > p {
@@ -108,6 +120,14 @@
   .cover > p:last-of-type { width: 100%; flex: 0 0 100%; margin: 15px 0 10px 0;}
   .thumb h2 { font-size: 2.8rem; margin-top: 0;}
   .cover { flex-wrap: wrap; }
+
+  .imageWrapper > img {
+    display: block;
+  }
+
+  .imageWrapper > div { 
+    display: none ;
+  }
 
   .thumb {
     margin-bottom: 15%;
