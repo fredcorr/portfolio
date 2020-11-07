@@ -45,9 +45,9 @@
 }
 
 .featureImage {
-  margin: 0 10%;
+  position: relative;
   height: 40vw;
-  width: 80%;
+  width: 100%;
 }
 
 .featureImage img {
