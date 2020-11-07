@@ -7,6 +7,7 @@ import TextBlock from '../../components/textBlock/textBlock';
 import Button from '../../components/UI/Button/Button';
 import { slideX, slideY } from '../../util/animation';
 import Slider from '../../components/slider/slider';
+import ScrollFade from '../../util/scrollFade';
 import Alert from '../../components/UI/Alert';
 import styles from './case-study.module.css';
 import Seo from '../../components/UI/Seo';
@@ -21,7 +22,11 @@ const caseStudy = props => {
       <Alert preview={ props.preview }/>
       <section className={ styles.Hero }>
         <motion.div initial={"hidden"} animate={"show" } exit={"hidden"} variants={slideY(100)}>
-          <ProgressiveImages image={ props.content.hero_img }/>
+        <ScrollFade>
+          {
+            anim => <ProgressiveImages image={ props.content.hero_img } ref={ anim.ref } fade={ anim.style }/>
+          }
+        </ScrollFade>
         </motion.div>
         <div >
           <Button link={ props.project_link } initial={"hidden"} animate={"show" } exit={"hidden"} variants={slideX(-100)}>Visit site</Button>
