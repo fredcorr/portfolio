@@ -71,7 +71,7 @@ export async function getStaticProps( { params, preview = false } ) {
   const caseData = await getCaseStudy( params['case-study'], preview )
   return {
     props: { ...caseData, preview },
-    revalidate: 1
+    revalidate: 0.2 
   }
 }
 

@@ -60,7 +60,7 @@ export async function getStaticProps( { preview = false } ) {
   await Promise.all( feature_sites ).then(( data ) => {  parsedSites = data } )
   return { 
     props: {...aboutData, parsedSites, preview },
-    revalidate: 1 
+    revalidate: 0.2 
   }
 
 }
