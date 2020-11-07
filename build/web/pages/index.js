@@ -41,7 +41,7 @@ export async function getStaticProps( {preview = false } ) {
   const home = await getHome(preview);
   return {
     props: { ...home, preview },
-    revalidate: 0.2 
+    revalidate: 0 
   }
 }
 
