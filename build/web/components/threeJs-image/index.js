@@ -33,6 +33,7 @@ const Image = (props) => {
         >
           <ImageWebgl {...props} hovered={hovered} />
         </Canvas>
+        <img src={ props.url } alt="" />
         <p>View project</p>
       </motion.div>
     )

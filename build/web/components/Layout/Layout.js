@@ -37,14 +37,13 @@ const layout = (props) => {
       <footer>
         <div>
           <a href={ 'mailto:corradi.federico.91@gmail.com' }>Get in touch</a>
-          <a href={ '#' }>Behance - </a>
-          <a href={ '#' }>Vimeo - </a>
-          <a href={ '#' }>Instagram - </a>
-          <a href={ '#' }>Linkedin - </a>
-          <a href={ '#' }>Twitter</a>
+          <a href={ 'https://vimeo.com/user18858319' } target="_blank">Vimeo - </a>
+          <a href={ 'https://www.linkedin.com/feed/' } target="_blank">Linkedin - </a>
+          <a href={ 'https://www.instagram.com/fredcorr_/' } target="_blank">Instagram - </a>
+          <a href={ 'https://twitter.com/FedericoCorra16' } target="_blank">Twitter</a>
         </div>
         <div>
-          <p>96 Agar Grove, NW1 TL, London, United Kingdom</p>
+          <p>9 Queensland Road, London, United Kingdom</p>
           <p>{"© Federico Corradi " + new Date().getFullYear() }</p>
         </div>
       </footer>
