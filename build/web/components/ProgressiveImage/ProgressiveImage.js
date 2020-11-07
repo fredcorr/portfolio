@@ -1,7 +1,8 @@
 import styles from './ProgressiveImage.module.css'
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
-const ProgressiveImage = props => {
+const ProgressiveImage = React.forwardRef(( { alt, image, fade } , ref) => {
 
   const [ loaded, setLoaded ] = useState( false );
   
@@ -9,20 +10,22 @@ const ProgressiveImage = props => {
     <>
      { loaded ? null :
       <img
-        src={ props.image.metadata.lqip }
+        src={ image.metadata.lqip }
         className={ styles.lowres }
         width={ '100%' }
-        alt={ props.alt ? props.alt : null }
+        alt={ alt ? props.alt : null }
       />
       }
-      <img
+      <motion.img
       onLoad={ () => { setLoaded(true); } }
-      src={ props.image.url}
+      src={ image.url}
+      ref={ ref }
       width={ '100%' }
-      alt={ props.alt ? props.alt : null }
+      alt={ alt ? alt : null }
+      style={ fade }
       />
     </>
   )
-}
+})
 
 export default ProgressiveImage;

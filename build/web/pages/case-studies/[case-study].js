@@ -2,11 +2,12 @@ import ProgressiveImages from '../../components/ProgressiveImage/ProgressiveImag
 import ImageTextBox from '../../components/ImageTextBox/ImageTextBox';
 import NextProject from '../../components/NextProject/NextProject';
 import TextColumn from '../../components/textColumn/textColumn';
+import { getAllCases,getCaseStudy } from '../../sanity/sanity';
 import TextBlock from '../../components/textBlock/textBlock';
 import Button from '../../components/UI/Button/Button';
 import { slideX, slideY } from '../../util/animation';
 import Slider from '../../components/slider/slider';
-import { getCaseStudy } from '../../sanity/sanity';
+import ScrollFade from '../../util/scrollFade';
 import Alert from '../../components/UI/Alert';
 import styles from './case-study.module.css';
 import Seo from '../../components/UI/Seo';
@@ -21,7 +22,11 @@ const caseStudy = props => {
       <Alert preview={ props.preview }/>
       <section className={ styles.Hero }>
         <motion.div initial={"hidden"} animate={"show" } exit={"hidden"} variants={slideY(100)}>
-          <ProgressiveImages image={ props.content.hero_img }/>
+        <ScrollFade>
+          {
+            anim => <ProgressiveImages image={ props.content.hero_img } ref={ anim.ref } fade={ anim.style }/>
+          }
+        </ScrollFade>
         </motion.div>
         <div >
           <Button link={ props.project_link } initial={"hidden"} animate={"show" } exit={"hidden"} variants={slideX(-100)}>Visit site</Button>
@@ -67,10 +72,24 @@ const caseStudy = props => {
   );
 }
 
-export async function getServerSideProps( { params, preview = false } ) {
+export async function getStaticProps( { params, preview = false } ) {
   const caseData = await getCaseStudy( params['case-study'], preview )
   return {
-    props: { ...caseData, preview }
+    props: { ...caseData, preview },
+    revalidate: 1 
+  }
+}
+
+export async function getStaticPaths() {
+  const allPosts = await getAllCases( false )
+  return {
+    paths:
+      allPosts?.map((post) => ({
+        params: {
+          'case-study': post.slug,
+        },
+      })) || [],
+    fallback: false,
   }
 }
 

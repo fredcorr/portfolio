@@ -147,19 +147,18 @@
   margin-top: 25px;
 }
 
-@media only screen and (max-width: 850px) {
+@media only screen and ( max-width: 1024px ) {
 
   .Hero {
     flex-direction: column-reverse;
     align-items: flex-start;
-    padding-top: 20vw;
     flex-wrap: wrap;
     height: auto;
   }
 
   .profile_image {
     margin-bottom: 25px;
-    height: 50vw;
+    height: 60vw;
     width: 100%;
   }
 
@@ -182,9 +181,12 @@
 
 }
 
-@media only screen and (max-width : 550px) {
+@media only screen and (max-width : 800px) {
+  .bio h1 { font-size: 3rem; }
+}
 
+@media only screen and (max-width : 550px) {
+  .Hero { margin-top: 50px; }
   .skillContainer { width: 86%;}
   .bio h1 { font-size: 3rem; }
-
 }

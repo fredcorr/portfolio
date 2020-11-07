@@ -1,6 +1,7 @@
 import ProgressiveImages from '../ProgressiveImage/ProgressiveImage';
 import IntersectionObserver from '../../util/intersectionObserver';
 import { scaleUp } from '../../util/animation';
+import { Swipeable } from "react-swipeable";
 import styles from './slider.module.css';
 import { TweenMax, Power4 } from 'gsap';
 import { motion } from 'framer-motion';
@@ -69,14 +70,22 @@ const Slider = (props) => {
 
   }
 
+  const config = {
+    onSwipedRight: ( e ) => toggleImage( '+=' ),
+    onSwipedLeft: ( e ) => toggleImage( '-=' ),
+    preventDefaultTouchmoveEvent: true,
+    stopPropagation: true,
+    trackMouse: true
+  }
+
   return(
 
-    <IntersectionObserver>
+    <IntersectionObserver threshold={ 0.5 }>
       {
         observer => 
           <motion.div className={ styles.Slider } ref={ observer.ref } initial="hidden" animate={ observer.inView ? "show" : "hidden" } exit="hidden" variants={scaleUp}>
             <button className={ styles.prev } onClick={ ( e ) => toggleImage( '+=' ) }></button>
-            <div className={styles.sliderContainer}>
+            <Swipeable {...config} className={styles.sliderContainer}>
               <div className={styles.sliderInner} ref={ sliderInner }>
                 {
                   props.images.map( (image, i ) => (
@@ -89,7 +98,7 @@ const Slider = (props) => {
                   ))
                 }
               </div>
-            </div>
+            </Swipeable>
             <button className={ styles.next } onClick={ ( e ) => toggleImage( '-=' ) } ></button>
             <ul className={ styles.dotNav } >
               {

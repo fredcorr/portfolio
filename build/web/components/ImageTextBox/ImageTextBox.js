@@ -1,6 +1,6 @@
 import IntersectionObserver from '../../util/intersectionObserver';
 import ProgressiveImage from '../ProgressiveImage/ProgressiveImage';
-import { scaleUp, slideX } from '../../util/animation';
+import { scaleUp } from '../../util/animation';
 import styles from './ImageTextBox.module.css';
 import { motion } from 'framer-motion';
 import React from 'react';
@@ -10,7 +10,7 @@ const imageTextBox = (props) => {
   
 
   return (
-    <IntersectionObserver>
+    <IntersectionObserver threshold={ 0.5 }>
     {  
       observer =>
       <div className={ [ styles.imageTextBox, direction ].join( ' ' ) } ref={ observer.ref }>
@@ -26,7 +26,7 @@ const imageTextBox = (props) => {
         <motion.div 
           animate={observer.inView ? "show" : "hidden"}
           className={ styles.textBox }
-          variants={slideX( props.reverse? -100 : 100 )}
+          variants={ scaleUp }
           initial="hidden"
           exit="hidden"
         >
