@@ -14,7 +14,6 @@
   width: 100%;
 }
 
-
 .Hero > div:first-of-type {
   margin: 5% auto 0 auto;
   max-width: 900px;
@@ -133,6 +132,12 @@
 
   .Hero {
     background: linear-gradient(to bottom, var( --darkBlue ) 45%, transparent 0);
+    margin-bottom: 50px;
+  }
+
+  .projectTitle h1 {
+    line-height: 9.5vw;
+    font-size: 9.5vw;
   }
 
   .Hero > div:first-of-type {

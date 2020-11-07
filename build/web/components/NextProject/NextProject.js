@@ -6,8 +6,6 @@ import React from 'react';
 
 const nextProject = ({ prev, next }) => {
 
-  console.log( next.cover.url );
-
   return (
     <section className={ styles.NextProject}>
       <div className={ styles.featureImage }>
