@@ -4,9 +4,18 @@ import styles from './HomePannel.module.css';
 import ThreeImage from '../threeJs-image';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import React from "react";
+import React, { useEffect } from "react";
+import { LuminanceFormat } from 'three';
 
 const homePannel = (props) => {
+
+  let baseUrl = 'https://fredcorr.com';
+
+  useEffect(() => {
+    
+    baseUrl = window.location.origin
+
+  }, []);
 
   return (
     <IntersectionObserver threshold={ 0.5 }>
@@ -22,7 +31,7 @@ const homePannel = (props) => {
                 alt="">
                   { props.details }
               </motion.p>
-              <ThreeImage url={ props.coverImg } style={ styles.imageWrapper } trigger={ observer.inView } disp={ 'http://fredcorr.com/assets/images/disp.jpg' } intensity={ 0.9 } />
+              <ThreeImage url={ props.coverImg } style={ styles.imageWrapper } trigger={ observer.inView } disp={ baseUrl + '/assets/images/disp.jpg' } intensity={ 0.9 } />
               <motion.p  
                 animate={observer.inView ? "show" : "hidden"}
                 initial="hidden"
