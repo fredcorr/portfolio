@@ -1,11 +1,12 @@
 import ProgressiveImages from '../../components/ProgressiveImage/ProgressiveImage'
 import ImageTextBox from '../../components/ImageTextBox/ImageTextBox';
 import NextProject from '../../components/NextProject/NextProject';
+import IntersectionObserver from '../../util/intersectionObserver'; 
 import TextColumn from '../../components/textColumn/textColumn';
 import { getAllCases,getCaseStudy } from '../../sanity/sanity';
 import TextBlock from '../../components/textBlock/textBlock';
 import Button from '../../components/UI/Button/Button';
-import { slideX, slideY } from '../../util/animation';
+import { slideX, slideY, scaleUp } from '../../util/animation';
 import Slider from '../../components/slider/slider';
 import ScrollFade from '../../util/scrollFade';
 import Alert from '../../components/UI/Alert';
@@ -51,11 +52,22 @@ const caseStudy = props => {
                 )
                 break;
               case 'img':
-                return <div className={ styles.fullWidthImg } key={ module._key }>
-                  <ProgressiveImages
-                    image={ module.asset }
-                  />
-                </div>
+                return (
+                  <IntersectionObserver threshold={ 0 } key={ module._key } >{
+                    observer => 
+                    <motion.div 
+                      animate={observer.inView ? "show" : "hidden"} 
+                      className={ styles.fullWidthImg }
+                      variants={ scaleUp }
+                      ref={ observer.ref }
+                      initial="hidden"
+                      exit="hidden"
+                      >
+                      <ProgressiveImages image={ module.asset } />
+                    </motion.div>
+                  }
+                  </IntersectionObserver>
+                  )
                 break;
               case 'slider':
                 return <Slider images={ module.slider_images } i={i} key={ module._key }/>
