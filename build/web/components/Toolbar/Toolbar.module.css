@@ -8,6 +8,7 @@
 
 .aboutLink {
   font-family: 'Roboto', sans-serif;
+  text-shadow: 2px 2px 20px var( --darkBlue );
   letter-spacing: 0.294375rem;
   font-size: 1.1rem;
   color: #C5C6C7;

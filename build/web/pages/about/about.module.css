@@ -10,18 +10,18 @@
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  padding-top: 5rem;
   flex-wrap: nowrap;
+
   height: 100vh;
   display: flex;
-  width: 86%;
+  width: 100%;
 } 
 
 .bio {
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
-  margin-right: -10%;
+  margin: 0 -10% 0 7%;
   display: flex;
   z-index: 2;
   width: 60%;
@@ -68,16 +68,18 @@
 
 .profile_image {
   position: relative;
+  min-height: 500px;
   height: 100%;
   width: 55%;
   z-index: 0;
 }
 
 .profile_image:after {
-  background-image: linear-gradient( #66FCF1, #C5C6C7, #1F2833); 
-  mix-blend-mode: color;
+  background-image: linear-gradient( #45A29E, #C5C6C7 , #66FCF1 );  
+  mix-blend-mode: hard-light;
   position: absolute;
   display: block;
+  opacity: 0.7;
   height: 100%;
   width: 100%;
   content: '';
@@ -148,6 +150,9 @@
 }
 
 @media only screen and ( max-width: 1024px ) {
+  .profile_image img {
+    object-position: 50% 20%;
+  }
 
   .Hero {
     flex-direction: column-reverse;
@@ -172,6 +177,7 @@
 
   .skillContainer { min-width: unset; width: 80%;}
   .bio, .bio p:last-of-type { width: 100%; }
+  .bio { margin: 0; padding: 0 2rem }
   .bio h1 { font-size: 4rem; }
   .aboutLinks { width: 100%; }
   .getInTouch { 
@@ -186,7 +192,6 @@
 }
 
 @media only screen and (max-width : 550px) {
-  .Hero { margin-top: 50px; }
   .skillContainer { width: 86%;}
   .bio h1 { font-size: 4rem; }
 }
