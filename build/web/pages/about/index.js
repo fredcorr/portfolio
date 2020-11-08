@@ -1,8 +1,10 @@
 import ProgressiveImage from '../../components/ProgressiveImage/ProgressiveImage';
 import FeaturedSites from '../../components/FeaturedSites/FeaturedSites';
+import IntersectionObserver from '../../util/intersectionObserver';
 import TextBlock from '../../components/textBlock/textBlock';
 import SkillSet from '../../components/SkillSet/SkillSet';
 import Button from '../../components/UI/Button/Button';
+import { scaleUp } from '../../util/animation';
 import { getAbout } from '../../sanity/sanity';
 import ScrollFade from '../../util/scrollFade';
 import Alert from '../../components/UI/Alert';
@@ -32,22 +34,37 @@ const About = props => {
         </motion.section>
       }
       </ScrollFade>
-      <section className={ styles.skillContainer }>
+      <IntersectionObserver threshold={ 0.5 }>
         {
-          props.skill_sets.map( ({ skills_type, skills_description, _key }) => <SkillSet title={ skills_type } copy={ skills_description } key={ _key }/> )
+        observer => 
+          <motion.section className={ styles.skillContainer } ref={ observer.ref } animate={observer.inView ? "show" : "hidden"} variants={ scaleUp } initial="hidden" exit="hidden">
+            {
+              props.skill_sets.map( ({ skills_type, skills_description, _key }) => <SkillSet title={ skills_type } copy={ skills_description } key={ _key }/> )
+            }
+          </motion.section>
         }
-      </section>
-      <section className={ styles.feature_sites }>
-        <h4>Sites I like</h4>
-         <FeaturedSites sites={ props.parsedSites } links={ props.feature_sites } />
-      </section>
-      <section className={ styles.getInTouch }>
-        <TextBlock content={ props.contact_copy } isWrapped={ false } />
-        <div className={ styles.aboutLinks }>
-          <Button link={ props.CV + '?dl' } >Download CV</Button>
-          <Button link={ 'mailto:' + props.email } >Get in touch</Button>
-        </div>
-      </section>
+      </IntersectionObserver>
+      <IntersectionObserver threshold={ 0.5 }>
+        {
+          observer => 
+          <motion.section className={ styles.feature_sites } ref={ observer.ref } animate={observer.inView ? "show" : "hidden"} variants={ scaleUp } initial="hidden" exit="hidden">
+            <h4>Sites I like</h4>
+            <FeaturedSites sites={ props.parsedSites } links={ props.feature_sites } />
+          </motion.section>
+        }
+      </IntersectionObserver>
+      <IntersectionObserver threshold={ 0.5 }>
+        {
+          observer => 
+          <motion.section className={ styles.getInTouch } ref={ observer.ref } animate={observer.inView ? "show" : "hidden"} variants={ scaleUp } initial="hidden" exit="hidden">
+            <TextBlock content={ props.contact_copy } isWrapped={ false } />
+            <div className={ styles.aboutLinks }>
+              <Button link={ props.CV + '?dl' } >Download CV</Button>
+              <Button link={ 'mailto:' + props.email } >Get in touch</Button>
+            </div>
+          </motion.section>
+        }
+      </IntersectionObserver>
     </motion.div>
   );
 }
