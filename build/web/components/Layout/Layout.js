@@ -17,7 +17,7 @@ const layout = (props) => {
     <React.Fragment>
       <Toolbar />
       <svg className={ styles.tracker } viewBox="0 0 24 437" >
-        <motion.path fill="#45A29E" d="M12,418c5.5,0,10,4.3,10,9.5s-4.5,9.5-10,9.5s-10-4.3-10-9.5S6.5,418,12,418z" animate={{ scale: isComplete ? 1 : 0 }} initial={ false }/>
+        <motion.path fill="#45A29E" d="M12,418c5.5,0,10,4.3,10,9.5s-4.5,9.5-10,9.5s-10-4.3-10-9.5S6.5,418,12,418z" animate={{ scale: isComplete ? 1 : 0 }} initial={ true }/>
         <motion.path 
           style={{ pathLength, scaleX: -1 }}
           strokeDasharray="0 1"

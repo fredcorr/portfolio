@@ -9,7 +9,6 @@ button:focus{
 }
 
 :root {
-  cursor: url( '/assets/images/cusor.svg' ), auto;
   --lightGrey: #C5C6C7;
   --darkBlue: #1F2833;
   --torquay: #66FCF1;
@@ -42,6 +41,7 @@ p {
 }
 
 main {
+  overflow-x: hidden;
   position: relative;
   display: block;
   width: 100%;

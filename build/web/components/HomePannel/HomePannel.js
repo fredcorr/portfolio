@@ -35,7 +35,7 @@ const homePannel = (props) => {
               <motion.p  
                 animate={observer.inView ? "show" : "hidden"}
                 initial="hidden"
-                variants={slideX( 100 )}
+                variants={slideX( '10%' )}
                 exit="hidden"
                 custom={ 100, 0.1 }>
                   { props.date }
@@ -44,7 +44,7 @@ const homePannel = (props) => {
             <motion.h2 
               animate={observer.inView ? "show" : "hidden"}
               initial="hidden"
-              variants={slideX( 100 )}
+              variants={slideX( '10%' )}
               custom={ 100, 0.4 }
               exit="hidden">
                 { props.title }
