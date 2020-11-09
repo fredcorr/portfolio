@@ -149,7 +149,7 @@
   margin-top: 25px;
 }
 
-@media only screen and ( max-width: 1024px ) {
+@media only screen and ( max-width: 800px ) {
   .profile_image img {
     object-position: 50% 20%;
   }

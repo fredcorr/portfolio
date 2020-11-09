@@ -8,6 +8,9 @@ const cursor = (props) => {
     const elms = useContext(hoverElements)
 
     useEffect(() => {
+
+      if (!cursor.current) return;
+
         window.addEventListener( 'mousemove', (e) => {
             cursor.current.style.top = e.clientY - ( cursor.current.getBoundingClientRect().height / 2) + 'px';
             cursor.current.style.left = e.clientX - ( cursor.current.getBoundingClientRect().width / 2 ) + 'px';

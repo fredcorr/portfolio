@@ -63,4 +63,8 @@
     width: auto;
     right: 0.3%;
   }
+
+  .tracker:first-child {
+    transform: scale( 2 );
+  }
 }
