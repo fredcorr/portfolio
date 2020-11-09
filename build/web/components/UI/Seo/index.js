@@ -9,7 +9,7 @@ const Seo = ({ metas, title, path, og_image }) => {
             <meta name="description" content={ metas.description } />
             <meta name="keywords" content={ metas.keywords ? metas.keywords.join(', ') : null }/>
             <meta property="og:title" content={ title } />
-            <meta property="og:image" content={ og_image } />
+            <meta property="og:image" itemprop="image" content={ og_image } />
             <meta property="og:url" content={ 'https://www.fredcorr.com' + path } />
             <meta property="og:description" content={ metas.description } />
             <meta name="twitter:card" content="summary_large_image" />
