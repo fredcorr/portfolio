@@ -41,7 +41,6 @@ p {
 }
 
 main {
-  overflow-x: hidden;
   position: relative;
   display: block;
   width: 100%;

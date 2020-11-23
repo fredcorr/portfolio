@@ -8,7 +8,7 @@ class MyDocument extends Document {
         <Head>
           <meta property="og:type" content='website'/>
           <meta name="robots" content='index, noarchive'/>
-          <meta name="author" content="Federico Corradi"></meta>
+          <meta name="author" content="Federico Corradi"/>
           <link rel="preload" href="/fonts/Altero-Regular.woff" as="font" crossOrigin=""/>
         </Head>
         <body>
