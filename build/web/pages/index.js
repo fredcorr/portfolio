@@ -8,8 +8,6 @@ import styles from './home.module.css';
 import React from 'react';
 
 const Home = props => {
-
-  console.log( props.featured_images );
   
   return (
       <motion.div className={ styles.Home } exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} >
