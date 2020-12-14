@@ -22,14 +22,14 @@ const About = props => {
       <Alert preview={ props.preview }/>
       <ScrollFade>
       { anim =>
-        <motion.section className={ styles.Hero } style={ anim.style } ref={ anim.ref }>
-            <div className={ styles.bio }>
-            <h1>Federico Corradi</h1>
-            <p>{ props.job_title }</p>
-            <TextBlock content={ props.brief_intro } isWrapped={ false } />
-          </div>
+      <motion.section className={ styles.Hero } style={ anim.style } ref={ anim.ref }>
           <div className={ styles.profile_image }>
             <ProgressiveImage image={ props.profile_image.asset } />
+          </div>
+          <div className={ styles.bio }>
+          <h1>Federico<br/>Corradi</h1>
+            <p>{ props.job_title }</p>
+            <TextBlock content={ props.brief_intro } isWrapped={ false } />
           </div>
         </motion.section>
       }
