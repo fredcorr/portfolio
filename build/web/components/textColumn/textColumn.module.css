@@ -8,9 +8,8 @@
 }
 
 .textColumn div {
-  max-width: 700px;
   color: #C5C6C7;
-  flex: 1 0 25em;
+  min-width: 360px;
   width: 45%;
 }
 
@@ -24,6 +23,7 @@
 
 .oneColumn > div {
   padding-left: 0!important;
+  /* max-width: 700px; */
 }
 
 .textColumn h4 {
@@ -45,16 +45,8 @@
   margin: 0;
 }
 
-@media only screen and (max-width : 930px) {
-
-  .textColumn div:last-of-type, .textColumn div:first-of-type {
-    padding: 0;
-  }
-
-  .textColumn div:last-of-type {
-    margin-top: 2rem;
-  }
-
+@media only screen and ( min-width: 2000px ) {
+  
 }
 
 
@@ -62,6 +54,10 @@
 
   .textColumn div:last-of-type, .textColumn div:first-of-type {
     padding: 0;
+  }
+
+  .textColumn div:last-of-type {
+    margin-top: 2rem;
   }
 
   .textColumn h4 {

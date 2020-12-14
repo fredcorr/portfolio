@@ -35,9 +35,9 @@ a:link, a:visited {
 p {
   font-family: 'Heebo', sans-serif;
   letter-spacing: 0.019375rem;
-  line-height: 1.7rem;
+  line-height: 2rem;
   font-weight: 300;
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 main {
@@ -53,7 +53,6 @@ header {
   position: absolute;
   margin: 0 auto;
   display: flex;
-  height: 5vw;
   width: 86%;
   z-index: 3;
   top: 25px;
@@ -144,6 +143,10 @@ footer p:last-of-type {
   font-weight: 500;
   font-style: normal;
   font-display: swap;
+}
+
+@media only screen and ( min-width: 2000px ) {
+  html { font-size: 22px; }
 }
 
 @media only screen and (max-width: 850px) {
