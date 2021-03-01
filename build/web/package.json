@@ -27,7 +27,7 @@
     "react-swipeable": "^5.5.1",
     "react-three-fiber": "^5.1.7",
     "react-use": "^15.3.4",
-    "three": "^0.122.0",
+    "three": "^0.125.0",
     "yargs-parser": "^13.1.2"
   },
   "browserslist": [
