@@ -3,6 +3,8 @@ import React from 'react';
 
 const Seo = ({ metas, title, path, og_image }) => {
 
+    console.log( path );
+
    return (
         <Head>
             <title>{ title }</title>

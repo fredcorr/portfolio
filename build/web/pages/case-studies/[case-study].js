@@ -17,9 +17,10 @@ import React from 'react';
 
 const caseStudy = props => {
 
+
   return (
     <motion.div className={ styles.CaseStudy } exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} >
-      <Seo metas={ props.seo_details } title={ props.title } og_image={ props.cover.url } path={ '/' + props.slug }/>
+      <Seo metas={ props.seo_details } title={ props.title } og_image={ props.cover.url } path={ '/case-studies/' + props.slug.current }/>
       <Alert preview={ props.preview }/>
       <section className={ styles.Hero }>
         <motion.div initial={"hidden"} animate={"show" } exit={"hidden"} variants={slideY(100)}>
