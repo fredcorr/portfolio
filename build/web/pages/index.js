@@ -11,7 +11,7 @@ const Home = props => {
   
   return (
       <motion.div className={ styles.Home } exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} >
-        <Seo metas={ props.seo_details } title={ props.page_title } path={ '/' } og_image={ props.featured_images }/>
+        <Seo metas={ props.seo_details } title={ props.page_title } path={ '/' } og_image={ props.featured_image }/>
         <Alert preview={ props.preview }/>
         <section className={ styles.intro }>
             <motion.h1 initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.2 } }}>Ui Designer<br/>Developer</motion.h1>
