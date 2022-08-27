@@ -18,7 +18,7 @@
     "next": "^10.0.7",
     "next-page-transitions": "^1.0.0-beta.2",
     "node-fetch": "^2.6.1",
-    "object-path": "^0.11.5",
+    "object-path": "^0.11.8",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-gsap": "^2.2.1",
