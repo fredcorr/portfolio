@@ -1,0 +1,12 @@
+import styles from './SkillSet.module.css'
+import React from 'react'
+
+const creativeStep = (props: any) => (
+  <div className={styles.skillSet}>
+    <h3>{props.title}</h3>
+    <span></span>
+    <p>{props.copy}</p>
+  </div>
+)
+
+export default creativeStep

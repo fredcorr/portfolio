@@ -9,14 +9,13 @@
   },
   "dependencies": {
     "@sanity/block-content-to-react": "^2.0.7",
-    "@sanity/client": "^2.0.9",
-    "@sanity/image-url": "^0.140.19",
     "framer-motion": "^2.9.4",
     "gsap": "^3.6.0",
     "install": "^0.13.0",
-    "kahaki": "0.0.6",
+    "metadata-scraper": "^0.2.60",
     "next": "^12.1.0",
     "next-page-transitions": "^1.0.0-beta.2",
+    "next-sanity": "^0.8.4",
     "node-fetch": "^2.6.7",
     "object-path": "^0.11.8",
     "react": "^17.0.1",
@@ -42,5 +41,17 @@
     "ios >= 7",
     "android >= 4",
     "bb >= 10"
-  ]
+  ],
+  "devDependencies": {
+    "@types/node": "^18.7.18",
+    "@types/react": "^18.0.20",
+    "eslint": "^8.23.1",
+    "eslint-config-next": "^12.3.0",
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "^2.7.1",
+    "stylelint": "^14.11.0",
+    "stylelint-config-sass-guidelines": "^9.0.1",
+    "stylelint-config-standard": "^28.0.0",
+    "typescript": "^4.8.3"
+  }
 }
