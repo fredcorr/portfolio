@@ -1,7 +1,7 @@
 import IntersectionObserver from '../../util/intersectionObserver'
 import { scaleUp } from '../../util/animation'
 import { Swipeable } from 'react-swipeable'
-import styles from './slider.module.css'
+import styles from './Slider.module.css'
 import { TweenMax, Power4 } from 'gsap'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
