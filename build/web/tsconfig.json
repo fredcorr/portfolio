@@ -95,8 +95,8 @@
     "next-env.d.ts",
     "additional.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "components/Slider/Slider.js"  ],
+    "**/*.tsx",
+  ],
   "exclude": [
     "node_modules"
   ]
