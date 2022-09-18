@@ -1,7 +1,7 @@
 import IntersectionObserver from '../../util/intersectionObserver'
 import TextBlock from '../TextBlock/TextBlock'
 import { scaleUp } from '../../util/animation'
-import styles from './textColumn.module.css'
+import styles from './TextColumn.module.css'
 import { motion } from 'framer-motion'
 import React from 'react'
 
