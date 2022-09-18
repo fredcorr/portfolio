@@ -1,0 +1,22 @@
+export interface MetaScraper {
+  title: string,
+  description: string,
+  image: string,
+  url: string,
+  language?: string,
+  type?: string,
+  provider?: string,
+  keywords?: string,
+  section?: string,
+  author?: string,
+  published?: string,
+  modified?: string,
+  robots?: string,
+  copyright?: string,
+  email?: string,
+  twitter?: string,
+  facebook?: string,
+  icon?: string,
+  video?: string,
+  audio?: string
+}

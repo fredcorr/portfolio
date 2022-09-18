@@ -1,4 +1,4 @@
-import { getCaseStudy, getAbout, getHome } from '../../sanity/sanity'
+import { getCaseStudy } from '../../sanity/sanity'
 
 export default async function preview(req, res) {
   // Check the secret and next parameters
