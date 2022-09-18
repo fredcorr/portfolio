@@ -1,4 +1,4 @@
-import { getCaseStudy } from '../../sanity/sanity'
+// import { getCaseStudy } from '../../sanity/sanity'
 
 export default async function preview(req, res) {
   // Check the secret and next parameters
@@ -11,7 +11,7 @@ export default async function preview(req, res) {
   }
 
   // Fetch the headless CMS to check if the provided `slug` exists
-  const post = await getCaseStudy(req.query.slug )
+  // const post = await getCaseStudy(req.query.slug )
 
 
   // If the slug doesn't exist prevent preview mode from being enabled

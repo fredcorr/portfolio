@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import React from 'react';
 
 
-const button = (props) => (
+const button = (props: any) => (
   <motion.a
     style={{ margin: props.margin }}
     variants={ props.variants }

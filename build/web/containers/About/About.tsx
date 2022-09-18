@@ -14,7 +14,7 @@ import React from 'react'
 
 const About = ({ profile_image, ...props }: any) => {
   const { width, height } = profile_image.asset.metadata.dimensions
-  console.log(props)
+
   return (
     <motion.div
       className={styles.about}
