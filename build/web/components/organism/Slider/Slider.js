@@ -113,7 +113,7 @@ const Slider = (props) => {
           ></button>
           <Swipeable {...config} className={styles.sliderContainer}>
             <div className={styles.sliderInner} ref={sliderInner}>
-              {props.images.map((image, i) => {
+              {props.slider_images.map((image, i) => {
                 const { width, height } = image.asset.metadata.dimensions
                 return (
                   <div
@@ -139,7 +139,7 @@ const Slider = (props) => {
             onClick={(e) => toggleImage('-=')}
           ></button>
           <ul className={styles.dotNav}>
-            {props.images.map((image, b) => {
+            {props.slider_images.map((image, b) => {
               return (
                 <li
                   key={b}

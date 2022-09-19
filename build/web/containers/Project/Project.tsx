@@ -5,6 +5,7 @@ import { slideX, slideY, scaleUp } from '_utils/animation'
 import TextColumn from '_organism/TextColumn/TextColumn'
 import { ProjectsPage } from '_types/sanity/pages'
 import TextBlock from '_atoms/TextBlock/TextBlock'
+import RenderComponet from '_hoc/RenderComponent'
 import Slider from '_organism/Slider/Slider'
 import ScrollFade from '_utils/scrollFade'
 import styles from './Project.module.css'
@@ -83,68 +84,8 @@ const Project = ({
         </div>
       </section>
       <section className={styles.mainContent}>
-        {content
-          ? content.modules.map((module: any, i: number) => {
-              switch (module._type) {
-                case 'text_module':
-                  return <TextColumn textContent={module} key={module._key} />
-                  break
-                case 'image_text':
-                  return (
-                    <ImageTextBox
-                      imgUrl={module.image_cover}
-                      title={module.title}
-                      key={module._key}
-                      reverse={module.isReverse}
-                    >
-                      <TextBlock content={module.body} />
-                    </ImageTextBox>
-                  )
-                  break
-                case 'img':
-                  return (
-                    <IntersectionObserver threshold={0} key={module._key}>
-                      {(observer: any) => {
-                        const { width, height } =
-                          module.asset.metadata.dimensions
-                        return (
-                          <motion.div
-                            animate={observer.inView ? 'show' : 'hidden'}
-                            className={styles.fullWidthImg}
-                            variants={scaleUp}
-                            ref={observer.ref}
-                            initial="hidden"
-                            exit="hidden"
-                          >
-                            <Image
-                              src={module.asset.url}
-                              layout="responsive"
-                              width={width}
-                              height={height}
-                              placeholder="blur"
-                              blurDataURL={module.asset.metadata.lqip}
-                            />
-                          </motion.div>
-                        )
-                      }}
-                    </IntersectionObserver>
-                  )
-                  break
-                case 'slider':
-                  return (
-                    <Slider
-                      images={module.slider_images}
-                      i={i}
-                      key={module._key}
-                    />
-                  )
-                  break
-                default:
-                  return null
-                  break
-              }
-            })
-          : null}
+        {content &&
+          content.modules.map((module, i) => RenderComponet(module))}
       </section>
       {/* <NextProject next={ next } prev={ previous } /> */}
     </motion.div>

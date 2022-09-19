@@ -1,13 +1,15 @@
 import IntersectionObserver from '_utils/intersectionObserver'
+import TextBlock from '_atoms/TextBlock/TextBlock'
+import { ImageTextComponent } from '_types/sanity'
 import styles from './ImageTextBox.module.css'
 import { scaleUp } from '_utils/animation'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import React from 'react'
 
-const ImageTextBox = (props: any) => {
-  let direction = props.reverse ? styles.reverse : styles.normal
-  const { width, height } = props.imgUrl.asset.metadata.dimensions
+const ImageTextBox = ({ isReverse, image_cover, title, body }: ImageTextComponent) => {
+  let direction = isReverse ? styles.reverse : styles.normal
+  const { width, height } = image_cover.asset.metadata.dimensions
 
   return (
     <IntersectionObserver threshold={0.5}>
@@ -24,12 +26,12 @@ const ImageTextBox = (props: any) => {
             exit="hidden"
           >
             <Image
-              src={props.imgUrl.asset.url}
+              src={image_cover.asset.url}
               layout="responsive"
               width={width}
               height={height}
               placeholder="blur"
-              blurDataURL={props.imgUrl.asset.metadata.lqip}
+              blurDataURL={image_cover.asset.metadata.lqip}
             />
           </motion.div>
           <motion.div
@@ -39,9 +41,9 @@ const ImageTextBox = (props: any) => {
             initial="hidden"
             exit="hidden"
           >
-            <h4>{props.title}</h4>
+            <h4>{title}</h4>
             <div></div>
-            {props.children}
+            <TextBlock content={body} />
           </motion.div>
         </div>
       )}

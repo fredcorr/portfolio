@@ -13,7 +13,17 @@ import Seo from '_atoms/Seo/Seo'
 import Image from 'next/image'
 import React from 'react'
 
-const About = ({ profile_image, skill_sets, scrapedSites, ...props }: AboutPage) => {
+const About = ({
+  profile_image,
+  scrapedSites,
+  contact_copy,
+  seo_details,
+  brief_intro,
+  skill_sets,
+  job_title,
+  email,
+  CV,
+}: AboutPage) => {
   const { width, height } = profile_image.asset.metadata.dimensions
 
   return (
@@ -24,7 +34,7 @@ const About = ({ profile_image, skill_sets, scrapedSites, ...props }: AboutPage)
       initial={{ opacity: 0 }}
     >
       <Seo
-        metas={props.seo_details}
+        metas={seo_details}
         title={'About me, my-self and I'}
         og_image={profile_image.asset.url}
         path={'/about'}
@@ -52,8 +62,8 @@ const About = ({ profile_image, skill_sets, scrapedSites, ...props }: AboutPage)
                 <br />
                 Corradi
               </h1>
-              <p>{props.job_title}</p>
-              <TextBlock content={props.brief_intro} isWrapped={false} />
+              <p>{job_title}</p>
+              <TextBlock content={brief_intro} isWrapped={false} />
             </div>
           </motion.section>
         )}
@@ -68,11 +78,9 @@ const About = ({ profile_image, skill_sets, scrapedSites, ...props }: AboutPage)
             initial="hidden"
             exit="hidden"
           >
-            {skill_sets.map(
-              (skill, i) => (
-                <SkillSet {...skill} key={i} />
-              )
-            )}
+            {skill_sets.map((skill, i) => (
+              <SkillSet {...skill} key={i} />
+            ))}
           </motion.section>
         )}
       </IntersectionObserver>
@@ -87,11 +95,9 @@ const About = ({ profile_image, skill_sets, scrapedSites, ...props }: AboutPage)
             exit="hidden"
           >
             <h4>Sites I like</h4>
-            {
-              scrapedSites.map((site: any) => {
-                return <FeaturedSite {...site} key={site.title} />
-              })
-            }
+            {scrapedSites.map((site: any) => {
+              return <FeaturedSite {...site} key={site.title} />
+            })}
           </motion.section>
         )}
       </IntersectionObserver>
@@ -105,10 +111,10 @@ const About = ({ profile_image, skill_sets, scrapedSites, ...props }: AboutPage)
             initial="hidden"
             exit="hidden"
           >
-            <TextBlock content={props.contact_copy} isWrapped={false} />
+            <TextBlock content={contact_copy} isWrapped={false} />
             <div className={styles.aboutLinks}>
-              <Button link={props.CV + '?dl'}>Download CV</Button>
-              <Button link={'mailto:' + props.email}>Get in touch</Button>
+              <Button link={CV + '?dl'}>Download CV</Button>
+              <Button link={'mailto:' + email}>Get in touch</Button>
             </div>
           </motion.section>
         )}

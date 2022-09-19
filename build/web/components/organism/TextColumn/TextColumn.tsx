@@ -1,12 +1,13 @@
 import IntersectionObserver from '_utils/intersectionObserver'
 import TextBlock from '_atoms/TextBlock/TextBlock'
+import { TextComponent } from '_types/sanity'
 import styles from './TextColumn.module.css'
 import { scaleUp } from '_utils/animation'
 import { motion } from 'framer-motion'
 import React from 'react'
 
-const textColumn = ({ textContent }: any) => {
-  let isSingle = textContent.columns.length === 1 ? styles.oneColumn : null
+const TextColumn = ({ columns, title, useTitle }: TextComponent) => {
+  let isSingle = columns.length === 1 ? styles.oneColumn : null
 
   return (
     <IntersectionObserver threshold={0.5}>
@@ -19,8 +20,8 @@ const textColumn = ({ textContent }: any) => {
           exit="hidden"
           variants={scaleUp}
         >
-          {textContent.useTitle ? <h4>{textContent.title}</h4> : null}
-          {textContent.columns.map((column: any) => (
+          {useTitle ? <h4>{title}</h4> : null}
+          {columns.map((column: any) => (
             <TextBlock content={column.column} key={column._key} />
           ))}
         </motion.div>
@@ -29,4 +30,4 @@ const textColumn = ({ textContent }: any) => {
   )
 }
 
-export default textColumn
+export default TextColumn
