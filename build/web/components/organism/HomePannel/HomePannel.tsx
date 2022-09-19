@@ -1,13 +1,13 @@
-import IntersectionObserver from '../../util/intersectionObserver'
-import { fade, slideX } from '../../util/animation'
+import IntersectionObserver from '_utils/intersectionObserver'
+import { ProjectsPage } from '_types/sanity/pages'
+import ThreeImage from '_molecules/threeJs-image'
+import { fade, slideX } from '_utils/animation'
 import styles from './HomePannel.module.css'
-import ThreeImage from '../threeJs-image'
 import React, { useEffect } from 'react'
-import { LuminanceFormat } from 'three'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 
-const HomePannel = (props: any) => {
+const HomePannel = ({ title, slug, details, cover, date }: ProjectsPage) => {
   let baseUrl = 'https://fred-corr.com'
 
   useEffect(() => {
@@ -17,18 +17,18 @@ const HomePannel = (props: any) => {
   return (
     <IntersectionObserver threshold={0.5}>
       {(observer: any) => (
-        <Link href={props.link}>
-          <a className={styles.thumb} key={props._key} ref={observer.ref}>
+        <Link href={slug.current}>
+          <a className={styles.thumb} ref={observer.ref}>
             <div className={styles.cover}>
               <motion.p
                 animate={observer.inView ? 'show' : 'hidden'}
                 initial="hidden"
                 variants={fade}
               >
-                {props.details}
+                {details}
               </motion.p>
               <ThreeImage
-                url={props.coverImg}
+                url={cover}
                 style={styles.imageWrapper}
                 trigger={observer.inView}
                 disp={baseUrl + '/assets/images/disp.jpg'}
@@ -41,7 +41,7 @@ const HomePannel = (props: any) => {
                 exit="hidden"
                 custom={[100, 0.1]}
               >
-                {props.date}
+                {date}
               </motion.p>
             </div>
             <motion.h2
@@ -51,7 +51,7 @@ const HomePannel = (props: any) => {
               initial="hidden"
               exit="hidden"
             >
-              {props.title}
+              {title}
             </motion.h2>
           </a>
         </Link>

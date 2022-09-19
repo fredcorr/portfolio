@@ -1,5 +1,5 @@
 import styles from './Toolbar.module.css'
-import Logo from '../UI/Logo/Logo'
+import Logo from '_atoms/Logo/Logo'
 import Link from 'next/link'
 import React from 'react'
 

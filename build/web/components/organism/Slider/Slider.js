@@ -1,5 +1,5 @@
-import IntersectionObserver from '../../util/intersectionObserver'
-import { scaleUp } from '../../util/animation'
+import IntersectionObserver from '_utils/intersectionObserver'
+import { scaleUp } from '_utils/animation'
 import { Swipeable } from 'react-swipeable'
 import styles from './Slider.module.css'
 import { TweenMax, Power4 } from 'gsap'

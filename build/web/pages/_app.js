@@ -1,4 +1,4 @@
-import Layout from '../components/Layout/Layout';
+import Layout from '_hoc/Layout/Layout';
 import App from 'next/app';
 import React from 'react';
 import './app.css';

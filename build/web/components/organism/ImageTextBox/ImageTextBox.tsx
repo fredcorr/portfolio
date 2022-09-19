@@ -1,6 +1,6 @@
-import IntersectionObserver from '../../util/intersectionObserver'
-import { scaleUp } from '../../util/animation'
+import IntersectionObserver from '_utils/intersectionObserver'
 import styles from './ImageTextBox.module.css'
+import { scaleUp } from '_utils/animation'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import React from 'react'

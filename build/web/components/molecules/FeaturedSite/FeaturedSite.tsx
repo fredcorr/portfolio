@@ -7,12 +7,6 @@ const FeaturedSite = ({ url, title, image, description }: MetaScraper) => (
   <a href={url} target="_blank" className={styles.FeaturedSites} key={title}>
     <div className={styles.siteImage}>
       <img src={image} alt={title} />
-      <Image
-        src={image}
-        layout="fill"
-        objectPosition="center center"
-        objectFit="contain"
-      />
     </div>
     <div>
       <p>{title}</p>

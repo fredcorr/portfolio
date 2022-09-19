@@ -1,12 +1,13 @@
+import React, { useEffect, useState } from 'react'
+import Toolbar from '_organism/Toolbar/Toolbar'
+import styles from './Layout.module.css'
+
 import {
-  motion,
   useViewportScroll,
   useTransform,
   useSpring,
+  motion,
 } from 'framer-motion'
-import React, { useEffect, useState } from 'react'
-import Toolbar from '../Toolbar/Toolbar'
-import styles from './Layout.module.css'
 
 const Layout = (props: any) => {
   const [isComplete, setIsComplete] = useState(false)

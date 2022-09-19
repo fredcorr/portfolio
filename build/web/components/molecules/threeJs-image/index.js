@@ -2,9 +2,9 @@ import { useSpring, animated as anim } from 'react-spring/three.cjs.js'
 import React, { useState, useCallback, useMemo } from 'react'
 import { vertexShader, fragmentShader } from './shaders'
 import { Canvas, useThree } from 'react-three-fiber'
-import { slideY } from '../../util/animation'
-import * as THREE from 'three'
+import { slideY } from '_utils/animation'
 import { motion } from 'framer-motion'
+import * as THREE from 'three'
 
 const loader = new THREE.TextureLoader()
 

@@ -1,52 +1,60 @@
-import ImageTextBox from '../../components/ImageTextBox/ImageTextBox'
-import NextProject from '../../components/NextProject/NextProject'
-import IntersectionObserver from '../../util/intersectionObserver'
-import TextColumn from '../../components/TextColumn/TextColumn'
-import { slideX, slideY, scaleUp } from '../../util/animation'
-import TextBlock from '../../components/TextBlock/TextBlock'
-import Button from '../../components/UI/Button/Button'
-import Slider from '../../components/Slider/Slider'
-import ScrollFade from '../../util/scrollFade'
-import Alert from '../../components/UI/Alert/Alert'
+import ImageTextBox from '_organism/ImageTextBox/ImageTextBox'
+import IntersectionObserver from '_utils/intersectionObserver'
+import NextProject from '_organism/NextProject/NextProject'
+import { slideX, slideY, scaleUp } from '_utils/animation'
+import TextColumn from '_organism/TextColumn/TextColumn'
+import { ProjectsPage } from '_types/sanity/pages'
+import TextBlock from '_atoms/TextBlock/TextBlock'
+import Slider from '_organism/Slider/Slider'
+import ScrollFade from '_utils/scrollFade'
 import styles from './Project.module.css'
-import Seo from '../../components/UI/Seo/Seo'
+import Button from '_atoms/Button/Button'
+import Alert from '_atoms/Alert/Alert'
 import { motion } from 'framer-motion'
+import Seo from '_atoms/Seo/Seo'
 import Image from 'next/image'
 import React from 'react'
 
-const Project = ({ cover, content, ...props }: any) => {
+const Project = ({
+  project_link,
+  seo_details,
+  content,
+  cover,
+  title,
+  slug,
+  date,
+}: ProjectsPage) => {
   const { width, height } = content.hero_img.metadata.dimensions
   return (
     <motion.div
       className={styles.CaseStudy}
-      exit={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
     >
       <Seo
-        metas={props.seo_details}
-        title={props.title}
         og_image={cover.url}
-        path={props.slug.current}
+        metas={seo_details}
+        path={slug.current}
+        title={title}
       />
-      <Alert preview={props.preview} />
       <section className={styles.Hero}>
         <motion.div
+          variants={slideY(100)}
           initial={'hidden'}
           animate={'show'}
           exit={'hidden'}
-          variants={slideY(100)}
         >
           <ScrollFade>
             {(anim: any) => (
               <div ref={anim.ref} className={anim.style}>
                 <Image
+                  blurDataURL={content.hero_img.metadata.lqip}
                   src={content.hero_img.url}
                   layout="responsive"
-                  width={width}
-                  height={height}
                   placeholder="blur"
-                  blurDataURL={content.hero_img.metadata.lqip}
+                  height={height}
+                  width={width}
                 />
               </div>
             )}
@@ -54,23 +62,23 @@ const Project = ({ cover, content, ...props }: any) => {
         </motion.div>
         <div>
           <Button
-            link={props.project_link}
+            variants={slideX(-100)}
+            link={project_link}
             initial={'hidden'}
             animate={'show'}
             exit={'hidden'}
-            variants={slideX(-100)}
           >
             Visit site
           </Button>
           <motion.div
+            className={styles.projectTitle}
+            variants={slideX(100)}
             initial={'hidden'}
             animate={'show'}
             exit={'hidden'}
-            variants={slideX(100)}
-            className={styles.projectTitle}
           >
-            <p>{props.date}</p>
-            <h1>{props.title}</h1>
+            <p>{date}</p>
+            <h1>{title}</h1>
           </motion.div>
         </div>
       </section>
@@ -138,7 +146,7 @@ const Project = ({ cover, content, ...props }: any) => {
             })
           : null}
       </section>
-      {/* <NextProject next={ props.next } prev={ props.previous } /> */}
+      {/* <NextProject next={ next } prev={ previous } /> */}
     </motion.div>
   )
 }
