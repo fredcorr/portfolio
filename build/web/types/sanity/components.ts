@@ -11,7 +11,7 @@ export enum ComponentsTypeName {
 export interface ImageTextComponent {
   _type: ComponentsTypeName.IMAGE_TEXT
   body: BlockContentProps
-  image_cover: Image
+  image_cover: ImageComponent
   isReverse: boolean
   title: string
 }
