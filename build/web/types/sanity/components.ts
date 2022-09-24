@@ -31,7 +31,7 @@ export interface ImageComponent {
 
 export interface SliderComponent {
   _type: ComponentsTypeName.SLIDER
-  slider_images: Image[]
+  slider_images: ImageComponent[]
 }
 
 export type Components = ImageTextComponent | TextComponent | ImageComponent | SliderComponent
