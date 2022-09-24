@@ -1,4 +1,3 @@
-import { Image } from "./base-schemas";
 import {
   ProjectsPage,
   AboutPage,
