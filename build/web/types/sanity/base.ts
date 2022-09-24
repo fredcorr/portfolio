@@ -17,9 +17,9 @@ export interface CMSPage {
 }
 
 export interface Seo {
-  seoTitle: string
-  seoDescription: string
-  hideFromSearchEngine: boolean
+  description: string
+  keywords?: string[]
+  hideFromSearchEngine?: boolean
 }
 
 export enum PageTypeNames {

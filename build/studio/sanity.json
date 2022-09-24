@@ -17,8 +17,7 @@
     "dashboard-widget-document-list",
     "dashboard-widget-netlify",
     "seo-tools",
-    "@sanity/production-preview",
-    "dashboard-widget-vercel"
+    "@sanity/production-preview"
   ],
   "env": {
     "development": {

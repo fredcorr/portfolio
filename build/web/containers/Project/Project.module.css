@@ -78,12 +78,6 @@
   margin-top: 8vw;
 }
 
-.fullWidthImg {
-  position: relative;
-  height: auto;
-  width: 100%;
-}
-
 @media only screen and (max-width: 900px) {
 
   .Hero {
