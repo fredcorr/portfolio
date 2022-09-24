@@ -3,7 +3,7 @@ import Logo from '_atoms/Logo/Logo'
 import Link from 'next/link'
 import React from 'react'
 
-const Toolbar = (props: any) => (
+const Toolbar = () => (
   <header>
     <Link href="/">
       <a className={styles.logoContainer}>

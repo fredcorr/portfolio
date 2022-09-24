@@ -1,22 +1,15 @@
-import styles from './Button.module.css';
-import { motion } from 'framer-motion';
-import React from 'react';
+import styles from './Button.module.css'
+import Link from 'next/link'
+import React from 'react'
 
+export interface ButtonProps extends HTMLAnchorElement {
+  link: string
+}
 
-const button = (props: any) => (
-  <motion.a
-    style={{ margin: props.margin }}
-    variants={ props.variants }
-    className={ styles.button}
-    rel="noopener noreferrer" 
-    animate={ props.animate }
-    initial={ props.initial }
-    exit={ props.exit }
-    href={ props.link }
-    target='_blank'
-    download >
-       { props.children }
-  </motion.a>
-);
+const Button = ({ link, children, ...props }: any) => (
+  <Link className={styles.button} href={link} {...props}>
+    {children}
+  </Link>
+)
 
-export default button;
+export default Button

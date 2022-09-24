@@ -1,7 +1,10 @@
 import styles from './alert.module.css'
 import React from 'react'
+export interface AlertProps {
+  preview: boolean
+}
 
-const alert = ({ preview }: any) => {
+const Alert = ({ preview }: AlertProps) => {
   return preview ? (
     <p className={styles.alert}>
       This is a preview. <a href="/api/exit-preview">Click here</a> to exit
@@ -10,4 +13,4 @@ const alert = ({ preview }: any) => {
   ) : null
 }
 
-export default alert
+export default Alert

@@ -1,5 +1,10 @@
-import BlockContent from '@sanity/block-content-to-react'
+import BlockContent, { BlockContentProps } from '@sanity/block-content-to-react'
+import { BlockContentNodeBase } from '_types/sanity'
 import React from 'react'
+export interface TextBlockProps {
+  content: BlockContentProps
+  isWrapped?: boolean
+}
 
 const serializers = {
   types: {
@@ -11,7 +16,7 @@ const serializers = {
   },
 }
 
-const TextBlock = ({ content, isWrapped = true }: any) => (
+const TextBlock = ({ content, isWrapped = true }: TextBlockProps) => (
   <BlockContent
     renderContainerOnSingleChild={isWrapped}
     serializers={serializers}

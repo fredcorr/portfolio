@@ -29,15 +29,14 @@ const About = ({
   return (
     <motion.div
       className={styles.about}
-      exit={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
     >
       <Seo
-        metas={seo_details}
-        title={'About me, my-self and I'}
         og_image={profile_image.asset.url}
-        path={'/about'}
+        title={'About me, my-self and I'}
+        metas={seo_details}
       />
       <ScrollFade>
         {(anim: any) => (
@@ -48,12 +47,12 @@ const About = ({
           >
             <div className={styles.profile_image}>
               <Image
+                blurDataURL={profile_image.asset.metadata.lqip}
                 src={profile_image.asset.url}
                 layout="responsive"
-                width={width}
-                height={height}
                 placeholder="blur"
-                blurDataURL={profile_image.asset.metadata.lqip}
+                height={height}
+                width={width}
               />
             </div>
             <div className={styles.bio}>
@@ -71,9 +70,9 @@ const About = ({
       <IntersectionObserver threshold={0.5}>
         {(observer: any) => (
           <motion.section
+            animate={observer.inView ? 'show' : 'hidden'}
             className={styles.skillContainer}
             ref={observer.ref}
-            animate={observer.inView ? 'show' : 'hidden'}
             variants={scaleUp}
             initial="hidden"
             exit="hidden"
@@ -87,9 +86,9 @@ const About = ({
       <IntersectionObserver threshold={0.5}>
         {(observer: any) => (
           <motion.section
+            animate={observer.inView ? 'show' : 'hidden'}
             className={styles.feature_sites}
             ref={observer.ref}
-            animate={observer.inView ? 'show' : 'hidden'}
             variants={scaleUp}
             initial="hidden"
             exit="hidden"
@@ -104,9 +103,9 @@ const About = ({
       <IntersectionObserver threshold={0.5}>
         {(observer: any) => (
           <motion.section
+            animate={observer.inView ? 'show' : 'hidden'}
             className={styles.getInTouch}
             ref={observer.ref}
-            animate={observer.inView ? 'show' : 'hidden'}
             variants={scaleUp}
             initial="hidden"
             exit="hidden"

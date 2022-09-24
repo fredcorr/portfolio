@@ -16,29 +16,28 @@ const Home = ({
 }: HomePage) => {
   return (
     <motion.div
-      className={styles.Home}
-      exit={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       initial={{ opacity: 0 }}
+      className={styles.Home}
+      exit={{ opacity: 0 }}
     >
       <Seo
+        og_image={featured_image.url}
         metas={seo_details}
         title={page_title}
-        path={'/'}
-        og_image={featured_image}
       />
       <section className={styles.intro}>
         <motion.h1
-          initial={{ opacity: 0 }}
           animate={{ opacity: 1, transition: { delay: 0.2 } }}
+          initial={{ opacity: 0 }}
         >
           Ui Designer
           <br />
           Developer
         </motion.h1>
         <motion.div
-          initial={{ opacity: 0 }}
           animate={{ opacity: 1, transition: { delay: 0.5 } }}
+          initial={{ opacity: 0 }}
         >
           <TextBlock content={intro_copy} isWrapped={false} />
         </motion.div>

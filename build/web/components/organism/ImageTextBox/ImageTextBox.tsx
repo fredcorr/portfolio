@@ -26,12 +26,12 @@ const ImageTextBox = ({ isReverse, image_cover, title, body }: ImageTextComponen
             exit="hidden"
           >
             <Image
+              blurDataURL={image_cover.asset.metadata.lqip}
               src={image_cover.asset.url}
               layout="responsive"
-              width={width}
-              height={height}
               placeholder="blur"
-              blurDataURL={image_cover.asset.metadata.lqip}
+              height={height}
+              width={width}
             />
           </motion.div>
           <motion.div

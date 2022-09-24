@@ -1,6 +1,5 @@
 import styles from './FeaturedSite.module.css'
 import { MetaScraper } from '_types/local'
-import Image from 'next/image'
 import React from 'react'
 
 const FeaturedSite = ({ url, title, image, description }: MetaScraper) => (

@@ -1,12 +1,8 @@
-import ImageTextBox from '_organism/ImageTextBox/ImageTextBox'
 import IntersectionObserver from '_utils/intersectionObserver'
 import NextProject from '_organism/NextProject/NextProject'
 import { slideX, slideY, scaleUp } from '_utils/animation'
-import TextColumn from '_organism/TextColumn/TextColumn'
 import { ProjectsPage } from '_types/sanity/pages'
-import TextBlock from '_atoms/TextBlock/TextBlock'
 import RenderComponet from '_hoc/RenderComponent'
-import Slider from '_organism/Slider/Slider'
 import ScrollFade from '_utils/scrollFade'
 import styles from './Project.module.css'
 import Button from '_atoms/Button/Button'
@@ -22,7 +18,7 @@ const Project = ({
   content,
   cover,
   title,
-  slug,
+  slug,       
   date,
 }: ProjectsPage) => {
   const { width, height } = content.hero_img.metadata.dimensions
@@ -33,12 +29,7 @@ const Project = ({
       initial={{ opacity: 0 }}
       exit={{ opacity: 0 }}
     >
-      <Seo
-        og_image={cover.url}
-        metas={seo_details}
-        path={slug.current}
-        title={title}
-      />
+      <Seo og_image={cover.url} metas={seo_details} title={title} />
       <section className={styles.Hero}>
         <motion.div
           variants={slideY(100)}
@@ -84,8 +75,7 @@ const Project = ({
         </div>
       </section>
       <section className={styles.mainContent}>
-        {content &&
-          content.modules.map((module, i) => RenderComponet(module))}
+        {content && content.modules.map((module, i) => RenderComponet(module))}
       </section>
       {/* <NextProject next={ next } prev={ previous } /> */}
     </motion.div>
